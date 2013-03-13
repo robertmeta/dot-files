@@ -5,7 +5,7 @@ rm ~/.tmux.conf
 rm ~/.vimrc
 rm ~/.zshrc
 
-git clone git://github.com/robertmeta/vim-files.git ~/.dotfiles/
+git clone git://github.com/robertmeta/vim-files.git ~/.dotfiles/vim-files
 
 ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
 ln -s ~/.dotfiles/.zshrc ~/.zshrc
