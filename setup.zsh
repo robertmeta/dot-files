@@ -1,7 +1,6 @@
 #!/bin/zsh
 
 rm -rf ~/.vim
-rm -rf ~/.dotfiles/vim-files
 rm ~/.tmux.conf
 rm ~/.vimrc
 rm ~/.zshrc
