@@ -19,7 +19,12 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git)
 
+# Important for mac
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 source $ZSH/oh-my-zsh.sh
+# Stops horrible behavoir of correct_all
 unsetopt correct_all
 
 # Customize to your needs...
@@ -28,3 +33,4 @@ export EDITOR=vim
 
 alias tmux="tmux -2u"
 test -z "$TMUX" && (tmux attach || tmux new-session)
+
