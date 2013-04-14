@@ -15,4 +15,4 @@ ln -s ~/.dotfiles/vim-files/.vimrc ~/.vimrc
 zsh ~/.zshrc
 tmux source-file ~/.tmux.conf
 
-cd ~/.vim && git submodule foreach git pull
+cd ~/.vim && git submodule update --init
