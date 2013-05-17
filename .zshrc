@@ -29,8 +29,14 @@ unsetopt correct_all
 export DISABLE_AUTO_TITLE="true"
 
 # Customize to your needs...
-export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin
+export GOROOT=/opt/go
+export GOPATH=/sites/go
 export EDITOR=vim
+
+export INKY=~/projects/inky-core
+export PATH=$PATH:$INKY/build/scripts
+export PATH=$INKY/python/local-install/`arcode -P`/2.7/bin:$PATH
+export PATH=$GOROOT/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$PATH
 
 alias tmux="tmux -2u"
 test -z "$TMUX" && (tmux attach || tmux new-session)
