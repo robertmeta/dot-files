@@ -30,7 +30,7 @@ export DISABLE_AUTO_TITLE="true"
 
 # Customize to your needs...
 export GOROOT=/opt/go
-export GOPATH=~/projects/go;/sites/go
+export GOPATH=~/projects/go:/sites/go
 export EDITOR=vim
 
 export INKY=~/projects/inky-core
