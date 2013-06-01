@@ -1,0 +1,47 @@
+[credential]
+	helper = cache
+[color]
+	ui = true
+[alias]
+	lg = log --color --decorate --graph --oneline --abbrev-commit
+	graph = log --graph --all --pretty=format:'%Cred%h%Creset - %Cgreen(%cr)%Creset %s%C(yellow)%d%Creset' --abbrev-commit --date=relative
+	wip = commit -a -m WIP
+	staged = diff --cached
+	st = status
+	co = checkout
+	ci = commit
+	br = branch
+	a = add
+	snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
+	ours = "!f() { git checkout --ours $@ && git add $@; }; f"
+	theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
+	ribbon = tag --force _ribbon origin/master
+	catchup = log --patch --reverse --topo-order _ribbon..origin/master # git rev-parse --abbrev-ref HEAD maybe?
+[help]
+	autocorrect = 1
+[rerere]
+	enabled = true
+[user]
+	name = Robert Melton
+	email = robert@robertmelton.com
+[pull]
+	rebase = false
+[format]
+	pretty = short
+[push]
+	default = tracking
+[advice]
+	pushNonFastForward = true
+	statusHints = true
+[diff]
+	renames = copies
+	mnemonicprefix = true
+	algorithm = patience
+[core]
+	editor = vim
+	whitespace = trailing-space,space-before-tab
+[merge]
+	tool = vimdiff
+	stat = true
+[branch]
+	autosetupmerge = true
