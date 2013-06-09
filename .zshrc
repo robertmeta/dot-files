@@ -30,7 +30,7 @@ export DISABLE_AUTO_TITLE="true"
 
 # Customize to your needs...
 export GOROOT=/opt/go
-export GOPATH=~/projects/go:/sites/go
+unset GOPATH # needs to be explicitly set with helper. 
 export EDITOR=vim
 
 export INKY=~/projects/inky-core
@@ -39,4 +39,5 @@ export PATH=$INKY/python/local-install/`arcode -P`/2.7/bin:$PATH
 export PATH=$GOROOT/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$PATH
 
 alias tmux="tmux -2u"
+alias gopath="export GOPATH=$PWD"
 test -z "$TMUX" && (tmux attach || tmux new-session)
