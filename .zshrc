@@ -36,6 +36,7 @@ export INKY=~/projects/inky-core
 export PATH=$PATH:$INKY/build/scripts
 export PATH=$INKY/python/local-install/`arcode -P`/2.7/bin:$PATH
 export PATH=$GOROOT/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$PATH
 
 alias tmux="tmux -2u"
 alias gopath="export GOPATH=\`pwd\`"
