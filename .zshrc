@@ -40,4 +40,4 @@ export PATH=$HOME/bin:$PATH
 
 alias tmux="tmux -2u"
 alias gopath="export GOPATH=\`pwd\`"
-test -z "$TMUX" && (tmux attach || tmux new-session)
+test -z "$TMUX" && (tmux attach -t default || tmux new-session -s default)
