@@ -9,6 +9,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     ZSH_THEME="pygmalion"
 else
     ZSH_THEME="dpoggi"
+    #ZSH_THEME="crunch"
 fi
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
