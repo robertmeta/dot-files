@@ -33,8 +33,7 @@ export DISABLE_AUTO_TITLE="true"
 export GOROOT=/opt/go
 export EDITOR=vim
 
-export PATH=$HOME/bin:$PATH
-export PATH=$GOROOT/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$GOROOT/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:$PATH
 
 alias tmux="tmux -2u"
 alias gopath="export GOPATH=\`pwd\`"
