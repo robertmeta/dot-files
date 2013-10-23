@@ -8,6 +8,7 @@ rm ~/.zshrc
 rm ~/.gitconfig
 
 git clone git://github.com/robertmeta/vim-files.git ~/.dotfiles/vim-files
+git clone git://github.com/robertmeta/emacs-files.git ~/.dotfiles/emacs-files
 
 ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
 ln -s ~/.dotfiles/.zshrc ~/.zshrc
