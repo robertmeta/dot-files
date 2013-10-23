@@ -1,0 +1,27 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/rmelton/.emacs.d/" . "emacs-nav/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/rmelton/.emacs.d/emacs-nave/"
+ "/home/rmelton/.emacs.d/emacs-nav/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "LICENSE"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/rmelton/.emacs.d/" (21095 2649 144034 901000) "auto-save-list/" "./" "ac-comphist.dat" "../" "init.el" "elpa/" "emacs-nav/" "backups/" "eshell/" ".gitignore")
+
+ ("/home/rmelton/.emacs.d/emacs-nav/" (20391 29919 0 0) "./" "ack.el" "README.md" "../" "nav.elc" "LICENSE" "ack.elc" "ack" "nav.el" "CHANGES")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t

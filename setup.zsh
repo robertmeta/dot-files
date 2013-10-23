@@ -1,6 +1,7 @@
 #!/bin/zsh
 
 rm -rf ~/.vim
+rm -rf ~/.emacs.d
 rm ~/.tmux.conf
 rm ~/.vimrc
 rm ~/.zshrc
@@ -13,6 +14,7 @@ ln -s ~/.dotfiles/.zshrc ~/.zshrc
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/vim-files ~/.vim
 ln -s ~/.dotfiles/vim-files/.vimrc ~/.vimrc
+ln -s ~/.dotfiles/emacs-files ~/.emacs.d
 
 zsh ~/.zshrc
 tmux source-file ~/.tmux.conf

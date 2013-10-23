@@ -1,0 +1,38 @@
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(package-initialize)
+
+;;; Make it feel like vim
+(require 'evil)
+(evil-mode 1)
+(define-key evil-normal-state-map [escape] 'keyboard-quit)
+(define-key evil-visual-state-map [escape] 'keyboard-quit)
+(define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
+(define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+
+;;; Make it pretty
+(require 'color-theme)
+(require 'color-theme-molokai)
+(color-theme-molokai)
+(menu-bar-mode -1)
+
+;;; Don't spam backups everywhere
+(setq make-backup-files t)
+(setq version-control t)
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+(setq delete-old-versions t
+      kept-new-versions 6
+      kept-old-versions 2
+      version-control t)
+
+;;; Turn on line numbers
+(require 'linum)
+(setq linum-format "%4d\u2502 ")
+(global-linum-mode)
+
+;;;
+(require 'go-mode)

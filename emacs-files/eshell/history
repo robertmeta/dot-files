@@ -1,0 +1,6 @@
+ls
+emacs doc.go
+ls
+find-file logger.go
+edit logger.go 
+exit
