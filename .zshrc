@@ -5,12 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-if [[ "$OSTYPE" == "darwin"* ]]; then
-    ZSH_THEME="pygmalion"
-else
-    ZSH_THEME="dpoggi"
-    #ZSH_THEME="crunch"
-fi
+ZSH_THEME="steeef"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 COMPLETION_WAITING_DOTS="true"
@@ -34,7 +29,7 @@ export GOROOT=/opt/go
 export EDITOR=vim
 
 export PATH=$HOME/bin:$GOROOT/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:$PATH
-export TERM=xterm-256color
+export TERM=screen-256color
 
 alias tmux="tmux -2u"
 alias gopath="export GOPATH=\`pwd\`"
