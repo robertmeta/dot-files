@@ -1,3 +1,5 @@
+export TERM=screen-256color
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 
@@ -29,7 +31,6 @@ export GOROOT=/opt/go
 export EDITOR=vim
 
 export PATH=$HOME/bin:$GOROOT/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:$PATH
-export TERM=screen-256color
 
 alias tmux="tmux -2u"
 alias gopath="export GOPATH=\`pwd\`"
