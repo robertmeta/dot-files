@@ -31,6 +31,7 @@ export GOROOT=/opt/go
 export EDITOR=vim
 
 export PATH=$HOME/bin:$GOROOT/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:$PATH
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/usr/local/lib"
 
 alias tmux="tmux -2u"
 alias gopath="export GOPATH=\`pwd\`"
