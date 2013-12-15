@@ -24,7 +24,7 @@ export LANG=en_US.UTF-8
 source $ZSH/oh-my-zsh.sh
 # Stops horrible behavoir of correct_all
 unsetopt correct_all
-# export DISABLE_AUTO_TITLE="true"
+export DISABLE_AUTO_TITLE="true"
 
 # Customize to your needs...
 export GOROOT=/opt/go
