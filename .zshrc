@@ -1,4 +1,4 @@
-export TERM=screen-256color
+export TERM=color-256color
 
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
