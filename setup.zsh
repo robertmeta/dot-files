@@ -7,6 +7,7 @@ rm ~/.vimrc
 rm ~/.zshrc
 rm ~/.ctags
 rm ~/.gitconfig
+rm ~/.agignore
 
 git clone git://github.com/robertmeta/vim-files.git ~/.dotfiles/vim-files
 git clone git://github.com/robertmeta/emacs-files.git ~/.dotfiles/emacs-files
@@ -18,6 +19,7 @@ ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/vim-files ~/.vim
 ln -s ~/.dotfiles/vim-files/.vimrc ~/.vimrc
 ln -s ~/.dotfiles/emacs-files ~/.emacs.d
+ln -s ~/.dotfiles/.agignore ~/.agignore
 
 zsh ~/.zshrc
 tmux source-file ~/.tmux.conf
