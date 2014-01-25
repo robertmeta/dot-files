@@ -4,17 +4,13 @@
 *.DS_Store
 *.exe
 *.gif
-.git
-.hg
 *.jpg
 *.o
 *.obj
 *.pdf
-pkg
 *.png
 *.pyc
 *.pyo
 *.so
-.svn
 *.swp
 *.zip
