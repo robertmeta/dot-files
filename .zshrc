@@ -40,4 +40,4 @@ alias tmux="tmux -2u"
 alias gopath="export GOPATH=\`pwd\`"
 alias patdek="export PATDEK_PATH=\`pwd\`"
 unalias gm
-test -z "$TMUX" && (tmux attach -t default || tmux new-session -s default)
+test -z "$TMUX" && tmux new-session
