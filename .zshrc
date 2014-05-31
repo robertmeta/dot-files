@@ -29,13 +29,13 @@ export DISABLE_AUTO_TITLE="true"
 
 # Customize to your needs...
 export GOROOT=/opt/go
+export GOPATH=/home/rmelton/go
 export EDITOR=vim
 
-export PATH=$HOME/bin:$GOROOT/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$GOPATH/bin:$GOROOT/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:$PATH
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/usr/local/lib"
 
-export GOPATH=/home/rmelton/projects/patdek
-export PATDEK_PATH=/home/rmelton/projects/patdek
+export PATDEK_PATH=/home/rmelton/
 
 alias tmux="tmux -2u"
 alias gopath="export GOPATH=\`pwd\`"
