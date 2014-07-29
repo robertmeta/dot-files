@@ -8,14 +8,13 @@ rm ~/.ctags
 rm ~/.gitconfig
 rm ~/.agignore
 
-git clone git://github.com/robertmeta/vim-files.git ~/.dotfiles/vim-files
+git clone git://github.com/robertmeta/vimfiles.git ~/.dotfiles/vimfiles
 
 ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
 ln -s ~/.dotfiles/.zshrc ~/.zshrc
 ln -s ~/.dotfiles/.ctags ~/.ctags
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
-ln -s ~/.dotfiles/vim-files ~/.vim
-ln -s ~/.dotfiles/vim-files/.vimrc ~/.vimrc
+ln -s ~/.dotfiles/vimfiles ~/.vim
 ln -s ~/.dotfiles/.agignore ~/.agignore
 
 zsh ~/.zshrc
