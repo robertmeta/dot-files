@@ -35,10 +35,7 @@ export EDITOR=vim
 export PATH=$HOME/bin:$GOPATH/bin:$GOROOT/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:$PATH
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/usr/local/lib"
 
-export PATDEK_PATH=/home/rmelton/
-
 alias tmux="tmux -2u"
 alias gopath="export GOPATH=\`pwd\`"
-alias patdek="export PATDEK_PATH=\`pwd\`"
 unalias gm
 test -z "$TMUX" && tmux new-session
