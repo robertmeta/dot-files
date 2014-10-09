@@ -36,6 +36,5 @@ export PATH=$HOME/bin:$GOPATH/bin:$GOROOT/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/usr/local/lib"
 
 alias tmux="tmux -2u"
-alias gopath="export GOPATH=\`pwd\`"
-unalias gm
+[ -n "`alias -p | grep '^alias gm='`" ] && unalias gm
 test -z "$TMUX" && tmux new-session
