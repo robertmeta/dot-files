@@ -1,5 +1,5 @@
 [credential]
-	helper = cache
+	helper = cache --timeout=64800 # one working day
 [color]
 	ui = true
 [alias]
@@ -55,5 +55,3 @@
 	stat = true
 [branch]
 	autosetupmerge = true
-[url "git@github.com:patdek"]
-        insteadOf = https://github.com/patdek
