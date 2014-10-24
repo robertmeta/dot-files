@@ -1,1 +1,1 @@
-rm -rf ~/.dotfiles; git clone git://github.com/robertmeta/dot-files.git ~/.dotfiles && zsh ~/.dotfiles/setup.zsh
+rm -rf ~/.dotfiles; git clone https://github.com/robertmeta/dotfiles.git ~/.dotfiles && zsh ~/.dotfiles/setup.zsh
