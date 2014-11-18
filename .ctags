@@ -13,6 +13,7 @@
 --regex-js=/([A-Za-z0-9._$()]+)[ \t]*[:=][ \t]*function[ \t]*\(/\1/,function/
 --regex-js=/([A-Za-z0-9._$()]+)[ t]*[:=][ t]*function[ t]*(/1/,function/
 --regex-js=/\.controller\('([A-Za-z0-9._$]+)'/\1/c,ng-controller/
+--regex-js=/function[ \t]+([A-Za-z0-9._$]+)[ \t]*([^)])/\1/,function/
 --regex-js=/function[ \t]+([A-Za-z0-9._$]+)[ \t]*\(([^)])\)/\1/,function/
 --regex-js=/function[ t]+([A-Za-z0-9._$]+)[ t]*(([^)]))/1/,function/
 --regex-js=/\$scope[A-Za-z0-9._$]*\.([A-Za-z0-9._$]+?)[ \t]*[:=]/\1/t,ng-scope-variable/
