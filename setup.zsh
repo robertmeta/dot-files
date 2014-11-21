@@ -19,3 +19,6 @@ ln -s ~/.dotfiles/.agignore ~/.agignore
 
 zsh ~/.zshrc
 tmux source-file ~/.tmux.conf
+
+cd ~/.vim/bundle/ternforvim/
+npm install
