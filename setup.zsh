@@ -1,6 +1,7 @@
 #!/bin/zsh
 
 rm -rf ~/.vim
+rm -rf ~/.nvim
 rm ~/.tmux.conf
 rm ~/.vimrc
 rm ~/.zshrc
@@ -15,10 +16,11 @@ ln -s ~/.dotfiles/.zshrc ~/.zshrc
 ln -s ~/.dotfiles/.ctags ~/.ctags
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/vimfiles ~/.vim
+ln -s ~/.dotfiles/vimfiles ~/.nvim
 ln -s ~/.dotfiles/.agignore ~/.agignore
 
 zsh ~/.zshrc
 tmux source-file ~/.tmux.conf
 
-cd ~/.vim/bundle/ternforvim/
+cd ~/.dotfiles/vimfiles/bundle/ternforvim/
 npm install
