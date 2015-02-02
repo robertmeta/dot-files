@@ -40,3 +40,4 @@ unalias s 2> /dev/null
 alias s="tmux select-pane -l"
 unalias gm 2> /dev/null
 test -z "$TMUX" && tmux new-session
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
