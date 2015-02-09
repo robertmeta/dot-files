@@ -41,6 +41,6 @@ alias s="tmux select-pane -l"
 unalias gm 2> /dev/null
 test -z "$TMUX" && tmux new-session
 
-export CDPATH=.:$GOPATH/src/code.google.com/p:$GOPATH/src/github.com:$GOPATH/src/golang.org/x:$GOPATH/src/bitbucket.org:$GOPATH/src/gopkg.in:$GOPATH/src/github.com/patdek:~/projects
+export CDPATH=.:$GOPATH/src/code.google.com/p:$GOPATH/src/github.com:$GOPATH/src/golang.org/x:$GOPATH/src/bitbucket.org:$GOPATH/src/gopkg.in:$GOPATH/src/github.com/247waiter:$GOPATH/src/github.com/patdek:~/projects
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
