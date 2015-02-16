@@ -28,7 +28,7 @@ unsetopt correct_all
 export DISABLE_AUTO_TITLE="true"
 
 # Customize to your needs...
-export GOROOT=/opt/go
+export GOROOT=/opt/go # build it in the go directory
 export GOPATH=/home/rmelton/go
 export EDITOR=vim
 
