@@ -19,7 +19,7 @@ ln -s ~/.dotfiles/vimfiles ~/.vim
 ln -s ~/.dotfiles/vimfiles ~/.nvim
 ln -s ~/.dotfiles/.agignore ~/.agignore
 
-zsh ~/.zshrc
+source ~/.zshrc
 tmux source-file ~/.tmux.conf
 
 cd ~/.dotfiles/vimfiles/bundle/ternforvim/
