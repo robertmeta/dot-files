@@ -22,5 +22,5 @@ ln -s ~/.dotfiles/.agignore ~/.agignore
 source ~/.zshrc
 tmux source-file ~/.tmux.conf
 
-cd ~/.dotfiles/vimfiles/bundle/ternforvim/
-npm install
+#cd ~/.dotfiles/vimfiles/bundle/ternforvim/
+#npm install
