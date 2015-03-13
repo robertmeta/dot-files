@@ -55,7 +55,3 @@
 	stat = true
 [branch]
 	autosetupmerge = true
-[url "https://robertmeta@github.com"]
-        insteadOf = git://github.com
-[url "https://robertmeta@github.com"]
-	insteadOf = https://github.com
