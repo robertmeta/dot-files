@@ -1,3 +1,12 @@
+--recurse=yes
+--tag-relative=yes
+--exclude=.git
+--exclude=node_modules
+--exclude=bower_components
+--exclude=log
+--exclude=tmp
+--exclude=dist
+
 --langdef=js
 --langmap=js:.js
 --regex-js=/([A-Za-z0-9._$]+)[ \t]*[:=][ \t]*\[/\1/,array/
