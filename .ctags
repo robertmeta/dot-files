@@ -1,16 +1,32 @@
 --recurse=yes
 --tag-relative=yes
 --exclude=bower_components
+--exclude=\*.bak
 --exclude=.bundle
+--exclude=\*.cache
+--exclude=\*.class
+--exclude=cscope.\*
+--exclude=\*.csproj
+--exclude=\*.csproj.user
 --exclude=dist
+--exclude=\*.dll
 --exclude=.git
 --exclude=.hg
 --exclude=log
---exclude=*.min.*
+--exclude=\*.map
+--exclude=\*.Master
+--exclude=min
+--exclude=\*.min.\*
 --exclude=node_modules
+--exclude=\*.pdb
+--exclude=\*.pyc
 --exclude=.sass-cache
+--exclude=\*.sln
 --exclude=.svn
+--exclude=\*.swp
+--exclude=tags
 --exclude=.tags
+--exclude=\*.tar.\*
 --exclude=tmp
 --exclude=vendor
 
@@ -18,12 +34,15 @@
 --langmap=js:.js
 --regex-js=/([A-Za-z0-9._$]+)[ \t]*[:=][ \t]*\[/\1/,array/
 --regex-js=/([A-Za-z0-9._$]+)[ \t]*[:=][ \t]*\{/\1/,object/
+--regex-js=/([A-Za-z0-9._$]+)[ \t]*=[ \t]*\{/\1/o,object,objects/
+--regex-js=/([A-Za-z0-9._$()]+)[ \t]*[:=][ \t]*function[ \t]*\(/\1/F,function,functions/
 --regex-js=/([A-Za-z0-9._$()]+)[ \t]*[:=][ \t]*function[ \t]*\(/\1/,function/
 --regex-js=/\.controller\('([A-Za-z0-9._$]+)'/\1/c,ng-controller/
 --regex-js=/\.controller[ \t]*\([ \t]*['"]([A-Za-z0-9_$.]+)['"][ \t]*,/\1/,controller/
 --regex-js=/\.directive[ \t]*\([ \t]*['"]([A-Za-z0-9_$.]+)['"][ \t]*,/\1/,directive/
 --regex-js=/\.factory[ \t]*\([ \t]*['"]([A-Za-z0-9_$.]+)['"][ \t]*,/\1/,factory/
 --regex-js=/\.filter[ \t]*\([ \t]*['"]([A-Za-z0-9_$.]+)['"][ \t]*,/\1/,filter/
+--regex-js=/function[ \t]*([A-Za-z0-9._$()]+)[ \t]*\(/\1/F,function,functions/
 --regex-js=/function[ \t]+([A-Za-z0-9_$]+)[ \t]*\([^)]*\)/\1/,function/
 --regex-js=/function[ \t]+([A-Za-z0-9._$]+)[ \t]*([^)])/\1/,function/
 --regex-js=/function[ \t]+([A-Za-z0-9._$]+)[ \t]*\(([^)])\)/\1/,function/
@@ -31,6 +50,7 @@
 --regex-js=/\$scope\.([A-Za-z0-9._\$]+)[ \t]*[:=]/\1/,variable/
 --regex-js=/\.service[ \t]*\([ \t]*['"]([A-Za-z0-9_$.]+)['"][ \t]*,/\1/,service/
 --regex-js=/.*[.][\s]*module\(['"]([a-zA-Z0-9_.]+)['"]/\1/m,module/
+--regex-js=/^[ \t]*([A-Za-z0-9._$]+)[ \t]*[:][ \t]*[^\{]/\1/p,property,properties/
 --regex-js=/(,|^)[ \t]*([A-Za-z_$][A-Za-z0-9_$]+)[ \t]*:[ \t]*[0-9]+/\2/,number/
 --regex-js=/(,|^)[ \t]*([A-Za-z_$][A-Za-z0-9_$]+)[ \t]*:[ \t]*\[/\2/,array/
 --regex-js=/(,|^)[ \t]*([A-Za-z_$][A-Za-z0-9_$]+)[ \t]*:[ \t]*\{/\2/,object/
@@ -38,8 +58,10 @@
 --regex-js=/(,|^)[ \t]*([A-Za-z_$][A-Za-z0-9_$]+)[ \t]*:[ \t]*[^=]+([,;]|$)/\2/,variable/
 --regex-js=/(,|^)[ \t]*([A-Za-z_$][A-Za-z0-9_$]+)[ \t]*:[ \t]*function[ \t]*\(/\2/,function/
 --regex-js=/(,|^)[ \t]*([A-Za-z_$][A-Za-z0-9_$]+)[ \t]*:[ \t]*(true|false)/\2/,boolean/
+--regex-js=/\/\/[ \t]*(FIXME)[ \t]*\:*(.*)/\1/I,{Fix me}/
 --regex-js=/([^= ]+)[ \t]*=[ \t]*[^']"[^"]*/\1/,string/
 --regex-js=/([^= ]+)[ \t]*=[ \t]*[^"]'[^']*/\1/,string/
+--regex-js=/\/\/[ \t]*(TODO)[ \t]*\:*(.*)/\1/I,{To do}/
 --regex-js=/(,|(;|^)[ \t]*(var|let|([A-Za-z_$][A-Za-z0-9_$.]+\.)*))[ \t]*([A-Za-z0-9_$]+)[ \t]*=[ \t]*[0-9]+/\5/,number/
 --regex-js=/(,|(;|^)[ \t]*(var|let|([A-Za-z_$][A-Za-z0-9_$.]+\.)*))[ \t]*([A-Za-z0-9_$]+)[ \t]*=[ \t]*\[/\5/,array/
 --regex-js=/(,|(;|^)[ \t]*(var|let|([A-Za-z_$][A-Za-z0-9_$.]+\.)*))[ \t]*([A-Za-z0-9_$]+)[ \t]*=[ \t]*\{/\5/,object/
@@ -48,6 +70,7 @@
 --regex-js=/(,|(;|^)[ \t]*(var|let|([A-Za-z_$][A-Za-z0-9_$.]+\.)*))[ \t]*([A-Za-z0-9_$]+)[ \t]*[ \t]*([,;]|$)/\5/,variable/
 --regex-js=/(,|(;|^)[ \t]*(var|let|([A-Za-z_$][A-Za-z0-9_$.]+\.)*))[ \t]*([A-Za-z0-9_$]+)[ \t]*=[ \t]*function[ \t]*\(/\5/,function/
 --regex-js=/(,|(;|^)[ \t]*(var|let|([A-Za-z_$][A-Za-z0-9_$.]+\.)*))[ \t]*([A-Za-z0-9_$]+)[ \t]*=[ \t]*(true|false)/\5/,boolean/
+--regex-js=/^[ \t]+var[ \t]*([A-Za-z0-9._$]+)[ \t]*=[ \t]*[\d"'\[]/\1/v,variable,variables/
 --regex-js=/[.](when\(['"][a-zA-Z0-9_\/]+['"])/\1/r,ngRoute/
 
 --langdef=less
@@ -55,7 +78,12 @@
 --regex-less=/^\.([a-zA-Z0-9_\-]+)[ ]*\(.*\)[ ]*\{/\1/m,macro/i
 --regex-less=/^\@([a-zA-Z0-9_\-]+)\:.*\;/\1/v,var/i
 --regex-less=/^[ \t]*.([A-Za-z0-9_-]+)/\1/c,class,classes/
+--regex-less=/^[ \t&]*\.([A-Za-z0-9_-]+)/\1/c,class,classes/
 --regex-less=/^[ \t]*#([A-Za-z0-9_-]+)/\1/i,id,ids/
+--regex-less=/^[ \t&]*#([A-Za-z0-9_-]+)/\1/i,id,ids/
+--regex-less=/^[ \t]*(@[A-Za-z0-9_-]+):/\1/v,variable,variables/
+--regex-less=/^[ \t]*(([A-Za-z0-9_-]+[ \t\n,]+)+)\{/\1/t,tag,tags/
+--regex-less=/^[ \t]*@media\s+([A-Za-z0-9_-]+)/\1/m,media,medias/
 --regex-less=/^[ \t]*@medias+([A-Za-z0-9_-]+)/\1/m,media,medias/
 
 --langdef=html
@@ -70,3 +98,26 @@
 --regex-html=/[ \t]+ng-focus[ \t]*=[ \t]*['"]([^'"]+)/\1/o,object/
 --regex-html=/[ \t]+ng-disabled[ \t]*=[ \t]*['"]([^'"]+)/\1/o,object/
 --regex-html=/[ \t]+ng-repeat[ \t]*=[ \t]*['"][^'"]+ in \([^'"]+\)['"]/\1/o,object/
+
+--langdef=scss
+--langmap=scss:.scss
+--regex-scss=/^[ \t]*@mixin ([A-Za-z0-9_-]+)/\1/m,mixin,mixins/
+--regex-scss=/^[ \t]*\$([A-Za-z0-9_-]+)/\1/v,variable,variables/
+--regex-scss=/^([A-Za-z0-9_-]*)*(\.[A-Za-z0-9_-]+) *[,{]/\2/c,class,classes/
+--regex-scss=/^[ \t]+(\.[A-Za-z0-9_-]+) *[,{]/\1/c,class,classes/
+--regex-scss=/^(.*)*\#([A-Za-z0-9_-]+) *[,{]/\2/i,id,ids/
+--regex-scss=/^[ \t]*#([A-Za-z0-9_-]+)/\1/i,id,ids/
+--regex-scss=/(^([A-Za-z0-9_-])*([A-Za-z0-9_-]+)) *[,|\{]/\1/t,tag,tags/
+--regex-scss=/(^([^\/\/])*)[ \t]+([A-Za-z0-9_-]+)) *[,|\{]/\3/t,tag,tags/
+--regex-scss=/(^(.*, *)([A-Za-z0-9_-]+)) *[,|\{]/\3/t,tag,tags/
+--regex-scss=/(^[ \t]+([A-Za-z0-9_-]+)) *[,|\{]/\1/t,tag,tags/
+--regex-scss=/^[ \t]*@media\s+([A-Za-z0-9_-]+)/\1/d,media,media/
+
+--regex-html=/id="([A-Za-z0-9_-]+)"/\1/i,id,ids/
+--regex-html=/class="([A-Za-z0-9_-]+)"/\1/c,class,classes/
+
+--langdef=markdown
+--langmap=markdown:.md
+--regex-markdown=/^#\+[ \t](.*$)/\1/h,heading,headings/
+
+--regex-ruby=/:(["']*[A-Za-z_-]*["']*)/\1/s,symbol,symbols/
