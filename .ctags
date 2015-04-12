@@ -30,9 +30,12 @@
 --exclude=tmp
 --exclude=vendor
 
+--regex-JavaScript=/([A-Za-z0-9._$]+)[ \t]*[:=][ \t]*\[/\1/a,array/
 --regex-javascript=/([A-Za-z0-9._$]+)[ \t]*[:=][ \t]*\[/\1/,array/
 --regex-javascript=/([A-Za-z0-9._$]+)[ \t]*[:=][ \t]*\{/\1/,object/
+--regex-JavaScript=/([A-Za-z0-9._$]+)[ \t]*[:=][ \t]*\{/\1/o,object/
 --regex-javascript=/([A-Za-z0-9._$]+)[ \t]*=[ \t]*\{/\1/o,object,objects/
+--regex-JavaScript=/([A-Za-z0-9._$'"()]+)[ \t]*[:][ \t]*function[ \t]*\([^)]*\)/\1/f,function/
 --regex-javascript=/([A-Za-z0-9._$()]+)[ \t]*[:=][ \t]*function[ \t]*\(/\1/F,function,functions/
 --regex-javascript=/([A-Za-z0-9._$()]+)[ \t]*[:=][ \t]*function[ \t]*\(/\1/,function/
 --regex-javascript=/\.controller\('([A-Za-z0-9._$]+)'/\1/c,ng-controller/
@@ -57,6 +60,8 @@
 --regex-javascript=/(,|^)[ \t]*([A-Za-z_$][A-Za-z0-9_$]+)[ \t]*:[ \t]*function[ \t]*\(/\2/,function/
 --regex-javascript=/(,|^)[ \t]*([A-Za-z_$][A-Za-z0-9_$]+)[ \t]*:[ \t]*(true|false)/\2/,boolean/
 --regex-javascript=/\/\/[ \t]*(FIXME)[ \t]*\:*(.*)/\1/I,{Fix me}/
+--regex-JavaScript=/([^= ]+)[ \t]*=[ \t]*'[^']*'/\1/s,string/
+--regex-JavaScript=/([^= ]+)[ \t]*=[ \t]*"[^"]*"/\1/s,string/
 --regex-javascript=/([^= ]+)[ \t]*=[ \t]*[^']"[^"]*/\1/,string/
 --regex-javascript=/([^= ]+)[ \t]*=[ \t]*[^"]'[^']*/\1/,string/
 --regex-javascript=/\/\/[ \t]*(TODO)[ \t]*\:*(.*)/\1/I,{To do}/
@@ -117,4 +122,41 @@
 --langdef=MarkDown
 --langmap=MarkDown:.md
 --regex-markdown=/^#\+[ \t](.*$)/\1/h,heading,headings/
+--regex-markdown=/^#[ \t]+(.*)/\1/h,Heading_L1/
+--regex-markdown=/^##[ \t]+(.*)/\1/i,Heading_L2/
+--regex-markdown=/^###[ \t]+(.*)/\1/k,Heading_L3/
 
+--langdef=PowerShell
+--langmap=PowerShell:.ps1.psm1
+--regex-powershell=/^[Ff]unction[\t ]*([a-zA-Z0-9_-]+)/\1/f,function/
+--regex-powershell=/^[Ff]ilter[\t ]*([a-zA-Z0-9_-]+)/\1/i,filter/
+--regex-powershell=/^[sS]et-[Aa]lias[\t ]*([a-zA-Z0-9_-]+)/\1/a,alias/
+
+--langdef=R
+--langmap=R:.R.r
+--regex-R=/^[ \t]*"?([.A-Za-z][.A-Za-z0-9_]*)"?[ \t]*<-[ \t]function/\1/f,Functions/
+--regex-R=/^"?([.A-Za-z][.A-Za-z0-9_]*)"?[ \t]*<-[ \t][^f][^u][^n][^c][^t][^i][^o][^n]/\1/g,GlobalVars/
+--regex-R=/[ \t]"?([.A-Za-z][.A-Za-z0-9_]*)"?[ \t]*<-[ \t][^f][^u][^n][^c][^t][^i][^o][^n]/\1/v,FunctionVariables/
+
+--langdef=Rust
+--langmap=Rust:.rs
+--regex-Rust=/^[ \t]*(#\[[^\]]\][ \t]*)*(pub[ \t]+)?(extern[ \t]+)?("[^"]+"[ \t]+)?(unsafe[ \t]+)?fn[ \t]+([a-zA-Z0-9_]+)/\6/f,functions,function definitions/
+--regex-Rust=/^[ \t]*(pub[ \t]+)?type[ \t]+([a-zA-Z0-9_]+)/\2/T,types,type definitions/
+--regex-Rust=/^[ \t]*(pub[ \t]+)?enum[ \t]+([a-zA-Z0-9_]+)/\2/g,enum,enumeration names/
+--regex-Rust=/^[ \t]*(pub[ \t]+)?struct[ \t]+([a-zA-Z0-9_]+)/\2/s,structure names/
+--regex-Rust=/^[ \t]*(pub[ \t]+)?mod[ \t]+([a-zA-Z0-9_]+)/\2/m,modules,module names/
+--regex-Rust=/^[ \t]*(pub[ \t]+)?static[ \t]+([a-zA-Z0-9_]+)/\2/c,consts,static constants/
+--regex-Rust=/^[ \t]*(pub[ \t]+)?trait[ \t]+([a-zA-Z0-9_]+)/\2/t,traits,traits/
+--regex-Rust=/^[ \t]*(pub[ \t]+)?impl([ \t\n]*<[^>]*>)?[ \t]+(([a-zA-Z0-9_:]+)[ \t]*(<[^>]*>)?[ \t]+(for)[ \t]+)?([a-zA-Z0-9_]+)/\4 \6 \7/i,impls,trait implementations/
+--regex-Rust=/^[ \t]*macro_rules![ \t]+([a-zA-Z0-9_]+)/\1/d,macros,macro definitions/
+
+--langdef=XQuery
+--langmap=XQuery:.xq
+--regex-xquery=/^(declare|define)[ \t]*(private)?[ \t]*(updating)?[ \t]*(%an:sequential)?[ \t]*(%an:nondeterministic)?[ \t]*function[ \t]*([_a-zA-Z0-9:-]*:)?([_a-zA-Z0-9-]+)/\7/f,function/
+--regex-xquery=/^(declare|define)[ \t]*(private)?[ \t]*(%an:automatic)?[ \t]*variable[ \t]*\$([_a-zA-Z0-9:-]*:)?([_a-zA-Z0-9-]+)/\5/v,variable/
+--regex-xquery=/^module namespace[ \t]*(\w+)[ \t]*=.*/\1/m,module/
+
+--langdef=XSLT
+--langmap=XSLT:.xsl
+--regex-xslt=/<xsl:variable.*name="(\S+)".*>/\1/v,variable/
+--regex-xslt=/<xsl:template.*name="(\S+)".*>/\1/t,template/
