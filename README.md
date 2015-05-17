@@ -4,4 +4,4 @@ Linux:
 
 Windows (Admin Prompt, Vim must not be running): 
 
-    rm -rf "%HOME%\\.dotfiles" && git clone https://github.com/robertmeta/dotfiles.git "%HOME%\\.dotfiles" && "%HOME%\\.dotfiles\\setup.bat"
+    rm -rf "%HOME%\.dotfiles" && git clone https://github.com/robertmeta/dotfiles.git "%HOME%\.dotfiles" && "%HOME%\.dotfiles\setup.bat"
