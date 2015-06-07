@@ -88,4 +88,5 @@ color   'Reviewed-by'           221     default
 #   LINE(PALETTE_5, "", COLOR_WHITE, COLOR_DEFAULT, 0), \
 #   LINE(PALETTE_6, "", COLOR_RED, )
 
-bind status P !git push origin
+bind status P !git push
+bind status U !git pull
