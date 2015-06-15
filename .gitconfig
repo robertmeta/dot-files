@@ -56,3 +56,7 @@
 	stat = true
 [branch]
 	autosetupmerge = true
+[url "https://github.com/"]
+        insteadOf = ssh://git@github.com/
+[url "https://bitbucket.com/"]
+        insteadOf = ssh://git@bitbucket.com/
