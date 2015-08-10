@@ -4,5 +4,4 @@ Linux:
 
 Windows (Power Admin Prompt, Vim must not be running):
 
-    C:\Users\Robert> cd $env:USERPROFILE; rm -recurse -force .dotfiles; git clone https://github.com/robertmeta/dotfiles.git .dotfiles; .\.dotfiles\setup.ps1
-
+    cd $env:USERPROFILE; rm -recurse -force .dotfiles; git clone https://github.com/robertmeta/dotfiles.git .dotfiles; .\.dotfiles\setup.ps1

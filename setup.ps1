@@ -5,7 +5,7 @@ rm ".ctags"
 rm ".gitignore_global"
 rm ".gitconfig"
 rm ".agignore"
-rm ".dotfiles\Microsoft.PowerShell_profile.ps1"
+rm "Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
 
 git clone "https://github.com/robertmeta/vimfiles.git" ".dotfiles\vimfiles"
 
