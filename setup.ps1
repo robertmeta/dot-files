@@ -16,4 +16,4 @@ cmd /c mklink "%USERPROFILE%\.gitconfig" "%USERPROFILE%\.dotfiles\.gitconfig"
 cmd /c mklink "%USERPROFILE%\.agignore" "%USERPROFILE%\.dotfiles\.agignore"
 cmd /c mklink /D "%USERPROFILE%\vimfiles" "%USERPROFILE%\.dotfiles\vimfiles"
 
-cat ".gitconfig" | %{$_ -replace "cache --timeout=64800","wincred"}
+gc ".gitconfig" | %{$_ -replace "cache --timeout=64800","wincred"} | sc ".gitconfig"

@@ -2,6 +2,7 @@ Linux:
 
     rm -rf ~/.dotfiles; git clone https://github.com/robertmeta/dotfiles.git ~/.dotfiles && zsh ~/.dotfiles/setup.zsh
 
-Windows (Admin Prompt, Vim must not be running): 
+Windows (Power Admin Prompt, Vim must not be running):
 
-    rm -rf "%HOME%\.dotfiles" && git clone https://github.com/robertmeta/dotfiles.git "%HOME%\.dotfiles" && "%HOME%\.dotfiles\setup.bat"
+    C:\Users\Robert> cd $env:USERPROFILE; rm -recurse -force .dotfiles; git clone https://github.com/robertmeta/dotfiles.git .dotfiles; .\.dotfiles\setup.ps1
+
