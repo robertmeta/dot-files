@@ -2,9 +2,6 @@
 # probably best you not use too much of, just pick and choose 
 # if anything :) 
 # set-executionpolicy unrestricted
-set-alias vim "c:\Program Files\vim\vim74\gvim.bat"
-set-alias gvim "c:\Program Files\vim\vim74\gvim.bat"
-set-alias iis "c:\windows\system32\inetsrv\InetMgr.exe"
 
 $downloads = "C:\Users\Robert\Downloads\"
 $documents = "C:\Users\Robert\documents\"
