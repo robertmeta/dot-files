@@ -32,7 +32,7 @@ export GOROOT=/opt/go # build it in the go directory
 export GOPATH=/home/rmelton/go
 export EDITOR=vim
 
-export PATH=$HOME/bin:$GOPATH/bin:$GOROOT/bin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$GOPATH/bin:/usr/local/bin:$GOROOT/bin:/bin:/usr/bin:/sbin:/usr/sbin:$PATH
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/usr/local/lib"
 
 alias tmux="tmux -2u"
