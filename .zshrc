@@ -7,9 +7,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="tjkirch" # dark
-ZSH_THEME="jreese" # middle
-ZSH_THEME="dpoggi" # new line
+ZSH_THEME="avit"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
@@ -39,6 +37,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/usr/local/lib"
 alias tmux="tmux -2u"
 unalias gm 2> /dev/null
 unalias gb 2> /dev/null
+unalias ls 2> /dev/null
 
 test -z "$TMUX" && tmux new-session
 
