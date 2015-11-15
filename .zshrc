@@ -15,7 +15,8 @@ ZSH_THEME="avit"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(vi-mode)
+bindkey -v
 
 # Important for mac
 export LC_ALL=en_US.UTF-8
@@ -35,12 +36,8 @@ export PATH=$HOME/bin:$GOPATH/bin:/usr/local/bin:$GOROOT/bin:/bin:/usr/bin:/sbin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/usr/local/lib"
 
 alias tmux="tmux -2u"
-unalias gm 2> /dev/null
-unalias gb 2> /dev/null
 unalias ls 2> /dev/null
 
 test -z "$TMUX" && tmux new-session
 
 export CDPATH=.:$GOPATH/src/code.google.com/p:$GOPATH/src/github.com:$GOPATH/src/golang.org/x:$GOPATH/src/bitbucket.org:$GOPATH/src/gopkg.in:$GOPATH/src/github.com/247waiter:$GOPATH/src/github.com/patdek:~/projects
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
