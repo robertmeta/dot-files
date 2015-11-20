@@ -13,7 +13,8 @@ rm ~/.agignore
 
 mkdir ~/.dotfiles
 mkdir ~/.config
-mkdir ~/.config/nvim
+mkdir ~/.config
+
 git clone git://github.com/robertmeta/vimfiles.git ~/.dotfiles/vimfiles
 
 ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
@@ -23,8 +24,8 @@ ln -s ~/.dotfiles/.ctags ~/.ctags
 ln -s ~/.dotfiles/.gitignore_global ~/.gitignore_global
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/vimfiles ~/.vim
-ln -s ~/.dotfiles/vimfiles ~/.nvim
-ln -s ~/.dotfiles/vimfiles/vimrc ~/.config/nvim/init.vim
+ln -s ~/.dotfiles/vimfiles ~/.config/nvim
+ln -s ~/.config/nvim/vimrc ~/.config/nvim/init.vim
 ln -s ~/.dotfiles/.agignore ~/.agignore
 
 source ~/.zshrc
