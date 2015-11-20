@@ -13,7 +13,6 @@ rm ~/.agignore
 
 mkdir ~/.dotfiles
 mkdir ~/.config
-mkdir ~/.config
 
 git clone git://github.com/robertmeta/vimfiles.git ~/.dotfiles/vimfiles
 
