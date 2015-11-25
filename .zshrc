@@ -2,6 +2,8 @@
 
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
+ZSH_CUSTOM=$HOME/.dotfiles/zsh_custom
+
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -15,9 +17,7 @@ ZSH_THEME="avit"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-bindkey -v
-plugins=(vi-mode)
-export KEYTIMEOUT=1
+plugins=()
 
 # Important for mac
 export LC_ALL=en_US.UTF-8

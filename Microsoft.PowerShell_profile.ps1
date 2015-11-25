@@ -7,6 +7,10 @@ $downloads = "C:\Users\Robert\Downloads\"
 $documents = "C:\Users\Robert\documents\"
 $personal = "C:\Users\Robert\Projects"
 
+# remove
+remove-item alias:curl
+remove-item alias:wget
+
 # so lazy
 $d = $downloads
 $p = $personal
