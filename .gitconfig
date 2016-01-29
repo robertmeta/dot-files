@@ -60,3 +60,5 @@
         insteadOf = ssh://git@github.com/
 [url "https://bitbucket.com/"]
         insteadOf = ssh://git@bitbucket.com/
+[github]
+        user = robertmeta
