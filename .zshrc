@@ -39,6 +39,6 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/usr/local/lib"
 alias tmux="tmux -2u"
 unalias ls 2> /dev/null
 
-tmux new-session -A -s main
+test -z "$TMUX" && tmux new-session -A -s main
 
 export CDPATH=.:$GOPATH/src/code.google.com/p:$GOPATH/src/github.com:$GOPATH/src/golang.org/x:$GOPATH/src/bitbucket.org:$GOPATH/src/gopkg.in:$GOPATH/src/github.com/247waiter:$GOPATH/src/github.com/patdek:~/projects
