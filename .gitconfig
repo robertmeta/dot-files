@@ -47,6 +47,7 @@
 	renames = copies
 	mnemonicprefix = true
 	algorithm = patience
+	tool = vimdiff
 [core]
 	editor = vim
 	whitespace = trailing-space,space-before-tab
@@ -62,3 +63,5 @@
         insteadOf = ssh://git@bitbucket.com/
 [github]
         user = robertmeta
+[difftool]
+	prompt = false
