@@ -37,6 +37,7 @@ export PATH=$HOME/bin:$GOPATH/bin:/usr/local/bin:$GOROOT/bin:/bin:/usr/bin:/sbin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/usr/local/lib"
 
 alias tmux="tmux -2u"
+alias gaa="git add --all"
 unalias ls 2> /dev/null
 
 test -z "$TMUX" && tmux new-session -A -s main
