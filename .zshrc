@@ -38,6 +38,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/usr/local/lib"
 
 alias tmux="tmux -2u"
 alias gaa="git add --all"
+alias wip="git add --all . && git wip"
 unalias ls 2> /dev/null
 
 test -z "$TMUX" && tmux new-session -A -s main
