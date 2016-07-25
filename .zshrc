@@ -39,7 +39,7 @@ alias tmux="tmux -2u"
 alias gaa="git add --all"
 alias wip="git add --all . && git wip"
 
-test -z "$TMUX" && tmux new-session -A -s main
+if [ "$TMUX" = "" ]; then tmux; fi
 
 export CDPATH=.:$GOPATH/src/github.com:$GOPATH/src/golang.org/x:$GOPATH/src/bitbucket.org:$GOPATH/src/gopkg.in:$GOPATH/src/github.com/247waiter:$GOPATH/src/github.com/patdek:~/projects
 
