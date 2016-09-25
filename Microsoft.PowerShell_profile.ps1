@@ -3,9 +3,12 @@
 # if anything :) 
 # set-executionpolicy unrestricted
 
-$downloads = "C:\Users\Robert\Downloads\"
-$documents = "C:\Users\Robert\documents\"
-$personal = "C:\Users\Robert\Projects"
+[Environment]::SetEnvironmentVariable("GIT_SSH", "C:\ProgramData\chocolatey\bin\plink.exe", "User")
+[Environment]::SetEnvironmentVariable("GOPATH", "C:\Users\rmelton\Go", "User")
+
+$downloads = "C:\Users\rmelton\Downloads"
+$documents = "C:\Users\rmelton\Documents"
+$personal = "C:\Users\rmelton\Projects"
 
 # remove
 remove-item alias:curl
