@@ -1,6 +1,6 @@
 cd $env:USERPROFILE
 mkdir -force "Documents\WindowsPowerShell"
-rm -recurse -force "vimfiles"
+rm -force "vimfiles"
 rm -force ".ctags"
 rm -force ".gitignore_global"
 rm -force ".gitconfig"
