@@ -1,11 +1,11 @@
 cd $env:USERPROFILE
-mkdir "Documents\WindowsPowerShell"
+mkdir -force "Documents\WindowsPowerShell"
 rm -recurse -force "vimfiles"
-rm ".ctags"
-rm ".gitignore_global"
-rm ".gitconfig"
-rm ".agignore"
-rm "Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
+rm -force ".ctags"
+rm -force ".gitignore_global"
+rm -force ".gitconfig"
+rm -force ".agignore"
+rm -force "Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
 
 git clone "https://github.com/robertmeta/vimfiles.git" ".dotfiles\vimfiles"
 
