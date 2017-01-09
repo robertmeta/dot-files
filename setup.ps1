@@ -1,17 +1,17 @@
 cd $env:USERPROFILE
-mkdir "Documents\WindowsPowerShell"
 
 If (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]"Administrator")) {
     Start-Process powershell.exe "-NoProfile -ExecutionPolicy Bypass -File `"$PSCommandPath`"" -Verb RunAs
     Exit
 }
 
-rm -recurse -force "vimfiles"
-rm ".ctags"
-rm ".gitignore_global"
-rm ".gitconfig"
-rm ".agignore"
-rm "Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
+mkdir -force "Documents\WindowsPowerShell"
+cmd /c rmdir "vimfiles"
+rm -force ".ctags"
+rm -force ".gitignore_global"
+rm -force ".gitconfig"
+rm -force ".agignore"
+rm -force "Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
 
 git clone "https://github.com/robertmeta/vimfiles.git" ".dotfiles\vimfiles"
 
@@ -88,10 +88,6 @@ If (Test-Path "$autoLoggerDir\AutoLogger-Diagtrack-Listener.etl") {
 }
 icacls $autoLoggerDir /deny SYSTEM:`(OI`)`(CI`)F | Out-Null
 
-# Unrestrict AutoLogger directory
-# $autoLoggerDir = "$env:PROGRAMDATA\Microsoft\Diagnosis\ETLLogs\AutoLogger"
-# icacls $autoLoggerDir /grant:r SYSTEM:`(OI`)`(CI`)F | Out-Null
-
 # Stop and disable Diagnostics Tracking Service
 Write-Host "Stopping and disabling Diagnostics Tracking Service..."
 Stop-Service "DiagTrack"
@@ -101,12 +97,6 @@ Set-Service "DiagTrack" -StartupType Disabled
 Write-Host "Stopping and disabling WAP Push Service..."
 Stop-Service "dmwappushservice"
 Set-Service "dmwappushservice" -StartupType Disabled
-
-# Enable and start WAP Push Service
-# Set-Service "dmwappushservice" -StartupType Automatic
-# Start-Service "dmwappushservice"
-# Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\dmwappushservice" -Name "DelayedAutoStart" -Type DWord -Value 1
-
 
 
 ##########
