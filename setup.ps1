@@ -258,14 +258,10 @@ Get-AppxPackage "Microsoft.MicrosoftSolitaireCollection" | Remove-AppxPackage
 Get-AppxPackage "Microsoft.Office.OneNote" | Remove-AppxPackage
 Get-AppxPackage "Microsoft.People" | Remove-AppxPackage
 Get-AppxPackage "Microsoft.SkypeApp" | Remove-AppxPackage
-Get-AppxPackage "Microsoft.Windows.Photos" | Remove-AppxPackage
 Get-AppxPackage "Microsoft.WindowsAlarms" | Remove-AppxPackage
-Get-AppxPackage "Microsoft.WindowsCamera" | Remove-AppxPackage
 Get-AppxPackage "microsoft.windowscommunicationsapps" | Remove-AppxPackage
 Get-AppxPackage "Microsoft.WindowsMaps" | Remove-AppxPackage
 Get-AppxPackage "Microsoft.WindowsPhone" | Remove-AppxPackage
-Get-AppxPackage "Microsoft.WindowsSoundRecorder" | Remove-AppxPackage
-Get-AppxPackage "Microsoft.XboxApp" | Remove-AppxPackage
 Get-AppxPackage "Microsoft.ZuneMusic" | Remove-AppxPackage
 Get-AppxPackage "Microsoft.ZuneVideo" | Remove-AppxPackage
 Get-AppxPackage "Microsoft.AppConnector" | Remove-AppxPackage
@@ -282,6 +278,12 @@ Get-AppxPackage "Microsoft.OneConnect" | Remove-AppxPackage
 Get-AppxPackage "D52A8D61.FarmVille2CountryEscape" | Remove-AppxPackage
 Get-AppxPackage "GAMELOFTSA.Asphalt8Airborne" | Remove-AppxPackage
 Get-AppxPackage "Microsoft.WindowsFeedbackHub" | Remove-AppxPackage
+
+# Install some bloatware
+Get-AppxPackage -AllUsers "Microsoft.Windows.Photos" | ForEach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
+Get-AppxPackage -AllUsers "Microsoft.WindowsCamera" | ForEach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
+Get-AppxPackage -AllUsers "Microsoft.WindowsSoundRecorder" | ForEach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
+Get-AppxPackage -AllUsers "Microsoft.XboxApp" | ForEach {Add-AppxPackage -DisableDevelopmentMode -Register "$($_.InstallLocation)\AppXManifest.xml"}
 
 # Enable Xbox DVR
 Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\GameDVR" -Name "AllowGameDVR" -ErrorAction SilentlyContinue
