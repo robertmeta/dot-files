@@ -38,8 +38,10 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/usr/local/lib"
 alias tmux="tmux -2u"
 alias gaa="git add --all"
 alias wip="git add --all . && git wip"
+alias setclip='xclip -selection c'
+alias getclip='xclip -selection clipboard -o'
 
-if [ "$TMUX" = "" ]; then tmux attach -t main || tmux new -s main; fi
+if [ "$TMUX" = "" ]; then if [ "$HOST" != "Moya" ]; then tmux attach -t main || tmux new -s main; fi; fi
 
 export CDPATH=.:$GOPATH/src/github.com:$GOPATH/src/golang.org/x:$GOPATH/src/bitbucket.org:$GOPATH/src/gopkg.in:$GOPATH/src/github.com/247waiter:$GOPATH/src/github.com/patdek:~/projects
 
@@ -52,3 +54,6 @@ fixssh() {
         fi
     done
 }
+
+# cyan cursor
+echo -e "\e]12;cyan\a"
