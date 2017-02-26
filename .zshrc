@@ -41,8 +41,13 @@ alias wip="git add --all . && git wip"
 alias setclip='xclip -selection c'
 alias getclip='xclip -selection clipboard -o'
 
-if [ "$TMUX" = "" ]; then if [ "$HOST" != "Moya" ]; then tmux attach -t main || tmux new -s main; fi; fi
-
+if [ "$TMUX" = "" ]; then
+     if [ "$HOST" != "Moya" ]; then
+         tmux attach -t main || tmux new -s main;
+     else
+         tmux new;
+     fi;
+fi
 export CDPATH=.:$GOPATH/src/github.com:$GOPATH/src/golang.org/x:$GOPATH/src/bitbucket.org:$GOPATH/src/gopkg.in:$GOPATH/src/github.com/247waiter:$GOPATH/src/github.com/patdek:~/projects
 
 # For updating SSH key-agent stuff
