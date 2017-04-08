@@ -62,3 +62,7 @@ fixssh() {
 
 # cyan cursor
 echo -e "\e]12;cyan\a"
+
+if [ ! -f $HOME/.zshlocal ]; then
+    source $HOME/.zshlocal
+fi
