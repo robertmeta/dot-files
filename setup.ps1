@@ -22,6 +22,7 @@ cmd /c mklink "%USERPROFILE%\.gitconfig" "%USERPROFILE%\.dotfiles\.gitconfig"
 cmd /c mklink "%USERPROFILE%\.agignore" "%USERPROFILE%\.dotfiles\.agignore"
 cmd /c mklink /D "%USERPROFILE%\vimfiles" "%USERPROFILE%\.dotfiles\vimfiles"
 cmd /c mklink /D "%USERPROFILE%\Appdata\Local\nvim" "%USERPROFILE%\.dotfiles\vimfiles"
+cmd /c mklink "%USERPROFILE%\vimfiles\vimrc" "%USERPROFILE%\.dotfiles\init.vim"
 
 gc ".gitconfig" | %{$_ -replace "cache --timeout=64800","wincred"} | sc ".gitconfig.tmp"
 Remove-Item .gitconfig
