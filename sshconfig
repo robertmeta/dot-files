@@ -1,2 +1,4 @@
 ForwardAgent yes
 ServerAliveInterval 100
+ForwardX11 no
+Compression yes
