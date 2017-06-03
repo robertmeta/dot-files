@@ -21,3 +21,4 @@ def find -params 1 -shell-candidates %{ find . -type f } %{ edit %arg{1} }
 def qa q # muscle memory too strong
 
 colorscheme acme
+add-highlighter -group / regex TODO|FIXME|XXX 0:green 
