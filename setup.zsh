@@ -3,6 +3,7 @@
 rm -rf ~/.vim
 rm -rf ~/.nvim
 rm -rf ~/config/nvim
+rm -rf ~/config/kak
 rm ~/.tmux.conf
 rm ~/.vimrc
 rm ~/.zshrc
@@ -27,6 +28,7 @@ ln -s ~/.dotfiles/.gitignore_global ~/.gitignore_global
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/vimfiles ~/.vim
 ln -s ~/.dotfiles/vimfiles ~/.config/nvim
+ln -s ~/.dotfiles/kak ~/.config/kak
 ln -s ~/.config/nvim/vimrc ~/.config/nvim/init.vim
 ln -s ~/.dotfiles/.agignore ~/.agignore
 ln -s ~/.dotfiles/sshconfig ~/.ssh/config
