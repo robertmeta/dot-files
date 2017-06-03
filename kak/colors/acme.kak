@@ -40,7 +40,7 @@ face PrimarySelection black,rgb:ffd787
 face Prompt black,rgb:d7afff
 face SecondaryCursor black,rgb:d7ffff
 face SecondarySelection black,rgb:d7ffff
-face StatusCursor black,rgb:d7ffff
+face StatusCursor rgb:d7ffff,rgb:8888cc
 face StatusLine black,rgb:eaffff
 face StatusLineInfo black,rgb:d7afff
 face StatusLineMode black,rgb:d7afff
