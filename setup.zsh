@@ -2,8 +2,8 @@
 
 rm -rf ~/.vim
 rm -rf ~/.nvim
-rm -rf ~/config/nvim
-rm -rf ~/config/kak
+rm -rf ~/.config/nvim
+rm -rf ~/.config/kak
 rm ~/.tmux.conf
 rm ~/.vimrc
 rm ~/.zshrc
