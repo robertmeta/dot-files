@@ -11,14 +11,15 @@ set global indentwidth 4
 
 hook global WinSetOption filetype=go %{
     go-enable-autocomplete
-    set buffer indentwidth 0 # 0 means real tab
-    go-enable-autocomplete
-    set buffer formatcmd 'goimports'
-    map buffer normal G :go-jump<ret>
+    set window indentwidth 0 # 0 means real tab
+    set window formatcmd 'goimports'
+    set window lintcmd 'gometalinter'
+    set window makecmd 'go install -v -u .'
+    map window normal G :go-jump<ret>
 }
 
 def find -params 1 -shell-candidates %{ find . -type f } %{ edit %arg{1} }
 def qa q # muscle memory too strong
 
 colorscheme acme
-add-highlighter -group / regex TODO|FIXME|XXX 0:green 
+add-highlighter -group / regex TODO|FIXME|XXX 0:green
