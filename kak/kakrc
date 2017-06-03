@@ -1,8 +1,11 @@
 hook global InsertCompletionHide .* %{ unmap window insert <tab> <c-n>; unmap window insert <backtab> <c-p> }
 hook global InsertCompletionShow .* %{ map window insert <tab> <c-n>; map window insert <backtab> <c-p> }
+
 hook global WinCreate .* %{ add-highlighter number_lines -relative -hlcursor }
 hook global WinCreate .* %{ add-highlighter show_matching }
 hook global WinCreate .* %{ add-highlighter show_whitespaces }
+hook global WinCreate .* %{ add-highlighter wrap }
+
 hook -group TrailingWhitespaces global WinCreate .* %{ add-highighter regex '\h+$' 0:default,red }
 
 set global ui_options ncurses_assistant=none

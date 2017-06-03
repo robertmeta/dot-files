@@ -26,10 +26,11 @@ face title black
 # builtin faces
 face Default black,rgb:ffffd7
 face BufferPadding rgb:af8700,rgb:ffffd7
-face Error black,red
+face Error white,red
 face Information black,rgb:d7ffff
 face LineNumberCursor black,rgb:ffff87
 face LineNumbers rgb:af8700,default
+face LineNumbersWrapped rgb:af8700,default
 face MatchingChar default,default+b
 face MenuBackground black,rgb:d7ffff
 face MenuForeground rgb:d7ffff,black
@@ -39,9 +40,9 @@ face PrimarySelection black,rgb:ffd787
 face Prompt black,rgb:d7afff
 face SecondaryCursor black,rgb:d7ffff
 face SecondarySelection black,rgb:d7ffff
-face StatusCursor black,white
+face StatusCursor black,rgb:d7ffff
 face StatusLine black,rgb:d7afff
-face StatusLineInfo black,white
+face StatusLineInfo black,rgb:d7ffff
 face StatusLineMode black,white
 face StatusLineValue black,white
 face Whitespace rgb:af8700,default
