@@ -43,6 +43,6 @@ face SecondarySelection black,rgb:d7ffff
 face StatusCursor black,rgb:d7ffff
 face StatusLine black,rgb:eaffff
 face StatusLineInfo black,rgb:d7afff
-face StatusLineMode black,white
-face StatusLineValue black,white
+face StatusLineMode black,rgb:d7afff
+face StatusLineValue black,rgb:d7afff
 face Whitespace rgb:af8700,default
