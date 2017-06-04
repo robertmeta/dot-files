@@ -1,6 +1,11 @@
+set global ui_options ncurses_assistant=none
+set global indentwidth 4
+
+map global insert <tab> '<a-;><gt>'
+map global insert <backtab> '<a-;><lt>'
+
 hook global InsertCompletionHide .* %{ unmap window insert <tab> <c-n>; unmap window insert <backtab> <c-p> }
 hook global InsertCompletionShow .* %{ map window insert <tab> <c-n>; map window insert <backtab> <c-p> }
-
 hook global WinCreate .* %{
     add-highlighter number_lines -hlcursor
     add-highlighter show_matching
@@ -8,10 +13,6 @@ hook global WinCreate .* %{
     add-highlighter wrap -word
     add-highlighter regex TODO|FIXME|XXX 0:green
 }
-
-set global ui_options ncurses_assistant=none
-set global indentwidth 4
-
 hook global WinSetOption filetype=go %{
     go-enable-autocomplete
     set window indentwidth 0 # 0 means real tab
@@ -22,7 +23,11 @@ hook global WinSetOption filetype=go %{
 }
 
 def find -params 1 -shell-candidates %{ find . -type f } %{ edit %arg{1} } -docstring "Uses find to well, find files"
-def ge -params 1 -shell-candidates %{ git ls-files } %{ edit %arg{1} } -docstring "Uses git ls-files to find files"
+def git-edit -params 1 -shell-candidates %{ git ls-files } %{ edit %arg{1} } -docstring "Uses git ls-files to find files"
 def qa q -docstring "stop using this (muscle memory too strong)"
 
+alias global ge git-edit
+alias global f find
+
 colorscheme acme
+try·%{·source·.kakrc.local·}
