@@ -23,6 +23,7 @@ hook global WinSetOption filetype=go %{
 
 def find -params 1 -shell-candidates %{ find . -type f } %{ edit %arg{1} } -docstring "Uses find to well, find files"
 def git-edit -params 1 -shell-candidates %{ git ls-files } %{ edit %arg{1} } -docstring "Uses git ls-files to find files"
+def ge git-edit
 def qa q # muscle memory too strong
 
 colorscheme acme
