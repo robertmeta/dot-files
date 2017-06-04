@@ -1,10 +1,13 @@
 hook global InsertCompletionHide .* %{ unmap window insert <tab> <c-n>; unmap window insert <backtab> <c-p> }
 hook global InsertCompletionShow .* %{ map window insert <tab> <c-n>; map window insert <backtab> <c-p> }
 
-hook global WinCreate .* %{ add-highlighter number_lines -hlcursor }
-hook global WinCreate .* %{ add-highlighter show_matching }
-hook global WinCreate .* %{ add-highlighter show_whitespaces }
-hook global WinCreate .* %{ add-highlighter wrap }
+hook global WinCreate .* %{
+    add-highlighter number_lines -hlcursor
+    add-highlighter show_matching
+    add-highlighter show_whitespaces
+    add-highlighter wrap -word
+    add-highlighter regex TODO|FIXME|XXX 0:green
+}
 
 set global ui_options ncurses_assistant=none
 set global indentwidth 4
@@ -23,4 +26,3 @@ def git-edit -params 1 -shell-candidates %{ git ls-files } %{ edit %arg{1} } -do
 def qa q # muscle memory too strong
 
 colorscheme acme
-add-highlighter regex TODO|FIXME|XXX 0:green
