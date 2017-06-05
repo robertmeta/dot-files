@@ -35,8 +35,9 @@ alias global ge git-edit
 alias global f find
 alias global bd delete-buffer
 
-map global user c %{:comment-line<ret>} -docstring "Comment or uncomment selected lines"
+map global user c %{: comment-line<ret>} -docstring "Comment or uncomment selected lines"
 map global user t %{|nc termbin.com 9999<ret>xyuP<a-;>k,c} -docstring "Publish to termbin.com"
+map global normal -- - %{:find <tab>}
 
-colorscheme acme
+colorscheme nofrils-acme
 try %{ source .kakrc.local }
