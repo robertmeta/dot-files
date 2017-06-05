@@ -10,7 +10,7 @@ hook global WinCreate .* %{
 	add-highlighter number_lines -hlcursor
 	add-highlighter show_matching
 	# default space char doesn't show 
-	add-highlighter show_whitespaces -spc \  -nbsp ∙ -lf \ 
+	add-highlighter show_whitespaces -spc \  -nbsp ∙
 	add-highlighter wrap -word
 	add-highlighter regex TODO|FIXME|XXX 0:green
 }
