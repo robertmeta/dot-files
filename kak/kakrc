@@ -9,7 +9,8 @@ hook global InsertCompletionShow .* %{
 hook global WinCreate .* %{
 	add-highlighter number_lines -hlcursor
 	add-highlighter show_matching
-	add-highlighter show_whitespaces -tab → -spc \ -nbsp \ -lf ¬ -tabpad \ 
+	# default space char doesn't show 
+	add-highlighter show_whitespaces -spc \  -nbsp ∙
 	add-highlighter wrap -word
 	add-highlighter regex TODO|FIXME|XXX 0:green
 }
@@ -34,7 +35,8 @@ alias global ge git-edit
 alias global f find
 alias global bd delete-buffer
 
-map global user c :comment-line<ret> -docstring "Comment or uncomment selected lines"
+map global user c %{:comment-line<ret>} -docstring "Comment or uncomment selected lines"
+map global user t %{|nc termbin.com 9999<ret>xyuP<a-;>k,c} -docstring "Publish to termbin.com"
 
 colorscheme acme
 try %{ source .kakrc.local }
