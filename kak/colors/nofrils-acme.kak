@@ -35,10 +35,10 @@ face MatchingChar default,default
 face MenuBackground rgb:005f00,rgb:d7ffaf
 face MenuForeground rgb:d7ffaf,rgb:005f00
 face MenuInfo black
-face PrimaryCursor rgb:ffd787,black
+face PrimaryCursor black,rgb:ffd787+u
 face PrimarySelection black,rgb:ffd787
 face Prompt black,rgb:d7afff
-face SecondaryCursor rgb:d7ffff,black
+face SecondaryCursor black,rgb:d7ffff+u
 face SecondarySelection black,rgb:d7ffff
 face StatusCursor rgb:d7ffff,rgb:8888cc
 face StatusLine black,rgb:eaffff
