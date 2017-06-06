@@ -31,7 +31,7 @@ face Information black,rgb:d7afff
 face LineNumberCursor black,rgb:ffff87
 face LineNumbers rgb:af8700,default
 face LineNumbersWrapped rgb:af8700,default
-face MatchingChar default,default
+face MatchingChar rgb:ffffd7,black
 face MenuBackground rgb:005f00,rgb:d7ffaf
 face MenuForeground rgb:d7ffaf,rgb:005f00
 face MenuInfo black
