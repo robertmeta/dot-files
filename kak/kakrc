@@ -39,11 +39,12 @@ alias global wq write-quit
 alias global qa! quit!
 alias global wq! write-quit!
 alias global wqa write-all-quit
+alias global wqa! write-all-quit
 
 map global normal -- - %{:find <tab>}
 map global user c %{: comment-line<ret>} -docstring "Comment or uncomment selected lines"
 map global user p %{|nc termbin.com 9999<ret>xyuP<a-;>k,c} -docstring "Publish to termbin.com"
-map global user t %{: nop %sh{tmux -t +1<ret>}} -docstring "Switch to next tmux window"
+map global user t %{: nop %sh{tmux selectp -t +1}<ret>} -docstring "Switch to next tmux window"
 map global user T %{: nop %sh{tmux split -v -p 20\; last-pane}<ret>} -docstring "Create new tmux window below"
 
 colorscheme nofrils-acme

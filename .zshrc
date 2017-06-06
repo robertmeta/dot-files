@@ -40,6 +40,7 @@ alias gaa="git add --all"
 alias wip="git add --all . && git wip"
 alias setclip='xclip -selection c'
 alias getclip='xclip -selection clipboard -o'
+alias t="tmux selectp -t +1"
 
 if [ "$TMUX" = "" ]; then
      if [ "$HOST" != "Moya" ]; then
