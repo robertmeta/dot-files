@@ -11,6 +11,7 @@ face string rgb:eeeeee
 face type rgb:eeeeee
 face value rgb:eeeeee
 face variable rgb:eeeeee
+face identifier rgb:eeeeee
 
 # For markup
 face block rgb:eeeeee
@@ -24,7 +25,7 @@ face mono rgb:eeeeee
 face title rgb:eeeeee
 
 # builtin faces
-face Default rgb:ffffd7,rgb:262626
+face Default rgb:eeeeee,rgb:262626
 face BufferPadding rgb:6c6c6c,rgb:262626
 face Error rgb:eeeeee,red
 face Information rgb:d7afff,black
@@ -35,10 +36,10 @@ face MatchingChar rgb:ffffd7,black
 face MenuForeground black,rgb:d7ffaf
 face MenuBackground rgb:d7ffaf,black
 face MenuInfo black
-face PrimaryCursor black,rgb:ffd787+u
+face PrimaryCursor black,rgb:d7afff+ui
 face PrimarySelection black,rgb:ffd787
 face Prompt black,rgb:d7afff
-face SecondaryCursor black,rgb:d7ffff+u
+face SecondaryCursor black,rgb:d7afff
 face SecondarySelection black,rgb:d7ffff
 face StatusCursor rgb:d7ffff,rgb:8888cc
 face StatusLine rgb:d7ffff,black

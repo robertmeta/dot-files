@@ -11,6 +11,7 @@ face string black
 face type black
 face value black
 face variable black
+face identifier black
 
 # For markup
 face block black
@@ -35,10 +36,10 @@ face MatchingChar rgb:ffffd7,black
 face MenuBackground rgb:005f00,rgb:d7ffaf
 face MenuForeground rgb:d7ffaf,rgb:005f00
 face MenuInfo black
-face PrimaryCursor black,rgb:ffd787+u
+face PrimaryCursor black,rgb:d7afff+ui
 face PrimarySelection black,rgb:ffd787
 face Prompt black,rgb:d7afff
-face SecondaryCursor black,rgb:d7ffff+u
+face SecondaryCursor black,rgb:d7afff
 face SecondarySelection black,rgb:d7ffff
 face StatusCursor rgb:d7ffff,rgb:8888cc
 face StatusLine black,rgb:eaffff
