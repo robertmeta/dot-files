@@ -11,31 +11,38 @@ addhl -group / group gdt
 # Make the subgroup highlight certain keywords
 addhl -group /gdt regex TODO|FIXME|XXX 0:default+rb
 
-# Map to langs XXX
-addhl -group /c/comment ref gdt
-addhl -group /cabal/comment ref gdt
-addhl -group /coffee/comment ref gdt
-addhl -group /cpp/comment ref gdt
-addhl -group /css/comment ref gdt
-addhl -group /cucumber/comment ref gdt
-addhl -group /dlang/comment ref gdt
-addhl -group /fish/comment ref gdt
-addhl -group /golang/comment ref gdt
-addhl -group /haml/comment ref gdt
-addhl -group /haskell/comment ref gdt
-addhl -group /html/comment ref gdt
-addhl -group /java/comment ref gdt
-addhl -group /javascript/comment ref gdt
-addhl -group /julia/comment ref gdt
-addhl -group /kakrc/comment ref gdt
-addhl -group /kickstart/comment ref gdt
-addhl -group /lisp/comment ref gdt
-addhl -group /objc/comment ref gdt
-addhl -group /python/comment ref gdt
-addhl -group /ragel/comment ref gdt
-addhl -group /ruby/comment ref gdt
-addhl -group /rust/comment ref gdt
-addhl -group /sass/comment ref gdt
-addhl -group /scala/comment ref gdt
-addhl -group /sh/comment ref gdt
-addhl -group /yaml/comment ref gdt
+# Assign the "gdt" highlighter to each language's comments highlighter
+%sh{
+    LANGS=(
+        c
+        cabal
+        coffee
+        cpp
+        css
+        cucumber
+        dlang
+        fish
+        golang
+        haml
+        haskell
+        html
+        java
+        javascript
+        julia
+        kakrc
+        kickstart
+        lisp
+        objc
+        python
+        ragel
+        ruby
+        rust
+        sass
+        scala
+        sh
+        yaml
+    )
+    for lang in "${LANGS[@]}"; do
+        echo "addhl -group /${lang}/comment ref gdt"
+    done
+}
