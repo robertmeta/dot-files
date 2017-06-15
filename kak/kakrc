@@ -62,4 +62,3 @@ map global user r %{: prompt %{Run:} %{echo %sh{tmux send-keys -t +1 "$kak_text"
 
 colorscheme nofrils-acme
 try %{ source .kakrc.local }
-source gdt.kak
