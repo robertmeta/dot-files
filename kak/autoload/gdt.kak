@@ -9,7 +9,7 @@
 addhl -group / group gdt
 
 # Make the subgroup highlight certain keywords
-addhl -group /gdt regex TODO|FIXME|XXX 0:default+rb
+addhl -group /gdt regex TODO|FIXME|XXX 0:green
 
 # Assign the "gdt" highlighter to each language's comments highlighter
 %sh{
