@@ -30,6 +30,9 @@ hook global WinSetOption filetype=go %{
 	set window makecmd 'go install -v -u .'
 	map window normal G :go-jump<ret>
 }
+hook global WinSetOption filetype=.+ %{
+	try %{ addhl regex \<(TODO|FIXME|XXX|NOTE)\> 0:green }
+}
 
 set global grepcmd 'ag --column'
 set global ui_options ncurses_assistant=none:ncurses_enable_mouse=true
