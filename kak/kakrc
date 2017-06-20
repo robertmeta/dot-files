@@ -41,7 +41,16 @@ set global scrolloff 5,5
 
 def find -params 1 -shell-candidates %{ ag --nocolor --ignore=vendor --ignore images --ignore svg --ignore fonts -g "" } %{ edit %arg{1} }
 def git-edit -params 1 -shell-candidates %{ git ls-files } %{ edit %arg{1} } -docstring "Uses git ls-files to find files"
-def qa q -docstring "stop using this (muscle memory too strong)"
+def ide %{
+    rename-client main
+    set global jumpclient main
+
+    new rename-client tools
+    set global toolsclient tools
+
+    new rename-client docs
+    set global docsclient docs
+}
 
 alias global bd delete-buffer
 alias global colo colorscheme
