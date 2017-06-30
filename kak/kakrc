@@ -8,30 +8,33 @@
 # - jq for json deserializaton, required by gogetdoc
  
 hook global InsertCompletionHide .* %{
-	unmap window insert <tab> <c-n>
-	unmap window insert <backtab> <c-p>
+    unmap window insert <tab> <c-n>
+    unmap window insert <backtab> <c-p>
 }
 hook global InsertCompletionShow .* %{
-	map window insert <tab> <c-n>
-	map window insert <backtab> <c-p>
+    map window insert <tab> <c-n>
+    map window insert <backtab> <c-p>
 }
 hook global WinCreate .* %{
-	add-highlighter number_lines -hlcursor
-	add-highlighter show_matching
-	# default space char doesn't show 
-	add-highlighter show_whitespaces -spc \  -nbsp ∙
-	add-highlighter wrap -word
+    add-highlighter number_lines -hlcursor
+    add-highlighter show_matching
+    # default space char doesn't show 
+    add-highlighter show_whitespaces -spc \  -nbsp ∙
+    add-highlighter wrap -word
 }
 hook global WinSetOption filetype=go %{
-	go-enable-autocomplete
-	set window indentwidth 0 # 0 means real tab
-	set window formatcmd 'goimports'
-	set window lintcmd 'gometalinter .'
-	set window makecmd 'go install -v -u .'
-	map window normal G :go-jump<ret>
+    go-enable-autocomplete
+    set window indentwidth 0 # 0 means real tab
+    set window formatcmd 'goimports'
+    set window lintcmd 'gometalinter .'
+    set window makecmd 'go install -v -u .'
+    map window normal G :go-jump<ret>
 }
 hook global WinSetOption filetype=.+ %{
-	try %{ addhl regex \<(TODO|FIXME|XXX|NOTE)\> 0:green }
+    try %{ addhl regex \<(TODO|FIXME|XXX|NOTE)\> 0:green }
+}
+hook global BufWritePost .*\.go %{
+    go-format -use-goimports
 }
 
 set global grepcmd 'ag --column'
