@@ -8,30 +8,33 @@
 # - jq for json deserializaton, required by gogetdoc
  
 hook global InsertCompletionHide .* %{
-	unmap window insert <tab> <c-n>
-	unmap window insert <backtab> <c-p>
+    unmap window insert <tab> <c-n>
+    unmap window insert <backtab> <c-p>
 }
 hook global InsertCompletionShow .* %{
-	map window insert <tab> <c-n>
-	map window insert <backtab> <c-p>
+    map window insert <tab> <c-n>
+    map window insert <backtab> <c-p>
 }
 hook global WinCreate .* %{
-	add-highlighter number_lines -hlcursor
-	add-highlighter show_matching
-	# default space char doesn't show 
-	add-highlighter show_whitespaces -spc \  -nbsp ∙
-	add-highlighter wrap -word
+    add-highlighter number_lines -hlcursor
+    add-highlighter show_matching
+    # default space char doesn't show 
+    add-highlighter show_whitespaces -spc \  -nbsp ∙
+    add-highlighter wrap -word
 }
 hook global WinSetOption filetype=go %{
-	go-enable-autocomplete
-	set window indentwidth 0 # 0 means real tab
-	set window formatcmd 'goimports'
-	set window lintcmd 'gometalinter .'
-	set window makecmd 'go install -v -u .'
-	map window goto d :go-jump<ret> -docstring "Jump to definition"      
+    go-enable-autocomplete
+    set window indentwidth 0 # 0 means real tab
+    set window formatcmd 'goimports'
+    set window lintcmd 'gometalinter .'
+    set window makecmd 'go install -v -u .'
+    map window goto d :go-jump<ret> -docstring "Jump to definition"
 }
 hook global WinSetOption filetype=.+ %{
-	try %{ addhl regex \<(TODO|FIXME|XXX|NOTE)\> 0:green }
+    try %{ addhl regex \<(TODO|FIXME|XXX|NOTE)\> 0:green }
+}
+hook global BufWritePost .*\.go %{
+    go-format -use-goimports
 }
 
 set global grepcmd 'ag --column'
@@ -80,6 +83,7 @@ map global user p %{| nc termbin.com 9999<ret>xyuP<a-;>k,c} -docstring "Publish 
 map global user t %{: nop %sh{tmux selectp -t +1}<ret>} -docstring "Switch to next tmux window"
 map global user T %{: nop %sh{tmux split -v -p 20\; last-pane}<ret>} -docstring "Create new tmux window below"
 map global user r %{: prompt %{Run:} %{echo %sh{tmux send-keys -t +1 "$kak_text" Enter }}<ret>} -docstring "Run command in next tmux window"
+map global goto f "<esc>1s(.+?)\h*$<ret>gf" -docstring "file" 
 
 colorscheme nofrils-dark
 try %{ source .kakrc.local }
