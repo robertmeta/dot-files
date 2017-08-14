@@ -28,7 +28,7 @@ hook global WinSetOption filetype=go %{
     set window formatcmd 'goimports'
     set window lintcmd 'gometalinter .'
     set window makecmd 'go install -v -u .'
-    map window goto d :go-jump<ret> -docstring "Jump to definition"
+    map window goto d <esc>:go-jump<ret> -docstring "jump to definition"
 }
 hook global WinSetOption filetype=.+ %{
     try %{ addhl regex \<(TODO|FIXME|XXX|NOTE)\> 0:green }
@@ -85,5 +85,5 @@ map global user T %{: nop %sh{tmux split -v -p 20\; last-pane}<ret>} -docstring 
 map global user r %{: prompt %{Run:} %{echo %sh{tmux send-keys -t +1 "$kak_text" Enter }}<ret>} -docstring "Run command in next tmux window"
 map global goto f "<esc>1s(.+?)\h*$<ret>gf" -docstring "file" 
 
-colorscheme nofrils-dark
+colorscheme nofrils-acme
 try %{ source .kakrc.local }
