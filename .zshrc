@@ -36,6 +36,7 @@ export PATH=$HOME/bin:$GOPATH/bin:/usr/local/bin:$GOROOT/bin:/bin:/usr/bin:/sbin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/usr/local/lib"
 
 alias tmux="tmux -2u"
+alias vim="kak"
 alias gaa="git add --all"
 alias wip="git add --all . && git wip"
 alias setclip='xclip -selection c'
