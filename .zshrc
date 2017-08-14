@@ -30,7 +30,7 @@ export DISABLE_AUTO_TITLE="true"
 # Customize to your needs...
 export GOROOT=/opt/go # build it in the go directory
 export GOPATH=$HOME/go
-export EDITOR=vim
+export EDITOR=kak
 
 export PATH=$HOME/bin:$GOPATH/bin:/usr/local/bin:$GOROOT/bin:/bin:/usr/bin:/sbin:/usr/sbin:$PATH
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/usr/local/lib"
