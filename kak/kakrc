@@ -28,7 +28,7 @@ hook global WinSetOption filetype=go %{
     set window formatcmd 'goimports'
     set window lintcmd 'gometalinter .'
     set window makecmd 'go install -v -u .'
-    map window normal G :go-jump<ret>
+    map window goto d <esc>:go-jump<ret> -docstring "jump to definition"
 }
 hook global WinSetOption filetype=.+ %{
     try %{ addhl regex \<(TODO|FIXME|XXX|NOTE)\> 0:green }
@@ -44,16 +44,26 @@ set global scrolloff 5,5
 
 def find -params 1 -shell-candidates %{ ag --nocolor --ignore=vendor --ignore images --ignore svg --ignore fonts -g "" } %{ edit %arg{1} }
 def git-edit -params 1 -shell-candidates %{ git ls-files } %{ edit %arg{1} } -docstring "Uses git ls-files to find files"
-def ide %{
-    rename-client main
-    set global jumpclient main
-
-    new rename-client tools
-    set global toolsclient tools
-
-    new rename-client docs
-    set global docsclient docs
-}
+def fzf-file %{ %sh{
+        if [ -z "$TMUX" ]; then
+            echo echo only works inside tmux
+        else
+            FILE=$(ls -1 | fzf-tmux -d 15)
+            if [ -n "$FILE" ]; then
+                printf 'eval -client %%{%s} edit %%{%s}\n' "${kak_client}" "${FILE}" | kak -p "${kak_session}"
+        fi
+    fi
+}} -docstring 'invoke fzf to open a file' 
+def fzf-buffer %{ %sh{
+    if [ -z "$TMUX" ]; then
+        echo echo only works inside tmux
+    else
+        BUFFER=$(printf %s\\n "${kak_buflist}" | tr : '\n' | fzf-tmux -d 15)
+        if [ -n "$BUFFER" ]; then
+            echo "eval -client '$kak_client' 'buffer ${BUFFER}'" | kak -p ${kak_session}
+        fi
+    fi
+}} -docstring 'invoke fzf to select a buffer' 
 
 alias global bd delete-buffer
 alias global colo colorscheme
@@ -67,7 +77,7 @@ alias global wqa! write-all-quit
 alias global wq write-quit
 alias global wq! write-quit!
 
-map global normal -- - %{:find <tab>}
+map global normal -docstring "Quick find" -- - %{: find <tab>}
 map global user c %{: comment-line<ret>} -docstring "Comment or uncomment selected lines"
 map global user p %{| nc termbin.com 9999<ret>xyuP<a-;>k,c} -docstring "Publish to termbin.com"
 map global user t %{: nop %sh{tmux selectp -t +1}<ret>} -docstring "Switch to next tmux window"
@@ -77,5 +87,5 @@ map global goto f "<esc>1s(.+?)\h*$<ret>gf" -docstring "file"
 map global user m :mark-word<ret> -docstring "Mark word with highlight"
 map global user M :mark-clear<ret> -docstring "Remove word marking"
 
-colorscheme nofrils-dark
+colorscheme nofrils-acme
 try %{ source .kakrc.local }

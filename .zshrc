@@ -37,6 +37,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/usr/local/lib"
 
 alias tmux="tmux -2u"
 alias gaa="git add --all"
+alias b="cd ~/go/src/github.com/patdek/patdek/backend"
 alias wip="git add --all . && git wip"
 alias setclip='xclip -selection c'
 alias getclip='xclip -selection clipboard -o'
