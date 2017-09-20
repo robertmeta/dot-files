@@ -28,7 +28,8 @@ hook global WinSetOption filetype=go %{
     set window formatcmd 'goimports'
     set window lintcmd 'gometalinter .'
     set window makecmd 'go install -v -u .'
-    map window goto d <esc>:go-jump<ret> -docstring "jump to definition"
+    map window goto d <esc>:go-jump<ret> -docstring "Jump to definition"
+    map window user k <esc>:go-doc-info<ret> -docstring "Show documentation"
 }
 hook global WinSetOption filetype=.+ %{
     try %{ addhl regex \<(TODO|FIXME|XXX|NOTE)\> 0:green }
