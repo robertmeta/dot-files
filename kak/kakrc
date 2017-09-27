@@ -84,8 +84,11 @@ map global user t %{: nop %sh{tmux selectp -t +1}<ret>} -docstring "Switch to ne
 map global user T %{: nop %sh{tmux split -v -p 20\; last-pane}<ret>} -docstring "Create new tmux window below"
 map global user r %{: prompt %{Run:} %{echo %sh{tmux send-keys -t +1 "$kak_text" Enter }}<ret>} -docstring "Run command in next tmux window"
 map global goto f "<esc>1s(.+?)\h*$<ret>gf" -docstring "file" 
-map global user m :mark-word<ret> -docstring "Mark word with highlight"
-map global user M :mark-clear<ret> -docstring "Remove word marking"
+map global user m %{: mark-word<ret>} -docstring "Mark word with highlight"
+map global user M %{: mark-clear<ret>} -docstring "Remove word marking"
+map global user e %{: easy-motion-word<ret>} -docstring "Easy motion to word"
+map global user W %{: easy-motion-WORD<ret>} -docstring "Easy motion to WORD"
+map global user l %{: easy-motion-line<ret>} -docstring "Easy motion to line"
 
 colorscheme nofrils-acme
 try %{ source .kakrc.local }
