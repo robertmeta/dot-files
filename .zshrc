@@ -32,7 +32,7 @@ export GOROOT=/opt/go # build it in the go directory
 export GOPATH=$HOME/go
 export EDITOR=vim
 
-export PATH=$HOME/bin:$GOPATH/bin:/usr/local/bin:$GOROOT/bin:/bin:/usr/bin:/sbin:/usr/sbin:$PATH
+export PATH=$HOME/bin:$GOPATH/bin:/usr/local/bin:$GOROOT/bin:/bin:/usr/bin:/sbin:/usr/sbin:$HOME/.cargo/bin:$PATH
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/usr/local/lib"
 
 alias tmux="tmux -2u"
@@ -68,3 +68,6 @@ echo -e "\e]12;cyan\a"
 if [ -f $HOME/.zshlocal ]; then
     source $HOME/.zshlocal
 fi
+
+# Fix C-s C-q issues
+stty -ixon
