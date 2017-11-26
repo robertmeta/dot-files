@@ -40,5 +40,10 @@ mv ~/.ssh/authorized_keys.tmp ~/.ssh/authorized_keys
 source ~/.zshrc
 tmux source-file ~/.tmux.conf
 
+chmod 644 ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/config
+chmod 600 ~/.ssh/id_rsa
+chmod 755 ~/.ssh
+
 #cd ~/.dotfiles/vimfiles/bundle/ternforvim/
 #npm install
