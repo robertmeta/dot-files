@@ -44,13 +44,13 @@ alias getclip='xclip -selection clipboard -o'
 alias t="tmux selectp -t +1"
 
 if [ "$TMUX" = "" ]; then
-     if [ "$HOST" != "Moya" ]; then
+     if [ "$HOST" != "beast.workdomain" ] || [ "$HOST" != "moya.homenetwork" ]; then
          tmux attach -t main || tmux new -s main;
      else
          tmux new;
      fi;
 fi
-export CDPATH=.:$GOPATH/src/github.com:$GOPATH/src/golang.org/x:$GOPATH/src/bitbucket.org:$GOPATH/src/gopkg.in:$GOPATH/src/github.com/247waiter:$GOPATH/src/github.com/patdek:~/projects
+export CDPATH=.:$GOPATH/src/github.com:$GOPATH/src/golang.org/x:$GOPATH/src/bitbucket.org:$GOPATH/src/gopkg.in:$GOPATH/src/github.com/247waiter:$GOPATH/src/github.com/patdek:~/projects:~/Projects:~/downloads:~/Downloads
 
 # For updating SSH key-agent stuff
 fixssh() {
