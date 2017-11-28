@@ -44,7 +44,7 @@ alias getclip='xclip -selection clipboard -o'
 alias t="tmux selectp -t +1"
 
 if [ "$TMUX" = "" ]; then
-     if [ "$HOST" != "beast.workdomain" ] && [ "$HOST" != "moya.homenetwork" ]; then
+     if [ "$HOST" != "beast.workdomain" ] && [ "$HOST" != "moya.homenetwork" ] && [ "$HOST" != "Roberts-Mini.home" ]; then
          tmux attach -t main || tmux new -s main;
      else
          tmux new;
