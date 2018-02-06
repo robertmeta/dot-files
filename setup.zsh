@@ -4,6 +4,7 @@ rm -rf ~/.vim
 rm -rf ~/.nvim
 rm -rf ~/.config/nvim
 rm -rf ~/.config/kak
+rm -rf ~/.config/ranger
 rm ~/.tmux.conf
 rm ~/.vimrc
 rm ~/.zshrc
@@ -29,6 +30,7 @@ ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/vimfiles ~/.vim
 ln -s ~/.dotfiles/vimfiles ~/.config/nvim
 ln -s ~/.dotfiles/kak ~/.config/kak
+ln -s ~/.dotfiles/ranger ~/.config/ranger
 ln -s ~/.config/nvim/vimrc ~/.config/nvim/init.vim
 ln -s ~/.dotfiles/.agignore ~/.agignore
 ln -s ~/.dotfiles/sshconfig ~/.ssh/config
@@ -44,6 +46,3 @@ chmod 644 ~/.ssh/authorized_keys
 chmod 600 ~/.ssh/config
 chmod 600 ~/.ssh/id_rsa
 chmod 755 ~/.ssh
-
-#cd ~/.dotfiles/vimfiles/bundle/ternforvim/
-#npm install

@@ -1,7 +1,7 @@
 # mark.kak
 # ----------------------------------------------------------------------------
-# version:  0.0.3
-# modified: 2017-09-02
+# version:  1.0.1
+# modified: 2017-12-15
 # author:   fsub <31548809+fsub@users.noreply.github.com>
 # rights:   UNLICENSE <http://unlicense.org/>
 # ----------------------------------------------------------------------------
@@ -9,28 +9,59 @@
 ###
 # declarations
 
-decl -hidden str-list mark_colors %{1,red:2,yellow:3,blue:4,magenta:5,cyan:6,green}
-decl -hidden int-list mark_unused %{1:2:3:4:5:6}
-decl -hidden str-list mark_active %{}
+declare-option -hidden bool mark_debug false
 
-decl -hidden bool mark_debug false
+declare-option -hidden regex mark_regex_1
+declare-option -hidden regex mark_regex_2
+declare-option -hidden regex mark_regex_3
+declare-option -hidden regex mark_regex_4
+declare-option -hidden regex mark_regex_5
+declare-option -hidden regex mark_regex_6
+
+declare-option -hidden int-list mark_unused %{1:2:3:4:5:6}
+declare-option -hidden int-list mark_active %{}
+
+###
+# faces
+
+# for the time being, _ (underscore) is not admissible in face names 
+set-face markface1 red+rb
+set-face markface2 yellow+rb
+set-face markface3 blue+rb
+set-face markface4 magenta+rb
+set-face markface5 cyan+rb
+set-face markface6 green+rb
+
+###
+# highlighers
+
+add-highlighter shared group mark
+add-highlighter shared/mark dynregex '%opt{mark_regex_1}' 0:markface1
+add-highlighter shared/mark dynregex '%opt{mark_regex_2}' 0:markface2
+add-highlighter shared/mark dynregex '%opt{mark_regex_3}' 0:markface3
+add-highlighter shared/mark dynregex '%opt{mark_regex_4}' 0:markface4
+add-highlighter shared/mark dynregex '%opt{mark_regex_5}' 0:markface5
+add-highlighter shared/mark dynregex '%opt{mark_regex_6}' 0:markface6
+
+###
+# hooks
+
+# hack trying to override all other highlighting
+hook -group mark global KakBegin .* %{ try %{
+   hook -group mark global WinSetOption filetype=.* %{ try %{
+      remove-highlighter window/mark
+      add-highlighter window ref mark
+}}}}
 
 ###
 # definitions
 
-def -hidden mark-debug-print-state %{
+define-command -hidden mark-debug-print-state %{
    %sh{
       case "${kak_opt_mark_debug}" in
          true|yes)
-            unset ta
-            for pair in $(printf %s "${kak_opt_mark_active}" | tr : '\n'); do
-               p="$(printf %s "${pair}" | cut -d, -f1 | base64 -d)"
-               i="$(printf %s "${pair}" | cut -d, -f2)"
-               ta="${ta}${ta+:}${p},${i}"
-            done
-
-            printf "echo -debug [mark] buffer:%s unused:(%s) active:(%s)\\n" \
-               "${kak_buffile}" "${kak_opt_mark_unused}" "${ta}"
+            printf "echo -debug [mark] unused:(%s) active:(%s)\\n" \
+               "${kak_opt_mark_unused}" "${kak_opt_mark_active}"
             ;;
          *)
             ;;
@@ -38,7 +69,7 @@ def -hidden mark-debug-print-state %{
    }
 }
 
-def -params 1..2 mark-set \
+define-command -params 1..2 mark-set \
     -docstring %(mark-set <pattern> [slot]: highlight all text occurrences
 matching <pattern>; unless [slot] is specified, use slot 1
    pattern: regular expression
@@ -63,37 +94,24 @@ matching <pattern>; unless [slot] is specified, use slot 1
             tu="${tu}${tu+:}${i}"
          fi
       done
-      printf "set buffer mark_unused '%s'\\n" "${tu}"
+      printf "set-option global mark_unused '%s'\\n" "${tu}"
 
-      mq="$(printf %s "${mp}" | base64)"
       unset ta
-      for pair in $(printf %s "${kak_opt_mark_active}" | tr : '\n'); do
-         i="$(printf %s "${pair}" | cut -d, -f2)"
+      for i in $(printf %s "${kak_opt_mark_active}" | tr : '\n'); do
          if [ "${i}" != "${mi}" ]; then
-            q="$(printf %s "${pair}" | cut -d, -f1)"
-            ta="${ta}${ta+:}${q},${i}"
+            ta="${ta}${ta+:}${i}"
          fi
       done
-      ta="${ta}${ta+:}${mq},${mi}"
-      printf "set buffer mark_active '%s'\\n" "${ta}"
+      ta="${ta}${ta+:}${mi}"
+      printf "set-option global mark_active '%s'\\n" "${ta}"
 
       printf "mark-debug-print-state\\n"
 
-      cn="white"
-      for pair in $(printf %s "${kak_opt_mark_colors}" | tr : '\n'); do
-         ci="$(printf %s "${pair}" | cut -d, -f1)"
-         if [ "${ci}" = "${mi}" ]; then
-            cn="$(printf %s "${pair}" | cut -d, -f2)"
-            break
-         fi
-      done
-      printf "rmhl mark_%s\\n" "${mi}"
-      printf "addhl group mark_%s\\n" "${mi}"
-      printf "addhl -group mark_%s regex '%s' '0:%s+rb'\\n" "${mi}" "${mp}" "${cn}"
+      printf "set-option global mark_regex_%s '%s'\\n" "${mi}" "${mp}"
    }
 }
 
-def -params ..1 mark-del \
+define-command -params ..1 mark-del \
     -docstring %(mark-del [slot]: unmark all text occurrences highlighted via
 mark-set at [slot]; unless [slot] is specified, use slot 1
    slot: index in 1..6) \
@@ -117,47 +135,44 @@ mark-set at [slot]; unless [slot] is specified, use slot 1
          fi
       done
       tu="${mi}${tu+:}${tu}"
-      printf "set buffer mark_unused '%s'\\n" "${tu}"
+      printf "set-option global mark_unused '%s'\\n" "${tu}"
 
       unset ta
-      for pair in $(printf %s "${kak_opt_mark_active}" | tr : '\n'); do
-         i="$(printf %s "${pair}" | cut -d, -f2)"
+      for i in $(printf %s "${kak_opt_mark_active}" | tr : '\n'); do
          if [ "${i}" != "${mi}" ]; then
-            q="$(printf %s "${pair}" | cut -d, -f1)"
-            ta="${ta}${ta+:}${q},${i}"
+            ta="${ta}${ta+:}${i}"
          fi
       done
-      printf "set buffer mark_active '%s'\\n" "${ta}"
+      printf "set-option global mark_active '%s'\\n" "${ta}"
 
       printf "mark-debug-print-state\\n"
 
-      printf "rmhl mark_%s\\n" "${mi}"
+      printf "set-option global mark_regex_%s ''\\n" "${mi}"
    }
 }
 
-def mark-clear \
+define-command mark-clear \
    -docstring %(mark-clear: unmark all text occurrences highlighted via
 mark-set) \
 %{
    %sh{
-      unset ti
-      for pair in $(printf %s "${kak_opt_mark_active}" | tr : '\n'); do
-         i="$(printf %s "${pair}" | cut -d, -f2)"
-         ti="${i}${ti+:}${ti}"
+      unset ta
+      for i in $(printf %s "${kak_opt_mark_active}" | tr : '\n'); do
+         ta="${i}${ta+:}${ta}"
       done
       tu="${kak_opt_mark_unused}"
-      for i in $(printf %s "${ti}" | tr : '\n'); do
+      for i in $(printf %s "${ta}" | tr : '\n'); do
          tu="${i}${tu+:}${tu}"
-         printf "rmhl mark_%s\\n" "${i}"
+         printf "set-option global mark_regex_%s ''\\n" "${i}"
       done
-      printf "set buffer mark_unused '%s'\\n" "${tu}"
-      printf "set buffer mark_active ''\\n"
+      printf "set-option global mark_unused '%s'\\n" "${tu}"
+      printf "set-option global mark_active ''\\n"
 
       printf "mark-debug-print-state\\n"
    }
 }
 
-def -params 2 mark-pattern \
+define-command -params 2 mark-pattern \
     -docstring %(mark-pattern <action> <pattern>: alter highlighting according
 to <action> for all occurrences of text matching <pattern>
    action:  token in {del, set, toggle}
@@ -176,12 +191,33 @@ to <action> for all occurrences of text matching <pattern>
             ;;
       esac
 
-      mq="$(printf %s "${mp}" | base64)"
-      for pair in $(printf %s "${kak_opt_mark_active}" | tr : '\n'); do
-         q="$(printf %s "${pair}" | cut -d, -f1)"
-         if [ "${q}" = "${mq}" ]; then
+      for i in $(printf %s "${kak_opt_mark_active}" | tr : '\n'); do
+         case "${i}" in
+            1)
+               p="${kak_opt_mark_regex_1}"
+               ;;
+            2)
+               p="${kak_opt_mark_regex_2}"
+               ;;
+            3)
+               p="${kak_opt_mark_regex_3}"
+               ;;
+            4)
+               p="${kak_opt_mark_regex_4}"
+               ;;
+            5)
+               p="${kak_opt_mark_regex_5}"
+               ;;
+            6)
+               p="${kak_opt_mark_regex_6}"
+               ;;
+            *)
+               printf "echo -markup {Error}%s\\n" "invalid slot"
+               exit
+               ;;
+         esac
+         if [ "${p}" = "${mp}" ]; then
             if [ "${action}" != "set" ]; then
-               i="$(printf %s "${pair}" | cut -d, -f2)"
                printf "mark-del '%s'\\n" "${i}"
                action="del" # avoid setting again
             fi
@@ -190,8 +226,8 @@ to <action> for all occurrences of text matching <pattern>
 
       if [ "${action}" != "del" ]; then
          if [ -z "${kak_opt_mark_unused}" ]; then
-            for pair in $(printf %s "${kak_opt_mark_active}" | tr : '\n'); do
-               mi="$(printf %s "${pair}" | cut -d, -f2)"
+            for i in $(printf %s "${kak_opt_mark_active}" | tr : '\n'); do
+               mi="${i}"
                break
             done
          else
@@ -205,20 +241,20 @@ to <action> for all occurrences of text matching <pattern>
    }
 }
 
-def -hidden mark-word-impl %{
+define-command -hidden mark-word-impl %{
    %sh{
-      printf "mark-pattern toggle '\\\\<%s\\\\>'\\n" "${kak_selection}"
+      printf "mark-pattern toggle '\\\\b%s\\\\b'\\n" "${kak_selection}"
    }
 }
 
-def mark-word \
+define-command mark-word \
     -docstring %(mark-word: toggle highlighting for all occurrences of the
 word under the cursor) \
 %{
    %sh{
       tmp="${kak_opt_extra_word_chars}"
-      printf "set current extra_word_chars ''\\n"
-      printf "exec -draft '%s'\\n" "<a-i>w:mark-word-impl<ret>"
-      printf "set current extra_word_chars '%s'\\n" "${tmp}"
+      printf "set-option current extra_word_chars ''\\n"
+      printf "execute-keys -draft '%s'\\n" "<a-i>w:mark-word-impl<ret>"
+      printf "set-option current extra_word_chars '%s'\\n" "${tmp}"
    }
 }

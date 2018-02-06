@@ -1,0 +1,7 @@
+open_with 
+display_help 
+set autoupdate_cumulative_size=true
+set 
+set show_hidden=true
+set colorscheme jungle
+set colorscheme snow

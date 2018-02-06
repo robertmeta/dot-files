@@ -1,12 +1,40 @@
+def pydef -params 3 %{ %sh{
+    file=$(mktemp --suffix=.py)
+    pyfifo="$file".pyfifo
+    kakfifo="$file".kakfifo
+    mkfifo "$pyfifo"
+    mkfifo "$kakfifo"
+    >$file echo "def line(stdin): $3"
+    >>$file echo "while True:
+        with open('$pyfifo', 'r') as f:
+            for s in f:
+                try:
+                    reply = line(s)
+                except Exception as e:
+                    reply = 'echo -debug %~$1 error: {}~'.format(e)
+                with open('$kakfifo', 'w') as r:
+                    r.write(reply)"
+    (python $file </dev/null 2&>1 >/dev/null) &
+    pypid=$!
+    echo "
+        def -allow-override $1 %{
+            eval -save-regs r -no-hooks -draft %{
+                reg r \"$2\"
+                edit -debug -scratch *pydef*
+                exec \\%di<c-r>r<esc>
+                write $pyfifo
+            }
+            source $kakfifo
+        }
+        hook -group pydef global KakEnd .* %{ %sh{kill "$pypid"; rm -f "$file" "$pyfifo" "$kakfifo"} }
+    "
+} }
 
 face EasyMotionBackground rgb:aaaaaa
 face EasyMotionForeground red+b
 
 try %{
     decl range-specs em_fg
-    decl -hidden str _em_jumps
-    decl -hidden str _em_jump
-    decl -hidden str _em_seen
     decl str em_jumpchars abcdefghijklmnopqrstuvwxyz
 }
 
@@ -15,61 +43,37 @@ def easy-motion-WORD %{ easy-motion-on-regex '\s\K\S+' }
 def easy-motion-line %{ easy-motion-on-regex '^[^\n]+$' }
 
 def easy-motion-on-regex -params 1 %{
-    easy-motion-on "exec \'/%arg{1}<ret>%sh{echo ${#kak_opt_em_jumpchars}}N\'"
+    exec -no-hooks GE<a-\;>s %arg{1} <ret> <a-:>
+    easy-motion-on-selections
 }
 
-def easy-motion-on -params 1 %{
-    eval -save-regs em "
-        exec '\"mZ'
-        %arg{1}
-        easy-motion-on-selections
-    "
-}
+pydef easy-motion-on-selections '%opt{em_jumpchars}:%val{timestamp}:%val{selections_desc}' '
+    jumpchars, timestamp, *descs = stdin.strip().split(":")
+    fg = timestamp
+    jumps = []
+    first = None
+    for char, desc in zip(jumpchars, descs):
+        a, h = desc.split(",")
+        fg += ":" + a + "," + a + "|{EasyMotionForeground}" + char
+        jumps.append(char + ") echo select " + desc + " ;;")
+        if first is None:
+            first = a + "," + a
 
-def easy-motion-on-selections -hidden %{
-    easy-motion-setup-alphabet
-    eval -no-hooks -draft %{
-        easy-motion-set-initial-char
-        exec <a-K>\A~<ret>
-        set window em_fg "%val{timestamp}"
-        set window _em_jumps 'on-key %{ %sh{ case $kak_key in'
-        set window _em_seen ""
-        eval -itersel %{
-            set window _em_jump %val{selection_desc}
-            exec '<a-:><a-;>;'
-            try %{
-                exec "<a-K>[~%opt{_em_seen}]<ret>"
-                set -add window _em_seen %val{selection}
-                set -add window em_fg "%val{selection_desc}|{EasyMotionForeground}%val{selection}"
-                set -add window _em_jumps "
-                    %val{selection}) echo \"select %opt{_em_jump}\" ;;"
-            }
-        }
-        set -add window _em_jumps "esac }; easy-motion-rmhl }"
-    }
-    exec 'u"mz<space>;'
-    easy-motion-rmhl
-    addhl fill EasyMotionBackground
-    addhl replace-ranges em_fg
-    eval "%opt{_em_jumps}"
+    return "\n".join((
+        "select " + first,
+        "easy-motion-rmhl",
+        "easy-motion-addhl",
+        "set window em_fg " + fg,
+        "on-key %{ %sh{ case $kak_key in " + "\n".join(jumps) + " esac; echo easy-motion-rmhl } }"))
+'
+
+def easy-motion-addhl %{
+    try %{ addhl window fill EasyMotionBackground }
+    try %{ addhl window replace-ranges em_fg }
 }
 
 def easy-motion-rmhl %{
-    rmhl fill_EasyMotionBackground
-    rmhl replace_ranges_em_fg
-}
-
-def easy-motion-setup-alphabet -hidden %{
-    eval -draft %{
-        reg '"' "%opt{em_jumpchars}~"
-        exec '<a-p>s.<ret>"eyd'
-    }
-}
-
-def easy-motion-set-initial-char -hidden %{
-    try %{
-        exec '<a-K>^$<ret>'
-    }
-    exec '"eP<a-:><a-;>Ha<backspace><esc>'
+    rmhl window/fill_EasyMotionBackground
+    rmhl window/replace_ranges_em_fg
 }
 
