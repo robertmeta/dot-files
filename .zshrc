@@ -32,6 +32,9 @@ export DISABLE_AUTO_TITLE="true"
 export GOROOT=/opt/go # build it in the go directory
 export GOPATH=$HOME/go
 export EDITOR=vim
+if ! type "kak" > /dev/null; then
+    export EDITOR=kak
+fi
 
 export PATH=$HOME/.local/bin:$HOME/bin:$GOPATH/bin:/usr/local/bin:$GOROOT/bin:/bin:/usr/bin:/sbin:/usr/sbin:$HOME/.cargo/bin:$PATH
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/usr/local/lib"
