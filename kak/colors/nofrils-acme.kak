@@ -7,7 +7,7 @@ face keyword black
 face meta black
 face module black
 face operator black
-face string black
+face string black,rgb:ffd7af
 face type black
 face value black
 face variable black

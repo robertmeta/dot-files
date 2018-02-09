@@ -7,7 +7,7 @@ face keyword rgb:eeeeee
 face meta rgb:eeeeee
 face module rgb:eeeeee
 face operator rgb:eeeeee
-face string rgb:eeeeee
+face string rgb:eeeeee,black
 face type rgb:eeeeee
 face value rgb:eeeeee
 face variable rgb:eeeeee
