@@ -42,3 +42,21 @@ tmux source-file ~/.tmux.conf
 
 #cd ~/.dotfiles/vimfiles/bundle/ternforvim/
 #npm install
+
+go get -u -v github.com/zmb3/gogetdoc
+go get -u -v golang.org/x/tools/cmd/guru
+go get -u -v github.com/golang/lint/golint
+go get -u -v github.com/davidrjenni/reftools/cmd/fillstruct
+go get -u -v github.com/rogpeppe/godef
+go get -u -v github.com/fatih/motion
+go get -u -v github.com/kisielk/errcheck
+go get -u -v github.com/nsf/gocode
+go get -u -v github.com/jstemmer/gotags
+go get -u -v github.com/josharian/impl
+go get -u -v golang.org/x/tools/cmd/goimports
+go get -u -v github.com/fatih/gomodifytags
+go get -u -v github.com/dominikh/go-tools/cmd/keyify
+go get -u -v golang.org/x/tools/cmd/gorename
+go get -u -v github.com/klauspost/asmfmt/cmd/asmfmt
+go get -u -v github.com/alecthomas/gometalinter
+
