@@ -29,9 +29,9 @@ face Default black,rgb:ffffd7
 face BufferPadding rgb:af8700,rgb:ffffd7
 face Error white,red
 face Information black,rgb:d7afff
-face LineNumberCursor black,rgb:ffff87
+face LineNumberCursor black,rgb:d7afff
 face LineNumbers rgb:af8700,default
-face LineNumbersWrapped default,rgb:af8700
+face LineNumbersWrapped black,rgb:ffffff
 face MatchingChar rgb:ffffd7,black
 face MenuBackground rgb:005f00,rgb:d7ffaf
 face MenuForeground rgb:d7ffaf,rgb:005f00
