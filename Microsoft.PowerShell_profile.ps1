@@ -3,9 +3,9 @@
 # if anything :) 
 # set-executionpolicy unrestricted
 
-$downloads = "C:\Users\rmelton\Downloads"
-$documents = "C:\Users\rmelton\Documents"
-$personal = "C:\Users\rmelton\Projects"
+$downloads = "C:\Users\rober\Downloads"
+$documents = "C:\Users\rober\Documents"
+$personal = "C:\Users\rober\Projects"
 
 # remove
 remove-item alias:curl

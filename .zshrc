@@ -8,7 +8,8 @@ ZSH_CUSTOM=$HOME/.dotfiles/zsh_custom
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="gnzh"
+ZSH_THEME="minimal"
+#ZSH_THEME="bira"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
@@ -31,8 +32,11 @@ export DISABLE_AUTO_TITLE="true"
 export GOROOT=/opt/go # build it in the go directory
 export GOPATH=$HOME/go
 export EDITOR=vim
+if ! type "kak" > /dev/null; then
+    export EDITOR=kak
+fi
 
-export PATH=$HOME/bin:$GOPATH/bin:/usr/local/bin:$GOROOT/bin:/bin:/usr/bin:/sbin:/usr/sbin:$PATH
+export PATH=$HOME/.local/bin:$HOME/bin:$GOPATH/bin:/usr/local/bin:$GOROOT/bin:/bin:/usr/bin:/sbin:/usr/sbin:$HOME/.cargo/bin:$PATH
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/usr/local/lib"
 
 alias tmux="tmux -2u"
@@ -44,13 +48,13 @@ alias getclip='xclip -selection clipboard -o'
 alias t="tmux selectp -t +1"
 
 if [ "$TMUX" = "" ]; then
-     if [ "$HOST" != "Moya" ]; then
+     if [ "$HOST" != "beast.workdomain" ] && [ "$HOST" != "moya.homenetwork" ] && [ "$HOST" != "Roberts-Mini.home" ]; then
          tmux attach -t main || tmux new -s main;
      else
          tmux new;
      fi;
 fi
-export CDPATH=.:$GOPATH/src/github.com:$GOPATH/src/golang.org/x:$GOPATH/src/bitbucket.org:$GOPATH/src/gopkg.in:$GOPATH/src/github.com/247waiter:$GOPATH/src/github.com/patdek:~/projects
+export CDPATH=.:$GOPATH/src/github.com:$GOPATH/src/golang.org/x:$GOPATH/src/bitbucket.org:$GOPATH/src/gopkg.in:$GOPATH/src/github.com/247waiter:$GOPATH/src/github.com/patdek:~/projects:~/Projects:~/downloads:~/Downloads
 
 # For updating SSH key-agent stuff
 fixssh() {
@@ -68,3 +72,6 @@ echo -e "\e]12;cyan\a"
 if [ -f $HOME/.zshlocal ]; then
     source $HOME/.zshlocal
 fi
+
+# Fix C-s C-q issues
+stty -ixon

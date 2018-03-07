@@ -4,6 +4,7 @@ rm -rf ~/.vim
 rm -rf ~/.nvim
 rm -rf ~/.config/nvim
 rm -rf ~/.config/kak
+rm -rf ~/.config/ranger
 rm ~/.tmux.conf
 rm ~/.vimrc
 rm ~/.zshrc
@@ -29,6 +30,7 @@ ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/vimfiles ~/.vim
 ln -s ~/.dotfiles/vimfiles ~/.config/nvim
 ln -s ~/.dotfiles/kak ~/.config/kak
+ln -s ~/.dotfiles/ranger ~/.config/ranger
 ln -s ~/.config/nvim/vimrc ~/.config/nvim/init.vim
 ln -s ~/.dotfiles/.agignore ~/.agignore
 ln -s ~/.dotfiles/sshconfig ~/.ssh/config
@@ -40,8 +42,6 @@ mv ~/.ssh/authorized_keys.tmp ~/.ssh/authorized_keys
 source ~/.zshrc
 tmux source-file ~/.tmux.conf
 
-#cd ~/.dotfiles/vimfiles/bundle/ternforvim/
-#npm install
 if [ -x "$(command -v go)" ]; then
     go get -u -v github.com/zmb3/gogetdoc
     go get -u -v golang.org/x/tools/cmd/guru
@@ -60,3 +60,8 @@ if [ -x "$(command -v go)" ]; then
     go get -u -v github.com/klauspost/asmfmt/cmd/asmfmt
     go get -u -v github.com/alecthomas/gometalinter
 fi
+
+chmod 644 ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/config
+chmod 600 ~/.ssh/id_rsa
+chmod 755 ~/.ssh
