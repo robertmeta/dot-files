@@ -16,11 +16,11 @@ hook global InsertCompletionShow .* %{
     map window insert <backtab> <c-p>
 }
 hook global WinCreate .* %{
-    add-highlighter number_lines -hlcursor
-    add-highlighter show_matching
+    add-highlighter window/ number_lines -hlcursor
+    add-highlighter window/ show_matching
     # default space char doesn't show 
-    add-highlighter show_whitespaces -spc \  -nbsp ∙
-    add-highlighter wrap -word
+    add-highlighter window/ show_whitespaces -spc \  -nbsp ∙
+    add-highlighter window/ wrap -word
 }
 hook global WinSetOption filetype=go %{
     go-enable-autocomplete
