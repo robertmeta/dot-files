@@ -25,12 +25,12 @@ declare-option -hidden int-list mark_active %{}
 # faces
 
 # for the time being, _ (underscore) is not admissible in face names 
-set-face markface1 red+rb
-set-face markface2 yellow+rb
-set-face markface3 blue+rb
-set-face markface4 magenta+rb
-set-face markface5 cyan+rb
-set-face markface6 green+rb
+set-face markface1 rgb:000000,rgb:FFA07A
+set-face markface2 rgb:000000,rgb:FFFACD
+set-face markface3 rgb:000000,rgb:B0E0E6
+set-face markface4 rgb:000000,rgb:7CFC00
+set-face markface5 rgb:000000,rgb:FFD700
+set-face markface6 rgb:000000,rgb:E6E6FA
 
 ###
 # highlighers
