@@ -33,6 +33,7 @@ export GOROOT=/opt/go # build it in the go directory
 export GOPATH=$HOME/go
 export EDITOR=vim
 if ! type "kak" > /dev/null; then
+    alias vim="kak"
     export EDITOR=kak
 fi
 
