@@ -38,14 +38,29 @@ hook global BufWritePost .*\.go %{
     go-format -use-goimports
 }
 
-set global grepcmd 'rg --column'
+set global grepcmd 'ag --column'
 set global ui_options ncurses_assistant=none:ncurses_enable_mouse=true:ncurses_set_title=false
 set global indentwidth 4
 set global scrolloff 5,5
 
-def find -params 1 -shell-candidates %{ ag --nocolor --ignore=vendor --ignore images --ignore svg --ignore fonts -g "" } %{ edit %arg{1} }
-def git-edit -params 1 -shell-candidates %{ git ls-files } %{ edit %arg{1} } -docstring "Uses git ls-files to find files"
-def fzf-file %{ %sh{
+def Lint -allow-override %{
+    map global normal <left> %{: lint-previous-error<ret>} -docstring "Prev lint error"
+    map global normal <right> %{: lint-next-error<ret>} -docstring "Next lint error"
+    lint
+} -docstring "Runs :lint and overrides <left> and <right>"
+def Make -allow-override %{
+    map global normal <left> %{: make-previous-error<ret>} -docstring "Prev make error"
+    map global normal <right> %{: make-next-error<ret>} -docstring "Next make error"
+    make
+} -docstring "Runs :make and overrides <left> and <right>"
+def Spell -allow-override %{
+    map global normal <left> %{: spell-replace<ret>} -docstring "Replace spelling error"
+    map global normal <right> %{: spell-next<ret>} -docstring "Next spelling error"
+    spell
+} -docstring "Runs :spell and overrides <left> and <right>"
+def find -allow-override -params 1 -shell-candidates %{ ag --nocolor --ignore=vendor --ignore images --ignore svg --ignore fonts -g "" } %{ edit %arg{1} }
+def git-edit -allow-override -params 1 -shell-candidates %{ git ls-files } %{ edit %arg{1} } -docstring "Uses git ls-files to find files"
+def fzf-file -allow-override %{ %sh{
         if [ -z "$TMUX" ]; then
             echo echo only works inside tmux
         else
@@ -55,7 +70,7 @@ def fzf-file %{ %sh{
         fi
     fi
 }} -docstring 'invoke fzf to open a file' 
-def fzf-buffer %{ %sh{
+def fzf-buffer -allow-override %{ %sh{
     if [ -z "$TMUX" ]; then
         echo echo only works inside tmux
     else
@@ -89,8 +104,8 @@ map global user M %{: mark-clear<ret>} -docstring "Remove word marking"
 map global normal -docstring "Quick find" -- - %{: find <tab>}
 map global normal <up> %{: grep-previous-match<ret>} -docstring "Prev grep match"
 map global normal <down> %{: grep-next-match<ret>} -docstring "Next grep match"
-map global normal <left> %{: lint-previous-error<ret>} -docstring "Prev lint error"
-map global normal <right> %{: lint-next-error<ret>} -docstring "Next lint error"
+map global normal <left> %{: buffer-previous<ret>} -docstring "Prev buffer"
+map global normal <right> %{: buffer-next<ret>} -docstring "Next buffer"
 
 colorscheme nofrils-dark
 try %{ source .kakrc.local }
