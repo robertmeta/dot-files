@@ -78,7 +78,6 @@ alias global wqa! write-all-quit
 alias global wq write-quit
 alias global wq! write-quit!
 
-map global normal -docstring "Quick find" -- - %{: find <tab>}
 map global goto f "<esc>1s(.+?)\h*$<ret>gf" -docstring "file" 
 map global user c %{: comment-line<ret>} -docstring "Comment or uncomment selected lines"
 map global user p %{| nc termbin.com 9999<ret>xyuP<a-;>k,c} -docstring "Publish to termbin.com"
@@ -87,6 +86,11 @@ map global user T %{: nop %sh{tmux split -v -p 20\; last-pane}<ret>} -docstring 
 map global user r %{: prompt %{Run:} %{echo %sh{tmux send-keys -t +1 "$kak_text" Enter }}<ret>} -docstring "Run command in next tmux window"
 map global user m %{: mark-word<ret>} -docstring "Mark word with highlight"
 map global user M %{: mark-clear<ret>} -docstring "Remove word marking"
+map global normal -docstring "Quick find" -- - %{: find <tab>}
+map global normal <up> %{: grep-previous-match<ret>} -docstring "Prev grep match"
+map global normal <down> %{: grep-next-match<ret>} -docstring "Next grep match"
+map global normal <left> %{: lint-previous-error<ret>} -docstring "Prev lint error"
+map global normal <right> %{: lint-next-error<ret>} -docstring "Next lint error"
 
 colorscheme nofrils-dark
 try %{ source .kakrc.local }
