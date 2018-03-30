@@ -43,7 +43,7 @@ source ~/.zshrc
 tmux source-file ~/.tmux.conf
 
 if [ -x "$(command -v go)" ]; then
-    read "reply?Update go support apps? " -n 1 -r
+    read "reply?Update go support apps? " -r
     if [[ "$reply" =~ ^[Yy]$ ]]; then
         go get -u -v github.com/alecthomas/gometalinter
         go get -u -v github.com/davidrjenni/reftools/cmd/fillstruct
