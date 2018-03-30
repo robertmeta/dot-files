@@ -46,23 +46,41 @@ if [ -x "$(command -v go)" ]; then
     read "reply?Update go support apps? "
     if [[ "$reply" =~ ^[Yy]$ ]]; then
         go get -u github.com/monochromegane/the_platinum_searcher/...
+        echo "Installed pt"
         go get -u github.com/alecthomas/gometalinter
+        echo "Installed gometalinter"
         go get -u github.com/davidrjenni/reftools/cmd/fillstruct
+        echo "Installed fillstruct"
         go get -u github.com/derekparker/delve/cmd/dlv
+        echo "Installed dlv"
         go get -u github.com/dominikh/go-tools/cmd/keyify
+        echo "Installed keyify"
         go get -u github.com/fatih/gomodifytags
+        echo "Installed gomodifytags"
         go get -u github.com/fatih/motion
+        echo "Installed motion"
         go get -u github.com/golang/lint/golint
+        echo "Installed golint"
         go get -u github.com/josharian/impl
+        echo "Installed impl"
         go get -u github.com/jstemmer/gotags
+        echo "Installed gotags"
         go get -u github.com/kisielk/errcheck
+        echo "Installed errcheck"
         go get -u github.com/klauspost/asmfmt/cmd/asmfmt
+        echo "Installed asmfmt"
         go get -u github.com/nsf/gocode
+        echo "Installed gocode"
         go get -u github.com/rogpeppe/godef
+        echo "Installed godef"
         go get -u github.com/zmb3/gogetdoc
+        echo "Installed gogetdoc"
         go get -u golang.org/x/tools/cmd/goimports
+        echo "Installed goimports"
         go get -u golang.org/x/tools/cmd/gorename
+        echo "Installed gorename"
         go get -u golang.org/x/tools/cmd/guru
+        echo "Installed guru"
     fi
 fi
 
