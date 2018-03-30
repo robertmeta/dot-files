@@ -42,23 +42,27 @@ mv ~/.ssh/authorized_keys.tmp ~/.ssh/authorized_keys
 source ~/.zshrc
 tmux source-file ~/.tmux.conf
 
+read -p "Update go support apps? " -n 1 -r
 if [ -x "$(command -v go)" ]; then
-    go get -u -v github.com/zmb3/gogetdoc
-    go get -u -v golang.org/x/tools/cmd/guru
-    go get -u -v github.com/golang/lint/golint
-    go get -u -v github.com/davidrjenni/reftools/cmd/fillstruct
-    go get -u -v github.com/rogpeppe/godef
-    go get -u -v github.com/fatih/motion
-    go get -u -v github.com/kisielk/errcheck
-    go get -u -v github.com/nsf/gocode
-    go get -u -v github.com/jstemmer/gotags
-    go get -u -v github.com/josharian/impl
-    go get -u -v golang.org/x/tools/cmd/goimports
-    go get -u -v github.com/fatih/gomodifytags
-    go get -u -v github.com/dominikh/go-tools/cmd/keyify
-    go get -u -v golang.org/x/tools/cmd/gorename
-    go get -u -v github.com/klauspost/asmfmt/cmd/asmfmt
-    go get -u -v github.com/alecthomas/gometalinter
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        go get -u -v github.com/alecthomas/gometalinter
+        go get -u -v github.com/davidrjenni/reftools/cmd/fillstruct
+        go get -u -v github.com/derekparker/delve/cmd/dlv
+        go get -u -v github.com/dominikh/go-tools/cmd/keyify
+        go get -u -v github.com/fatih/gomodifytags
+        go get -u -v github.com/fatih/motion
+        go get -u -v github.com/golang/lint/golint
+        go get -u -v github.com/josharian/impl
+        go get -u -v github.com/jstemmer/gotags
+        go get -u -v github.com/kisielk/errcheck
+        go get -u -v github.com/klauspost/asmfmt/cmd/asmfmt
+        go get -u -v github.com/nsf/gocode
+        go get -u -v github.com/rogpeppe/godef
+        go get -u -v github.com/zmb3/gogetdoc
+        go get -u -v golang.org/x/tools/cmd/goimports
+        go get -u -v golang.org/x/tools/cmd/gorename
+        go get -u -v golang.org/x/tools/cmd/guru
+    fi
 fi
 
 chmod 644 ~/.ssh/authorized_keys
