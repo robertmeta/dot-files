@@ -42,9 +42,9 @@ mv ~/.ssh/authorized_keys.tmp ~/.ssh/authorized_keys
 source ~/.zshrc
 tmux source-file ~/.tmux.conf
 
-read -p "Update go support apps? " -n 1 -r
 if [ -x "$(command -v go)" ]; then
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
+    read "reply?Update go support apps? " -n 1 -r
+    if [[ "$reply" =~ ^[Yy]$ ]]; then
         go get -u -v github.com/alecthomas/gometalinter
         go get -u -v github.com/davidrjenni/reftools/cmd/fillstruct
         go get -u -v github.com/derekparker/delve/cmd/dlv
