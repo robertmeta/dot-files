@@ -81,6 +81,8 @@ if [ -x "$(command -v go)" ]; then
         echo "Installed gorename"
         go get -u golang.org/x/tools/cmd/guru
         echo "Installed guru"
+        go get -u github.com/carlmjohnson/pomodoro
+	echo "Installed pomodoro"
     fi
 fi
 
