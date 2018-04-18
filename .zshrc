@@ -35,6 +35,7 @@ export EDITOR=vim
 if ! type "kak" > /dev/null; then
     alias vim="kak"
     export EDITOR=kak
+    export VISUAL=kak
 fi
 
 export PATH=$HOME/.local/bin:$HOME/bin:$GOPATH/bin:/usr/local/bin:$GOROOT/bin:/bin:/usr/bin:/sbin:/usr/sbin:$HOME/.cargo/bin:$PATH
