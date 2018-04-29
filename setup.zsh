@@ -4,6 +4,7 @@ rm -rf ~/.vim
 rm -rf ~/.nvim
 rm -rf ~/.config/nvim
 rm -rf ~/.config/kak
+rm -rf ~/.config/i3
 rm -rf ~/.config/ranger
 rm ~/.tmux.conf
 rm ~/.vimrc
@@ -30,6 +31,7 @@ ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/vimfiles ~/.vim
 ln -s ~/.dotfiles/vimfiles ~/.config/nvim
 ln -s ~/.dotfiles/kak ~/.config/kak
+ln -s ~/.dotfiles/i3 ~/.config/i3
 ln -s ~/.dotfiles/ranger ~/.config/ranger
 ln -s ~/.config/nvim/vimrc ~/.config/nvim/init.vim
 ln -s ~/.dotfiles/.agignore ~/.agignore
