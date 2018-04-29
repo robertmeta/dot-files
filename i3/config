@@ -152,3 +152,4 @@ bar {
 
 exec --no-startup-id setxkbmap -layout us -option caps:escape 
 exec --no-startup-id xrandr --output LVDS-1 --off
+exec --no-startup-id pulseaudio --start
