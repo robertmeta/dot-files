@@ -49,6 +49,10 @@ bindsym $mod+Left focus left
 bindsym $mod+Down focus down 
 bindsym $mod+Up focus up 
 bindsym $mod+Right focus right
+bindsym Mod1+Left focus left 
+bindsym Mod1+Down focus down 
+bindsym Mod1+Up focus up 
+bindsym Mod1+Right focus right
 
 # move focused window
 bindsym $mod+Shift+h move left 
@@ -63,10 +67,11 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+Shift-apostrophe split h
+bindsym $mod+5 split h
 
 # split in vertical orientation
-bindsym $mod+Shift-5 split v
+bindsym $mod+v split v
+bindsym $mod+apostrophe split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -101,7 +106,7 @@ bindsym Mod1+9 workspace number 9 organization
 bindsym Mod1+0 workspace number 10 gaming
 
 # move focused container to workspace
-number bindsym Mod1+Shift+1 move container to workspace number 1 local
+bindsym Mod1+Shift+1 move container to workspace number 1 local
 bindsym Mod1+Shift+2 move container to workspace number 2 comms
 bindsym Mod1+Shift+3 move container to workspace number 3 browsing
 bindsym Mod1+Shift+4 move container to workspace number 4 patdek
@@ -156,3 +161,4 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume alsa_out
 exec --no-startup-id setxkbmap -layout us -option caps:escape 
 exec --no-startup-id xrandr --output LVDS-1 --off
 exec --no-startup-id pulseaudio --start
+
