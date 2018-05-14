@@ -42,15 +42,15 @@
 	prompt = false
 [url "https://github.com/"]
 	insteadOf = git://github.com/
-[url "https://bitbucket.com/"]
-	insteadOf = git://bitbucket.com/
+[url "https://bitbucket.org/"]
+	insteadOf = git://bitbucket.org/
 [url "https://github.com/"]
         insteadOf = ssh://git@github.com/
-[url "https://bitbucket.com/"]
-        insteadOf = ssh://git@bitbucket.com/
+[url "https://bitbucket.org/"]
+        insteadOf = ssh://git@bitbucket.org/
 [url "https://github.com/"]
         insteadOf = git@github.com:
-[url "https://bitbucket.com/"]
-        insteadOf = git@bitbucket.com:
+[url "https://bitbucket.org/"]
+        insteadOf = git@bitbucket.org:
 [url "https://"]
 	insteadOf = git://
