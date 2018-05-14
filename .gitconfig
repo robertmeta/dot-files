@@ -51,6 +51,6 @@
 [url "https://github.com/"]
         insteadOf = git@github.com:
 [url "https://bitbucket.com/"]
-        insteadOf = git@bitbucket.com/
+        insteadOf = git@bitbucket.com:
 [url "https://"]
 	insteadOf = git://
