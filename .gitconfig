@@ -36,5 +36,21 @@
 	stat = true
 [branch]
 	autosetupmerge = true
+[github]
+        user = robertmeta
 [difftool]
 	prompt = false
+[url "https://github.com/"]
+	insteadOf = git://github.com/
+[url "https://bitbucket.com/"]
+	insteadOf = git://bitbucket.com/
+[url "https://github.com/"]
+        insteadOf = ssh://git@github.com/
+[url "https://bitbucket.com/"]
+        insteadOf = ssh://git@bitbucket.com/
+[url "https://github.com/"]
+        insteadOf = git@github.com:
+[url "https://bitbucket.com/"]
+        insteadOf = git@bitbucket.com/
+[url "https://"]
+	insteadOf = git://
