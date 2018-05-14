@@ -1,5 +1,5 @@
 [credential]
-	helper = cache --timeout=64800
+	helper = store
 [color]
 	ui = true
 [alias]
@@ -36,11 +36,5 @@
 	stat = true
 [branch]
 	autosetupmerge = true
-[url "ssh://git@github.com/"]
-        insteadOf = https://github.com/
-[url "ssh://git@bitbucket.com/"]
-        insteadOf = https://bitbucket.com/
-[github]
-        user = robertmeta
 [difftool]
 	prompt = false
