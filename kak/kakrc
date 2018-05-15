@@ -63,7 +63,7 @@ def Spell -allow-override %{
     map global normal <right> %{: spell-next<ret>} -docstring "Next spelling error"
     spell
 } -docstring "Runs :spell and overrides <left> and <right>"
-def find -allow-override -params 1 -shell-candidates %{ ag --nocolor --ignore=vendor --ignore images --ignore svg --ignore fonts -g "" } %{ edit %arg{1} }
+def find -allow-override -params 1 -shell-candidates %{ ag --nocolor --ignore=node-modules --ignore=vendor --ignore images --ignore svg --ignore fonts -g "" } %{ edit %arg{1} }
 def git-edit -allow-override -params 1 -shell-candidates %{ git ls-files } %{ edit %arg{1} } -docstring "Uses git ls-files to find files"
 def fzf-file -allow-override %{ %sh{
         if [ -z "$TMUX" ]; then
