@@ -111,7 +111,7 @@ map global normal <down> %{: grep-next-match<ret>} -docstring "Next grep match"
 map global normal <left> %{: buffer-previous<ret>} -docstring "Prev buffer"
 map global normal <right> %{: buffer-next<ret>} -docstring "Next buffer"
 
-colorscheme %sh {
+colorscheme %sh{
     case $(LC_ALL=C date -u +%H) in
        (01) echo nofrils-dark;;
        (02) echo nofrils-dark;;
@@ -126,7 +126,7 @@ colorscheme %sh {
        (11) echo nofrils-dark;;
        (22) echo nofrils-dark;;
        (23) echo nofrils-dark;;
-       (*) echo nofrils-acme;; # last ;; not necessary but doesn't harm
+       (*) echo nofrils-acme;;
     esac
 }
 try %{ source .kakrc.local }
