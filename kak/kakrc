@@ -48,24 +48,24 @@ set global ui_options ncurses_assistant=none:ncurses_enable_mouse=true:ncurses_s
 set global indentwidth 4
 set global scrolloff 5,5
 
-def Lint -allow-override %{
+def Lint %{
     map global normal <left> %{: lint-previous-error<ret>} -docstring "Prev lint error"
     map global normal <right> %{: lint-next-error<ret>} -docstring "Next lint error"
     lint
 } -docstring "Runs :lint and overrides <left> and <right>"
-def Make -allow-override %{
+def Make %{
     map global normal <left> %{: make-previous-error<ret>} -docstring "Prev make error"
     map global normal <right> %{: make-next-error<ret>} -docstring "Next make error"
     make
 } -docstring "Runs :make and overrides <left> and <right>"
-def Spell -allow-override %{
+def Spell %{
     map global normal <left> %{: spell-replace<ret>} -docstring "Replace spelling error"
     map global normal <right> %{: spell-next<ret>} -docstring "Next spelling error"
     spell
 } -docstring "Runs :spell and overrides <left> and <right>"
-def find -allow-override -params 1 -shell-candidates %{ ag --nocolor --ignore=node_modules --ignore=dist --ignore=vendor --ignore images --ignore svg --ignore fonts -g "" } %{ edit %arg{1} }
-def git-edit -allow-override -params 1 -shell-candidates %{ git ls-files } %{ edit %arg{1} } -docstring "Uses git ls-files to find files"
-def fzf-file -allow-override %{ %sh{
+def find -params 1 -shell-candidates %{ ag --nocolor --ignore=node_modules --ignore=dist --ignore=vendor --ignore images --ignore svg --ignore fonts -g "" } %{ edit %arg{1} }
+def git-edit -params 1 -shell-candidates %{ git ls-files } %{ edit %arg{1} } -docstring "Uses git ls-files to find files"
+def fzf-file %{ %sh{
         if [ -z "$TMUX" ]; then
             echo echo only works inside tmux
         else
@@ -75,7 +75,7 @@ def fzf-file -allow-override %{ %sh{
         fi
     fi
 }} -docstring 'invoke fzf to open a file' 
-def fzf-buffer -allow-override %{ %sh{
+def fzf-buffer %{ %sh{
     if [ -z "$TMUX" ]; then
         echo echo only works inside tmux
     else
