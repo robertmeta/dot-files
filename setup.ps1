@@ -70,6 +70,10 @@ if (Get-Command "go.exe" -ErrorAction SilentlyContinue)
     echo "Installed pomodoro"
     go get -u github.com/sourcegraph/go-langserver
     echo "Installed go-langserver"
+    go get -u github.com/fullstorydev/grpcurl
+    echo "Installed grpcurl"
+    go get -u github.com/tomnomnom/gron
+    echo "Installed gron"
 }
 
 # dasm's script: https://github.com/Disassembler0/Win10-Initial-Setup-Script/
