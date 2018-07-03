@@ -23,13 +23,19 @@ hook global WinCreate .* %{
     add-highlighter window/ wrap -word
 }
 hook global WinSetOption filetype=go %{
-    go-enable-autocomplete
+    # go-enable-autocomplete
     set window indentwidth 0 # 0 means real tab
     set window formatcmd 'goimports'
     set window lintcmd 'gometalinter .'
     set window makecmd 'go install -v -u .'
-    map window goto d <esc>:go-jump<ret> -docstring "Jump to definition"
+    # map window goto d <esc>:go-jump<ret> -docstring "Jump to definition"
     map window user k <esc>:go-doc-info<ret> -docstring "Show documentation"
+
+    %sh{kak-lsp --kakoune -s $kak_session}
+    lsp-start
+    lsp-auto-hover-enable
+    lsp-auto-hover-insert-mode-enable 
+    map window goto r <esc>:lsp-references<ret> -docstring "references to symbol under cursor"
 }
 hook global WinSetOption filetype=.+ %{
     try %{ addhl regex \<(TODO|FIXME|XXX|NOTE)\> 0:green }
@@ -114,6 +120,7 @@ ap global object h 'c<gt>,<lt><ret>' -docstring "select in the (html) angle brac
 
 colorscheme %sh{
     case $(LC_ALL=C date -u +%H) in
+       (00) echo nofrils-dark;;
        (01) echo nofrils-dark;;
        (02) echo nofrils-dark;;
        (03) echo nofrils-dark;;
@@ -130,4 +137,5 @@ colorscheme %sh{
        (*) echo nofrils-acme;;
     esac
 }
+
 try %{ source .kakrc.local }

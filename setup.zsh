@@ -88,6 +88,12 @@ if [ -x "$(command -v go)" ]; then
         echo "Installed guru"
         go get -u github.com/carlmjohnson/pomodoro
 	echo "Installed pomodoro"
+        go get -u github.com/sourcegraph/go-langserver
+        echo "Installed go-langserver"
+        go get -u github.com/fullstorydev/grpcurl
+        echo "Installed grpcurl"
+        go get -u github.com/tomnomnom/gron
+        echo "Installed gron"
     fi
 fi
 
