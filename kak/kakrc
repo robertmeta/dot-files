@@ -110,6 +110,7 @@ map global normal <up> %{: grep-previous-match<ret>} -docstring "Prev grep match
 map global normal <down> %{: grep-next-match<ret>} -docstring "Next grep match"
 map global normal <left> %{: buffer-previous<ret>} -docstring "Prev buffer"
 map global normal <right> %{: buffer-next<ret>} -docstring "Next buffer"
+ap global object h 'c<gt>,<lt><ret>' -docstring "select in the (html) angle brackets"
 
 colorscheme %sh{
     case $(LC_ALL=C date -u +%H) in
