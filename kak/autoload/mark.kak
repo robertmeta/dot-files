@@ -35,13 +35,12 @@ set-face global markface6 rgb:000000,rgb:D8BFD8
 ###
 # highlighers
 
-add-highlighter shared group mark
-add-highlighter shared/mark dynregex '%opt{mark_regex_1}' 0:markface1
-add-highlighter shared/mark dynregex '%opt{mark_regex_2}' 0:markface2
-add-highlighter shared/mark dynregex '%opt{mark_regex_3}' 0:markface3
-add-highlighter shared/mark dynregex '%opt{mark_regex_4}' 0:markface4
-add-highlighter shared/mark dynregex '%opt{mark_regex_5}' 0:markface5
-add-highlighter shared/mark dynregex '%opt{mark_regex_6}' 0:markface6
+add-highlighter shared/mark1 dynregex '%opt{mark_regex_1}' 0:markface1
+add-highlighter shared/mark2 dynregex '%opt{mark_regex_2}' 0:markface2
+add-highlighter shared/mark3 dynregex '%opt{mark_regex_3}' 0:markface3
+add-highlighter shared/mark4 dynregex '%opt{mark_regex_4}' 0:markface4
+add-highlighter shared/mark5 dynregex '%opt{mark_regex_5}' 0:markface5
+add-highlighter shared/mark6 dynregex '%opt{mark_regex_6}' 0:markface6
 
 ###
 # hooks
