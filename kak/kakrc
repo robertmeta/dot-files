@@ -43,7 +43,7 @@ hook global WinSetOption filetype=.+ %{
 hook global BufWritePost .*\.go %{
     go-format -use-goimports
 }
-hook global BufWritePre .* %{ %sh{
+hook global BufWritePre .* %{ evaluate-commands %sh{
   container=$(dirname "$kak_hook_param")
   test -d "$container" ||
     mkdir --parents "$container"
