@@ -53,7 +53,7 @@ if [ "$TMUX" = "" ]; then
      if [ "$HOST" != "MoyaLinux" ] && [ "$HOST" != "beast.workdomain" ] && [ "$HOST" != "moya-linux" ] && [ "$HOST" != "Roberts-Mini.home" ]; then
          tmux attach -t main || tmux new -s main;
      else
-         tmux new\; tmux setw -g window-status-current-bg green
+         tmux new; tmux setw -g window-status-current-bg green
      fi;
 fi
 export CDPATH=.:$GOPATH/src/github.com:$GOPATH/src/golang.org/x:$GOPATH/src/bitbucket.org:$GOPATH/src/gopkg.in:$GOPATH/src/github.com/247waiter:$GOPATH/src/github.com/patdek:~/projects:~/Projects:~/downloads:~/Downloads
