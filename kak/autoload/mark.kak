@@ -18,8 +18,8 @@ declare-option -hidden regex mark_regex_4
 declare-option -hidden regex mark_regex_5
 declare-option -hidden regex mark_regex_6
 
-declare-option -hidden int-list mark_unused %{1:2:3:4:5:6}
-declare-option -hidden int-list mark_active %{}
+declare-option -hidden int-list mark_unused 1 2 3 4 5 6
+declare-option -hidden int-list mark_active
 
 ###
 # faces
@@ -57,7 +57,7 @@ hook -group mark global KakBegin .* %{ try %{
 # definitions
 
 define-command -hidden mark-debug-print-state %{
-   %sh{
+   evaluate-commands %sh{
       case "${kak_opt_mark_debug}" in
          true|yes)
             printf "echo -debug [mark] unused:(%s) active:(%s)\\n" \
@@ -75,7 +75,7 @@ matching <pattern>; unless [slot] is specified, use slot 1
    pattern: regular expression
    slot:    index in 1..6) \
 %{
-   %sh{
+   evaluate-commands %sh{
       mp="${1}"
       mi="${2-1}"
 
@@ -116,7 +116,7 @@ define-command -params ..1 mark-del \
 mark-set at [slot]; unless [slot] is specified, use slot 1
    slot: index in 1..6) \
 %{
-   %sh{
+   evaluate-commands %sh{
       mi="${1-1}"
 
       case "${mi}" in
@@ -155,7 +155,7 @@ define-command mark-clear \
    -docstring %(mark-clear: unmark all text occurrences highlighted via
 mark-set) \
 %{
-   %sh{
+   evaluate-commands %sh{
       unset ta
       for i in $(printf %s "${kak_opt_mark_active}" | tr : '\n'); do
          ta="${i}${ta+:}${ta}"
@@ -178,7 +178,7 @@ to <action> for all occurrences of text matching <pattern>
    action:  token in {del, set, toggle}
    pattern: regular expression) \
 %{
-   %sh{
+   evaluate-commands %sh{
       action="${1}"
       mp="${2}"
 
@@ -242,7 +242,7 @@ to <action> for all occurrences of text matching <pattern>
 }
 
 define-command -hidden mark-word-impl %{
-   %sh{
+   evaluate-commands %sh{
       printf "mark-pattern toggle '\\\\b%s\\\\b'\\n" "${kak_selection}"
    }
 }
@@ -251,10 +251,7 @@ define-command mark-word \
     -docstring %(mark-word: toggle highlighting for all occurrences of the
 word under the cursor) \
 %{
-   %sh{
-      tmp="${kak_opt_extra_word_chars}"
-      printf "set-option current extra_word_chars ''\\n"
+   evaluate-commands %sh{
       printf "execute-keys -draft '%s'\\n" "<a-i>w:mark-word-impl<ret>"
-      printf "set-option current extra_word_chars '%s'\\n" "${tmp}"
    }
 }
