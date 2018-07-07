@@ -18,8 +18,8 @@ declare-option -hidden regex mark_regex_4
 declare-option -hidden regex mark_regex_5
 declare-option -hidden regex mark_regex_6
 
-declare-option -hidden int-list mark_unused %{1:2:3:4:5:6}
-declare-option -hidden int-list mark_active %{}
+declare-option -hidden int-list mark_unused 1 2 3 4 5 6
+declare-option -hidden int-list mark_active
 
 ###
 # faces
@@ -35,13 +35,12 @@ set-face global markface6 rgb:000000,rgb:D8BFD8
 ###
 # highlighers
 
-add-highlighter shared group mark
-add-highlighter shared/mark dynregex '%opt{mark_regex_1}' 0:markface1
-add-highlighter shared/mark dynregex '%opt{mark_regex_2}' 0:markface2
-add-highlighter shared/mark dynregex '%opt{mark_regex_3}' 0:markface3
-add-highlighter shared/mark dynregex '%opt{mark_regex_4}' 0:markface4
-add-highlighter shared/mark dynregex '%opt{mark_regex_5}' 0:markface5
-add-highlighter shared/mark dynregex '%opt{mark_regex_6}' 0:markface6
+add-highlighter shared/mark1 dynregex '%opt{mark_regex_1}' 0:markface1
+add-highlighter shared/mark2 dynregex '%opt{mark_regex_2}' 0:markface2
+add-highlighter shared/mark3 dynregex '%opt{mark_regex_3}' 0:markface3
+add-highlighter shared/mark4 dynregex '%opt{mark_regex_4}' 0:markface4
+add-highlighter shared/mark5 dynregex '%opt{mark_regex_5}' 0:markface5
+add-highlighter shared/mark6 dynregex '%opt{mark_regex_6}' 0:markface6
 
 ###
 # hooks
@@ -57,7 +56,7 @@ hook -group mark global KakBegin .* %{ try %{
 # definitions
 
 define-command -hidden mark-debug-print-state %{
-   %sh{
+   evaluate-commands %sh{
       case "${kak_opt_mark_debug}" in
          true|yes)
             printf "echo -debug [mark] unused:(%s) active:(%s)\\n" \
@@ -75,7 +74,7 @@ matching <pattern>; unless [slot] is specified, use slot 1
    pattern: regular expression
    slot:    index in 1..6) \
 %{
-   %sh{
+   evaluate-commands %sh{
       mp="${1}"
       mi="${2-1}"
 
@@ -116,7 +115,7 @@ define-command -params ..1 mark-del \
 mark-set at [slot]; unless [slot] is specified, use slot 1
    slot: index in 1..6) \
 %{
-   %sh{
+   evaluate-commands %sh{
       mi="${1-1}"
 
       case "${mi}" in
@@ -155,7 +154,7 @@ define-command mark-clear \
    -docstring %(mark-clear: unmark all text occurrences highlighted via
 mark-set) \
 %{
-   %sh{
+   evaluate-commands %sh{
       unset ta
       for i in $(printf %s "${kak_opt_mark_active}" | tr : '\n'); do
          ta="${i}${ta+:}${ta}"
@@ -178,7 +177,7 @@ to <action> for all occurrences of text matching <pattern>
    action:  token in {del, set, toggle}
    pattern: regular expression) \
 %{
-   %sh{
+   evaluate-commands %sh{
       action="${1}"
       mp="${2}"
 
@@ -242,7 +241,7 @@ to <action> for all occurrences of text matching <pattern>
 }
 
 define-command -hidden mark-word-impl %{
-   %sh{
+   evaluate-commands %sh{
       printf "mark-pattern toggle '\\\\b%s\\\\b'\\n" "${kak_selection}"
    }
 }
@@ -251,10 +250,7 @@ define-command mark-word \
     -docstring %(mark-word: toggle highlighting for all occurrences of the
 word under the cursor) \
 %{
-   %sh{
-      tmp="${kak_opt_extra_word_chars}"
-      printf "set-option current extra_word_chars ''\\n"
+   evaluate-commands %sh{
       printf "execute-keys -draft '%s'\\n" "<a-i>w:mark-word-impl<ret>"
-      printf "set-option current extra_word_chars '%s'\\n" "${tmp}"
    }
 }
