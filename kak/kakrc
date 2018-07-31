@@ -31,7 +31,7 @@ hook global WinSetOption filetype=go %{
     # map window goto d <esc>:go-jump<ret> -docstring "Jump to definition"
     map window user k <esc>:go-doc-info<ret> -docstring "Show documentation"
 
-    %sh{kak-lsp --kakoune -s $kak_session}
+    eval %sh{kak-lsp --kakoune -s $kak_session}
     lsp-start
     lsp-auto-hover-enable
     lsp-auto-hover-insert-mode-enable 
@@ -44,8 +44,8 @@ hook global BufWritePost .*\.go %{
     go-format -use-goimports
 }
 hook global BufWritePre .* %{ evaluate-commands %sh{
-  container=$(dirname "$kak_hook_param")
-  test -d "$container" ||
+    container=$(dirname "$kak_hook_param")
+    test -d "$container" ||
     mkdir --parents "$container"
 }}
 
