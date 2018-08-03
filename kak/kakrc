@@ -118,24 +118,6 @@ map global normal <left> %{: buffer-previous<ret>} -docstring "Prev buffer"
 map global normal <right> %{: buffer-next<ret>} -docstring "Next buffer"
 map global object h 'c<gt>,<lt><ret>' -docstring "select in the (html) angle brackets"
 
-colorscheme %sh{
-    case $(LC_ALL=C date -u +%H) in
-       (00) echo nofrils-dark;;
-       (01) echo nofrils-dark;;
-       (02) echo nofrils-dark;;
-       (03) echo nofrils-dark;;
-       (04) echo nofrils-dark;;
-       (05) echo nofrils-dark;;
-       (06) echo nofrils-dark;;
-       (07) echo nofrils-dark;;
-       (08) echo nofrils-dark;;
-       (09) echo nofrils-dark;;
-       (10) echo nofrils-dark;;
-       (11) echo nofrils-dark;;
-       (22) echo nofrils-dark;;
-       (23) echo nofrils-dark;;
-       (*) echo nofrils-acme;;
-    esac
-}
+colorscheme nofrils-acme
 
 try %{ source .kakrc.local }
