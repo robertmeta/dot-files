@@ -1,9 +1,9 @@
 # mark.kak
 # ----------------------------------------------------------------------------
-# version:  1.0.1
-# modified: 2017-12-15
-# author:   fsub <31548809+fsub@users.noreply.github.com>
-# rights:   UNLICENSE <http://unlicense.org/>
+# version:  1.1.0
+# modified: 2018-07-19
+# author:   fsub <fsub-9f4j@noreply.cycloid.eu>
+# rights:   UNLICENSE <https://unlicense.org>
 # ----------------------------------------------------------------------------
 
 ###
@@ -24,23 +24,25 @@ declare-option -hidden int-list mark_active
 ###
 # faces
 
-# for the time being, _ (underscore) is not admissible in face names 
-set-face global markface1 rgb:000000,rgb:FFA07A
-set-face global markface2 rgb:000000,rgb:D3D3D3
-set-face global markface3 rgb:000000,rgb:B0E0E6
-set-face global markface4 rgb:000000,rgb:7CFC00
-set-face global markface5 rgb:000000,rgb:FFD700
-set-face global markface6 rgb:000000,rgb:D8BFD8
+# FIXME for the time being, _ (underscore) is not admissible in face names,
+# see https://github.com/mawww/kakoune/issues/2229
+set-face global markface1 red+rb
+set-face global markface2 yellow+rb
+set-face global markface3 blue+rb
+set-face global markface4 magenta+rb
+set-face global markface5 cyan+rb
+set-face global markface6 green+rb
 
 ###
 # highlighers
 
-add-highlighter shared/mark1 dynregex '%opt{mark_regex_1}' 0:markface1
-add-highlighter shared/mark2 dynregex '%opt{mark_regex_2}' 0:markface2
-add-highlighter shared/mark3 dynregex '%opt{mark_regex_3}' 0:markface3
-add-highlighter shared/mark4 dynregex '%opt{mark_regex_4}' 0:markface4
-add-highlighter shared/mark5 dynregex '%opt{mark_regex_5}' 0:markface5
-add-highlighter shared/mark6 dynregex '%opt{mark_regex_6}' 0:markface6
+add-highlighter shared/mark group -passes colorize
+add-highlighter shared/mark/ dynregex '%opt{mark_regex_1}' 0:markface1
+add-highlighter shared/mark/ dynregex '%opt{mark_regex_2}' 0:markface2
+add-highlighter shared/mark/ dynregex '%opt{mark_regex_3}' 0:markface3
+add-highlighter shared/mark/ dynregex '%opt{mark_regex_4}' 0:markface4
+add-highlighter shared/mark/ dynregex '%opt{mark_regex_5}' 0:markface5
+add-highlighter shared/mark/ dynregex '%opt{mark_regex_6}' 0:markface6
 
 ###
 # hooks
@@ -49,7 +51,7 @@ add-highlighter shared/mark6 dynregex '%opt{mark_regex_6}' 0:markface6
 hook -group mark global KakBegin .* %{ try %{
    hook -group mark global WinSetOption filetype=.* %{ try %{
       remove-highlighter window/mark
-      add-highlighter window ref mark
+      add-highlighter window/ ref mark
 }}}}
 
 ###
@@ -59,7 +61,9 @@ define-command -hidden mark-debug-print-state %{
    evaluate-commands %sh{
       case "${kak_opt_mark_debug}" in
          true|yes)
-            printf "echo -debug [mark] unused:(%s) active:(%s)\\n" \
+            # FIXME ugly output if spaces around %s placeholders are removed,
+            # see https://github.com/mawww/kakoune/issues/2223
+            printf "echo -debug [mark] unused: ( %s ), active: ( %s )\\n" \
                "${kak_opt_mark_unused}" "${kak_opt_mark_active}"
             ;;
          *)
@@ -88,21 +92,23 @@ matching <pattern>; unless [slot] is specified, use slot 1
       esac
 
       unset tu
-      for i in $(printf %s "${kak_opt_mark_unused}" | tr : '\n'); do
+      for i in ${kak_opt_mark_unused}; do
+         eval i=${i} # remove quotes
          if [ "${i}" != "${mi}" ]; then
-            tu="${tu}${tu+:}${i}"
+            tu="${tu}${tu:+ }${i}"
          fi
       done
-      printf "set-option global mark_unused '%s'\\n" "${tu}"
+      printf "set-option global mark_unused %s\\n" "${tu}"
 
       unset ta
-      for i in $(printf %s "${kak_opt_mark_active}" | tr : '\n'); do
+      for i in ${kak_opt_mark_active}; do
+         eval i=${i}
          if [ "${i}" != "${mi}" ]; then
-            ta="${ta}${ta+:}${i}"
+            ta="${ta}${ta:+ }${i}"
          fi
       done
-      ta="${ta}${ta+:}${mi}"
-      printf "set-option global mark_active '%s'\\n" "${ta}"
+      ta="${ta}${ta:+ }${mi}"
+      printf "set-option global mark_active %s\\n" "${ta}"
 
       printf "mark-debug-print-state\\n"
 
@@ -128,21 +134,23 @@ mark-set at [slot]; unless [slot] is specified, use slot 1
       esac
 
       unset tu
-      for i in $(printf %s "${kak_opt_mark_unused}" | tr : '\n'); do
+      for i in ${kak_opt_mark_unused}; do
+         eval i=${i}
          if [ "${i}" != "${mi}" ]; then
-            tu="${tu}${tu+:}${i}"
+            tu="${tu}${tu:+ }${i}"
          fi
       done
-      tu="${mi}${tu+:}${tu}"
-      printf "set-option global mark_unused '%s'\\n" "${tu}"
+      tu="${mi}${tu:+ }${tu}"
+      printf "set-option global mark_unused %s\\n" "${tu}"
 
       unset ta
-      for i in $(printf %s "${kak_opt_mark_active}" | tr : '\n'); do
+      for i in ${kak_opt_mark_active}; do
+         eval i=${i}
          if [ "${i}" != "${mi}" ]; then
-            ta="${ta}${ta+:}${i}"
+            ta="${ta}${ta:+ }${i}"
          fi
       done
-      printf "set-option global mark_active '%s'\\n" "${ta}"
+      printf "set-option global mark_active %s\\n" "${ta}"
 
       printf "mark-debug-print-state\\n"
 
@@ -156,16 +164,18 @@ mark-set) \
 %{
    evaluate-commands %sh{
       unset ta
-      for i in $(printf %s "${kak_opt_mark_active}" | tr : '\n'); do
-         ta="${i}${ta+:}${ta}"
+      for i in ${kak_opt_mark_active}; do
+         eval i=${i}
+         ta="${i}${ta:+ }${ta}"
       done
       tu="${kak_opt_mark_unused}"
-      for i in $(printf %s "${ta}" | tr : '\n'); do
-         tu="${i}${tu+:}${tu}"
+      for i in ${ta}; do
+         eval i=${i}
+         tu="${i}${tu:+ }${tu}"
          printf "set-option global mark_regex_%s ''\\n" "${i}"
       done
-      printf "set-option global mark_unused '%s'\\n" "${tu}"
-      printf "set-option global mark_active ''\\n"
+      printf "set-option global mark_unused %s\\n" "${tu}"
+      printf "set-option global mark_active\\n"
 
       printf "mark-debug-print-state\\n"
    }
@@ -190,7 +200,8 @@ to <action> for all occurrences of text matching <pattern>
             ;;
       esac
 
-      for i in $(printf %s "${kak_opt_mark_active}" | tr : '\n'); do
+      for i in ${kak_opt_mark_active}; do
+         eval i=${i}
          case "${i}" in
             1)
                p="${kak_opt_mark_regex_1}"
@@ -217,7 +228,7 @@ to <action> for all occurrences of text matching <pattern>
          esac
          if [ "${p}" = "${mp}" ]; then
             if [ "${action}" != "set" ]; then
-               printf "mark-del '%s'\\n" "${i}"
+               printf "mark-del %s\\n" "${i}"
                action="del" # avoid setting again
             fi
          fi
@@ -225,17 +236,19 @@ to <action> for all occurrences of text matching <pattern>
 
       if [ "${action}" != "del" ]; then
          if [ -z "${kak_opt_mark_unused}" ]; then
-            for i in $(printf %s "${kak_opt_mark_active}" | tr : '\n'); do
+            for i in ${kak_opt_mark_active}; do
+               eval i=${i}
                mi="${i}"
                break
             done
          else
-            for i in $(printf %s "${kak_opt_mark_unused}" | tr : '\n'); do
+            for i in ${kak_opt_mark_unused}; do
+               eval i=${i}
                mi="${i}"
                break
             done
          fi
-         printf "mark-set '%s' '%s'\\n" "${mp}" "${mi}"
+         printf "mark-set '%s' %s\\n" "${mp}" "${mi}"
       fi
    }
 }
@@ -250,7 +263,15 @@ define-command mark-word \
     -docstring %(mark-word: toggle highlighting for all occurrences of the
 word under the cursor) \
 %{
-   evaluate-commands %sh{
-      printf "execute-keys -draft '%s'\\n" "<a-i>w:mark-word-impl<ret>"
+   evaluate-commands -draft -save-regs x %{
+      # FIXME `set-register` fails if its argument list is empty; as a
+      # workaround we add 'A' to `extra_word_chars`
+      # see https://github.com/mawww/kakoune/issues/2228
+      set-register x 'A' %opt{extra_word_chars}
+      set-option current extra_word_chars
+      try %[
+         execute-keys <a-i>w:mark-word-impl<ret>
+      ]
+      set-option current extra_word_chars %reg{x}
    }
 }
