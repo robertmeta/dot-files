@@ -10,7 +10,9 @@ ZSH_CUSTOM=$HOME/.dotfiles/zsh_custom
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="minimal"
 #ZSH_THEME="bira"
-ZSH_THEME="pygmalion"
+#ZSH_THEME="pygmalion"
+ZSH_THEME="gnzh"
+
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
