@@ -8,10 +8,10 @@ ZSH_CUSTOM=$HOME/.dotfiles/zsh_custom
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="minimal"
+ZSH_THEME="minimal"
 #ZSH_THEME="bira"
 #ZSH_THEME="pygmalion"
-ZSH_THEME="gnzh"
+#ZSH_THEME="gnzh"
 
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
@@ -80,3 +80,4 @@ fi
 
 # Fix C-s C-q issues
 stty -ixon
+export PS1="{%M} %5~ $(vcs_status)»%b "
