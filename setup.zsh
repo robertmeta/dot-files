@@ -76,7 +76,7 @@ if [ -x "$(command -v go)" ]; then
         echo "Installed errcheck"
         go get -u github.com/klauspost/asmfmt/cmd/asmfmt
         echo "Installed asmfmt"
-        go get -u github.com/nsf/gocode
+        go get -u github.com/mdempsky/gocode
         echo "Installed gocode"
         go get -u github.com/rogpeppe/godef
         echo "Installed godef"
