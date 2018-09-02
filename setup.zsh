@@ -5,6 +5,7 @@ rm -rf ~/.nvim
 rm -rf ~/.config/nvim
 rm -rf ~/.config/kak
 rm -rf ~/.config/i3
+rm -rf ~/.config/pt
 rm -rf ~/.config/ranger
 rm ~/.tmux.conf
 rm ~/.vimrc
@@ -35,6 +36,7 @@ ln -s ~/.dotfiles/kak ~/.config/kak
 # a bit gross, only adds in nofrils kakoune to colors
 ln -s ~/.dotfiles/nofrils-kakoune ~/.config/kak/colors
 ln -s ~/.dotfiles/i3 ~/.config/i3
+ln -s ~/.dotfiles/pt ~/.config/pt
 ln -s ~/.dotfiles/ranger ~/.config/ranger
 ln -s ~/.config/nvim/vimrc ~/.config/nvim/init.vim
 ln -s ~/.dotfiles/.agignore ~/.agignore

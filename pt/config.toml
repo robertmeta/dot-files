@@ -1,0 +1,2 @@
+color = false
+ignore = ["vendor", "node_modules", "dist"]
