@@ -117,7 +117,7 @@ map global normal <down> %{: grep-next-match<ret>} -docstring "Next grep match"
 map global normal <left> %{: buffer-previous<ret>} -docstring "Prev buffer"
 map global normal <right> %{: buffer-next<ret>} -docstring "Next buffer"
 map global object h 'c<gt>,<lt><ret>' -docstring "select in the (html) angle brackets"
-
+map global object o 'c\s,\s<ret>' -docstring "select inbetween the whitespace"
 colorscheme nofrils-acme
 
 try %{ source .kakrc.local }
