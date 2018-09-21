@@ -21,6 +21,17 @@ def toggle-highlighter -params .. -docstring 'toggle-highlighter <argument>…: 
     }
 }
 
+def ide %{
+    rename-client main
+    set global jumpclient main
+
+    new rename-client tools
+    set global toolsclient tools
+
+    new rename-client docs
+    set global docsclient docs
+}
+
 hook global InsertCompletionShow .* %{ map window insert <tab> <c-n>; map window insert <s-tab> <c-p> }
 hook global InsertCompletionHide .* %{ unmap window insert <tab> <c-n>; unmap window insert <s-tab> <c-p> }
 hook global WinCreate ^[^*]+$ %{
