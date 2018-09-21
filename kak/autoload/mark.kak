@@ -26,12 +26,12 @@ declare-option -hidden int-list mark_active
 
 # FIXME for the time being, _ (underscore) is not admissible in face names,
 # see https://github.com/mawww/kakoune/issues/2229
-set-face global markface1 red+rb
-set-face global markface2 yellow+rb
-set-face global markface3 blue+rb
-set-face global markface4 magenta+rb
-set-face global markface5 cyan+rb
-set-face global markface6 green+rb
+set-face global markface1 rgb:000000,rgb:FFA07A
+set-face global markface2 rgb:000000,rgb:D3D3D3
+set-face global markface3 rgb:000000,rgb:B0E0E6
+set-face global markface4 rgb:000000,rgb:7CFC00
+set-face global markface5 rgb:000000,rgb:FFD700
+set-face global markface6 rgb:000000,rgb:D8BFD8
 
 ###
 # highlighers

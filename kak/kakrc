@@ -6,21 +6,27 @@
 # - goimports for code formatting on save (https://golang.org/x/tools/cmd/goimports)
 # - gogetdoc for documentation display and source jump (https://github.com/zmb3/gogetdoc)
 # - jq for json deserializaton, required by gogetdoc
- 
-hook global InsertCompletionHide .* %{
-    unmap window insert <tab> <c-n>
-    unmap window insert <s-tab> <c-p>
+
+
+map global user -docstring "toggle wordwrap" <a-w> ':toggle-highlighter wrap -word<ret>'
+
+# Helper functions
+def toggle-highlighter -params .. -docstring 'toggle-highlighter <argument>…: toggle an highlighter' %{
+    try %{
+        addhl window/%arg{@} %arg{@}
+        echo -markup {green} %arg{@}
+    } catch %{
+        rmhl window/%arg{@}
+        echo -markup {red} %arg{@}
+    }
 }
-hook global InsertCompletionShow .* %{
-    map window insert <tab> <c-n>
-    map window insert <s-tab> <c-p>
-}
-hook global WinCreate .* %{
-    add-highlighter window/ number_lines -hlcursor
-    add-highlighter window/ show_matching
-    # default space char doesn't show 
-    # add-highlighter window/ show_whitespaces -spc \  -nbsp ∙
-    add-highlighter window/ wrap -word
+
+hook global InsertCompletionShow .* %{ map window insert <tab> <c-n>; map window insert <s-tab> <c-p> }
+hook global InsertCompletionHide .* %{ unmap window insert <tab> <c-n>; unmap window insert <s-tab> <c-p> }
+hook global WinCreate ^[^*]+$ %{
+    add-highlighter window/ number-lines -hlcursor
+    add-highlighter global/ show-matching
+    add-highlighter global/ dynregex '%reg{/}' 0:+u
 }
 hook global WinSetOption filetype=go %{
     # go-enable-autocomplete
@@ -28,14 +34,14 @@ hook global WinSetOption filetype=go %{
     set window formatcmd 'goimports'
     set window lintcmd 'gometalinter .'
     set window makecmd 'go install -v -u .'
-    # map window goto d <esc>:go-jump<ret> -docstring "Jump to definition"
+    map window goto d <esc>:go-jump<ret> -docstring "Jump to definition"
     map window user k <esc>:go-doc-info<ret> -docstring "Show documentation"
 
-    eval %sh{kak-lsp --kakoune -s $kak_session}
-    lsp-start
-    lsp-auto-hover-enable
-    lsp-auto-hover-insert-mode-enable 
-    map window goto r <esc>:lsp-references<ret> -docstring "references to symbol under cursor"
+    # eval %sh{kak-lsp --kakoune -s $kak_session}
+    # lsp-start
+    # lsp-auto-hover-enable
+    # lsp-auto-hover-insert-mode-enable 
+    # map window goto r <esc>:lsp-references<ret> -docstring "references to symbol under cursor"
 }
 hook global WinSetOption filetype=.+ %{
     try %{ addhl regex \<(TODO|FIXME|XXX|NOTE)\> 0:green }
@@ -90,7 +96,13 @@ def fzf-buffer %{ %sh{
             echo "eval -client '$kak_client' 'buffer ${BUFFER}'" | kak -p ${kak_session}
         fi
     fi
-}} -docstring 'invoke fzf to select a buffer' 
+}} -docstring 'invoke fzf to select a buffer'
+def mkdir %{ nop %sh{ mkdir -p $(dirname $kak_buffile) } }
+def delete-buffers-matching -params 1 %{
+    evaluate-commands -buffer * %{
+        evaluate-commands %sh{ case "$kak_buffile" in $1) echo "delete-buffer" ;; esac }
+    }
+}
 
 alias global bd delete-buffer
 alias global colo colorscheme
@@ -117,7 +129,10 @@ map global normal <down> %{: grep-next-match<ret>} -docstring "Next grep match"
 map global normal <left> %{: buffer-previous<ret>} -docstring "Prev buffer"
 map global normal <right> %{: buffer-next<ret>} -docstring "Next buffer"
 map global object h 'c<gt>,<lt><ret>' -docstring "select in the (html) angle brackets"
-map global object o 'c\s,\s<ret>' -docstring "select inbetween the whitespace"
+
 colorscheme nofrils-acme
 
+# machine local
+evaluate-commands %sh{ [ -f $kak_config/local.kak ] && echo "source $kak_config/local.kak" }
+# project local
 try %{ source .kakrc.local }
