@@ -97,7 +97,7 @@ if [ -x "$(command -v go)" ]; then
         go get -u github.com/tomnomnom/gron
         echo "Installed gron"
 	go get -u github.com/junegunn/fzf/...
-	echo "Install fzf"
+	echo "Installed fzf"
     fi
 fi
 

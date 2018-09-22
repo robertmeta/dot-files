@@ -99,26 +99,6 @@ def Spell %{
 } -docstring "Runs :spell and overrides <left> and <right>"
 def find -params 1 -shell-candidates %{ pt --nogroup --nocolor --column -g "" } %{ edit %arg{1} }
 def git-edit -params 1 -shell-candidates %{ git ls-files } %{ edit %arg{1} } -docstring "Uses git ls-files to find files"
-def fzf-file %{ %sh{
-        if [ -z "$TMUX" ]; then
-            echo echo only works inside tmux
-        else
-            FILE=$(ls -1 | fzf-tmux -d 15)
-            if [ -n "$FILE" ]; then
-                printf 'eval -client %%{%s} edit %%{%s}\n' "${kak_client}" "${FILE}" | kak -p "${kak_session}"
-        fi
-    fi
-}} -docstring 'invoke fzf to open a file' 
-def fzf-buffer %{ %sh{
-    if [ -z "$TMUX" ]; then
-        echo echo only works inside tmux
-    else
-        BUFFER=$(printf %s\\n "${kak_buflist}" | tr : '\n' | fzf-tmux -d 15)
-        if [ -n "$BUFFER" ]; then
-            echo "eval -client '$kak_client' 'buffer ${BUFFER}'" | kak -p ${kak_session}
-        fi
-    fi
-}} -docstring 'invoke fzf to select a buffer'
 def mkdir %{ nop %sh{ mkdir -p $(dirname $kak_buffile) } }
 def delete-buffers-matching -params 1 %{
     evaluate-commands -buffer * %{
