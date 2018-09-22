@@ -96,7 +96,7 @@ if [ -x "$(command -v go)" ]; then
         echo "Installed grpcurl"
         go get -u github.com/tomnomnom/gron
         echo "Installed gron"
-	go get -u https://github.com/junegunn/fzf/...
+	go get -u github.com/junegunn/fzf/...
 	echo "Install fzf"
     fi
 fi
