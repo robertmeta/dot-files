@@ -31,6 +31,8 @@ def ide %{
     new rename-client docs
     set global docsclient docs
 }
+map global normal <c-p> ': fzf-mode<ret>'
+set-option global fzf_file_command 'pt' # or 'ag'
 
 hook global InsertCompletionShow .* %{ map window insert <tab> <c-n>; map window insert <s-tab> <c-p> }
 hook global InsertCompletionHide .* %{ unmap window insert <tab> <c-n>; unmap window insert <s-tab> <c-p> }
@@ -38,7 +40,16 @@ hook global WinCreate ^[^*]+$ %{
     add-highlighter window/ number-lines -hlcursor
     add-highlighter global/ show-matching
     add-highlighter global/ dynregex '%reg{/}' 0:+u
+
+    # for mark.kak
+    set-face global markface1 rgb:000000,rgb:FFA07A
+    set-face global markface2 rgb:000000,rgb:D3D3D3
+    set-face global markface3 rgb:000000,rgb:B0E0E6
+    set-face global markface4 rgb:000000,rgb:7CFC00
+    set-face global markface5 rgb:000000,rgb:FFD700
+    set-face global markface6 rgb:000000,rgb:D8BFD8
 }
+
 hook global WinSetOption filetype=go %{
     # go-enable-autocomplete
     set window indentwidth 0 # 0 means real tab
