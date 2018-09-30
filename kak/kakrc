@@ -35,7 +35,7 @@ hook global WinSetOption filetype=go %{
     set window makecmd 'go build .'
     map window goto d <esc>:go-jump<ret> -docstring "Jump to definition"
     map window user k <esc>:go-doc-info<ret> -docstring "Show documentation"
-    add-highlighter window/ regex 'if err .*?\{.*?\} 0:comment'
+    add-highlighter window/ regex 'if err .*?\{.*?\}' 0:comment
 
     # eval %sh{kak-lsp --kakoune -s $kak_session}
     # lsp-start
