@@ -55,10 +55,14 @@ hook global BufWritePre .* %{ evaluate-commands %sh{
     mkdir --parents "$container"
 }}
 
-def find -params 1 -shell-candidates %{ pt --nogroup --nocolor --column -g "" } %{ edit %arg{1} } -docstring "Uses pt to find file"
+def findit -params 1 -shell-candidates %{ pt --nogroup --nocolor --column -g "" } %{ edit %arg{1} } -docstring "Uses pt to find file"
 def git-edit -params 1 -shell-candidates %{ git ls-files } %{ edit %arg{1} } -docstring "Uses git ls-files to find files"
 def mkdir %{ nop %sh{ mkdir -p $(dirname $kak_buffile) } } -docstring "Creates the directory up to this file"
 def delete-buffers-matching -params 1 %{ evaluate-commands -buffer * %{ evaluate-commands %sh{ case "$kak_buffile" in $1) echo "delete-buffer" esac } } }
+def -hidden text-object-indented-paragraph %{
+    execute-keys -draft -save-regs '' '<a-i>pZ'
+    execute-keys '<a-i>i<a-z>i'
+}
 def Lint %{
     map global normal <left> %{
         : lint-previous-error<ret>
@@ -107,7 +111,7 @@ set global scrolloff 5,5
 alias global bd delete-buffer
 alias global colo colorscheme
 alias global color colorscheme
-alias global f find
+alias global f findit
 alias global ge git-edit
 alias global qa quit
 alias global qa! quit!
@@ -117,12 +121,13 @@ alias global wq write-quit
 alias global wq! write-quit!
 
 map global normal <c-p> ': fzf-mode<ret>'
-map global normal -docstring "Quick find" -- - %{: find <tab>}
+map global normal -docstring "Quick find" -- - %{: findit <tab>}
 map global normal <down> %{: grep-next-match<ret>} -docstring "Next grep match"
 map global normal <left> %{: buffer-previous<ret>} -docstring "Prev buffer"
 map global normal <right> %{: buffer-next<ret>} -docstring "Next buffer"
 map global normal <up> %{: grep-previous-match<ret>} -docstring "Prev grep match"
-map global object h 'c<gt>,<lt><ret>' -docstring "select in the (html) angle brackets"
+map global object h 'c<gt>,<lt><ret>' -docstring "select in the (h)tml angle brackets"
+map global object b 'c\s,\s<ret>' -docstring "select (b)etween whitespace"
 map global user <a-w> ':toggle-highlighter wrap -word<ret>' -docstring "toggle wordwrap"
 map global user c %{: comment-line<ret>} -docstring "Comment or uncomment selected lines"
 map global user M %{: mark-clear<ret>} -docstring "Remove word marking"
