@@ -37,11 +37,11 @@ hook global WinSetOption filetype=go %{
     map window user k <esc>:go-doc-info<ret> -docstring "Show documentation"
     add-highlighter window/ regex 'if err .*?\{.*?\}' 0:comment
 
-    # eval %sh{kak-lsp --kakoune -s $kak_session}
-    # lsp-start
-    # lsp-auto-hover-enable
-    # lsp-auto-hover-insert-mode-enable 
-    # map window goto r <esc>:lsp-references<ret> -docstring "references to symbol under cursor"
+    eval %sh{kak-lsp --kakoune -s $kak_session}
+    lsp-start
+    lsp-auto-hover-enable
+    lsp-auto-hover-insert-mode-enable 
+    map window goto r <esc>:lsp-references<ret> -docstring "references to symbol under cursor"
 }
 hook global WinSetOption filetype=.+ %{
     try %{ addhl regex \<(TODO|FIXME|XXX|NOTE)\> 0:green }
