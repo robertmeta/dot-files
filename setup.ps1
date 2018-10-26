@@ -44,7 +44,7 @@ if (Get-Command "go.exe" -ErrorAction SilentlyContinue)
     echo "Installed gomodifytags"
     go get -u github.com/fatih/motion
     echo "Installed motion"
-    go get -u github.com/golang/lint/golint
+    go get -u golang.org/x/lint/golint
     echo "Installed golint"
     go get -u github.com/josharian/impl
     echo "Installed impl"
