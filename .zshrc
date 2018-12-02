@@ -53,7 +53,7 @@ alias getclip='xclip -selection clipboard -o'
 alias t="tmux selectp -t +1"
 
 if [ "$TMUX" = "" ]; then
-     if [ "$HOST" != "rmelton-G73Sw" ] && [ "$HOST" != "sony-linux" ] && [ "$HOST" != "beast.workdomain" ] && [ "$HOST" != "moya-linux" ] && [ "$HOST" != "Roberts-Mini.home" ]; then
+     if [ "$HOST" != "rmelton-G73Sw" ] && [ "$HOST" != "BEAST" ] && [ "$HOST" != "sony-linux" ] && [ "$HOST" != "beast.workdomain" ] && [ "$HOST" != "moya-linux" ] && [ "$HOST" != "Roberts-Mini.home" ]; then
          tmux attach -t main || tmux new -s main;
      else
          tmux new; tmux setw -g window-status-current-bg green
