@@ -22,6 +22,7 @@ mkdir ~/.config
 mkdir ~/.ssh
 
 git clone git://github.com/robertmeta/vimfiles ~/.dotfiles/vimfiles
+git clone git://github.com/robertmeta/kakfiles ~/.dotfiles/kakfiles
 git clone https://github.com/robertmeta/nofrils-kakoune ~/.dotfiles/nofrils-kakoune
 
 ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf
@@ -31,10 +32,8 @@ ln -s ~/.dotfiles/.ctags ~/.ctags
 ln -s ~/.dotfiles/.gitignore_global ~/.gitignore_global
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/vimfiles ~/.vim
+ln -s ~/.dotfiles/kakfiles ~/.config/kak
 ln -s ~/.dotfiles/vimfiles ~/.config/nvim
-ln -s ~/.dotfiles/kak ~/.config/kak
-# a bit gross, only adds in nofrils kakoune to colors
-ln -s ~/.dotfiles/nofrils-kakoune ~/.config/kak/colors
 ln -s ~/.dotfiles/i3 ~/.config/i3
 ln -s ~/.dotfiles/pt ~/.config/pt
 ln -s ~/.dotfiles/ranger ~/.config/ranger
