@@ -51,51 +51,51 @@ tmux source-file ~/.tmux.conf
 if [ -x "$(command -v go)" ]; then
     read "reply?Update go support apps? "
     if [[ "$reply" =~ ^[Yy]$ ]]; then
-        go get -u github.com/monochromegane/the_platinum_searcher/...
+        go get -insecure -u github.com/monochromegane/the_platinum_searcher/...
         echo "Installed pt"
-        go get -u github.com/alecthomas/gometalinter
+        go get -insecure -u github.com/alecthomas/gometalinter
         echo "Installed gometalinter"
-        go get -u github.com/davidrjenni/reftools/cmd/fillstruct
+        go get -insecure -u github.com/davidrjenni/reftools/cmd/fillstruct
         echo "Installed fillstruct"
-        go get -u github.com/derekparker/delve/cmd/dlv
+        go get -insecure -u github.com/derekparker/delve/cmd/dlv
         echo "Installed dlv"
-        go get -u github.com/dominikh/go-tools/cmd/keyify
+        go get -insecure -u github.com/dominikh/go-tools/cmd/keyify
         echo "Installed keyify"
-        go get -u github.com/fatih/gomodifytags
+        go get -insecure -u github.com/fatih/gomodifytags
         echo "Installed gomodifytags"
-        go get -u github.com/fatih/motion
+        go get -insecure -u github.com/fatih/motion
         echo "Installed motion"
-        go get -u golang.org/x/lint/golint
+        go get -insecure -u golang.org/x/lint/golint
         echo "Installed golint"
-        go get -u github.com/josharian/impl
+        go get -insecure -u github.com/josharian/impl
         echo "Installed impl"
-        go get -u github.com/jstemmer/gotags
+        go get -insecure -u github.com/jstemmer/gotags
         echo "Installed gotags"
-        go get -u github.com/kisielk/errcheck
+        go get -insecure -u github.com/kisielk/errcheck
         echo "Installed errcheck"
-        go get -u github.com/klauspost/asmfmt/cmd/asmfmt
+        go get -insecure -u github.com/klauspost/asmfmt/cmd/asmfmt
         echo "Installed asmfmt"
-        go get -u github.com/mdempsky/gocode
+        go get -insecure -u github.com/mdempsky/gocode
         echo "Installed gocode"
-        go get -u github.com/rogpeppe/godef
+        go get -insecure -u github.com/rogpeppe/godef
         echo "Installed godef"
-        go get -u github.com/zmb3/gogetdoc
+        go get -insecure -u github.com/zmb3/gogetdoc
         echo "Installed gogetdoc"
-        go get -u golang.org/x/tools/cmd/goimports
+        go get -insecure -u golang.org/x/tools/cmd/goimports
         echo "Installed goimports"
-        go get -u golang.org/x/tools/cmd/gorename
+        go get -insecure -u golang.org/x/tools/cmd/gorename
         echo "Installed gorename"
-        go get -u golang.org/x/tools/cmd/guru
+        go get -insecure -u golang.org/x/tools/cmd/guru
         echo "Installed guru"
-        go get -u github.com/carlmjohnson/pomodoro
+        go get -insecure -u github.com/carlmjohnson/pomodoro
 	echo "Installed pomodoro"
-        go get -u github.com/sourcegraph/go-langserver
+        go get -insecure -u github.com/sourcegraph/go-langserver
         echo "Installed go-langserver"
-        go get -u github.com/fullstorydev/grpcurl
+        go get -insecure -u github.com/fullstorydev/grpcurl
         echo "Installed grpcurl"
-        go get -u github.com/tomnomnom/gron
+        go get -insecure -u github.com/tomnomnom/gron
         echo "Installed gron"
-	go get -u github.com/junegunn/fzf/...
+	go get -insecure -u github.com/junegunn/fzf/...
 	echo "Installed fzf"
     fi
 fi
