@@ -13,7 +13,6 @@ ZSH_THEME="bira"
 #ZSH_THEME="pygmalion"
 #ZSH_THEME="gnzh"
 
-
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
 
@@ -36,7 +35,6 @@ export GOROOT=/opt/go # build it in the go directory
 export GOPATH=$HOME/go
 export EDITOR=vim
 if ! type "kak" > /dev/null; then
-    alias vim="kak"
     export EDITOR=kak
     export VISUAL=kak
 fi
@@ -52,13 +50,7 @@ alias setclip='xclip -selection c'
 alias getclip='xclip -selection clipboard -o'
 alias t="tmux selectp -t +1"
 
-if [ "$TMUX" = "" ]; then
-     if [ "$HOST" != "rmelton-G73Sw" ] && [ "$HOST" != "BEAST" ] && [ "$HOST" != "sony-linux" ] && [ "$HOST" != "beast.workdomain" ] && [ "$HOST" != "moya-linux" ] && [ "$HOST" != "Roberts-Mini.home" ]; then
-         tmux attach -t main || tmux new -s main;
-     else
-         tmux new; tmux setw -g window-status-current-bg green
-     fi;
-fi
+tmux attach -t main || tmux new -s main;
 export CDPATH=.:$GOPATH/src/github.com:$GOPATH/src/golang.org/x:$GOPATH/src/bitbucket.org:$GOPATH/src/gopkg.in:$GOPATH/src/github.com/247waiter:$GOPATH/src/github.com/patdek:~/projects:~/Projects:~/downloads:~/Downloads
 
 # For updating SSH key-agent stuff
