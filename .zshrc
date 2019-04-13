@@ -50,7 +50,8 @@ alias setclip='xclip -selection c'
 alias getclip='xclip -selection clipboard -o'
 alias t="tmux selectp -t +1"
 
-tmux new -A -s main
+[ -z "${TMUX}" ] && tmux new -A -s main
+
 export CDPATH=.:$GOPATH/src/github.com:$GOPATH/src/golang.org/x:$GOPATH/src/bitbucket.org:$GOPATH/src/gopkg.in:$GOPATH/src/github.com/247waiter:$GOPATH/src/github.com/patdek:~/projects:~/Projects:~/downloads:~/Downloads
 
 # For updating SSH key-agent stuff
