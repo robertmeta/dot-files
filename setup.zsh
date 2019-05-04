@@ -99,6 +99,13 @@ if [ -x "$(command -v go)" ]; then
 	echo "Installed fzf"
     fi
 fi
+if [ -x "$(command -v cargo)" ]; then
+    read "reply?Update rust support apps? "
+    if [[ "$reply" =~ ^[Yy]$ ]]; then
+        cargo install ripgrep
+        echo "Installed ripgrep"
+    fi
+fi
 
 chmod 644 ~/.ssh/authorized_keys
 chmod 600 ~/.ssh/config
