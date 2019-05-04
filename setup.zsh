@@ -102,7 +102,7 @@ fi
 if [ -x "$(command -v cargo)" ]; then
     read "reply?Update rust support apps? "
     if [[ "$reply" =~ ^[Yy]$ ]]; then
-        cargo install ripgrep
+        cargo install ripgrep --force
         echo "Installed ripgrep"
     fi
 fi
