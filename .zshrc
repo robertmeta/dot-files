@@ -8,8 +8,8 @@ ZSH_CUSTOM=$HOME/.dotfiles/zsh_custom
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="minimal"
-ZSH_THEME="bira"
+ZSH_THEME="minimal"
+#ZSH_THEME="bira"
 #ZSH_THEME="pygmalion"
 #ZSH_THEME="gnzh"
 
