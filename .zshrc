@@ -34,7 +34,8 @@ export DISABLE_AUTO_TITLE="true"
 export GOROOT=/opt/go # build it in the go directory
 export GOPATH=$HOME/go
 export EDITOR=vim
-if ! type "kak" > /dev/null; then
+export NNN_USE_EDITOR=1
+if type "kak" > /dev/null; then
     export EDITOR=kak
     export VISUAL=kak
 fi
