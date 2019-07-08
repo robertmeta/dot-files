@@ -68,8 +68,8 @@ fixssh() {
 # cyan cursor
 echo -e "\e]12;cyan\a"
 
-if [ -f $HOME/.zshlocal ]; then
-    source $HOME/.zshlocal
+if [ -f $HOME/.zsh.local ]; then
+    source $HOME/.zsh.local
 fi
 
 # Fix C-s C-q issues

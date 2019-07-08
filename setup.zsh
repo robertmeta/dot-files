@@ -44,6 +44,7 @@ ln -s ~/.dotfiles/sshconfig ~/.ssh/config
 cat ~/.dotfiles/id_rsa.pub >> ~/.ssh/authorized_keys
 cat ~/.ssh/authorized_keys | uniq > ~/.ssh/authorized_keys.tmp
 mv ~/.ssh/authorized_keys.tmp ~/.ssh/authorized_keys
+mv ~/.zshlocal ~/.zsh.local
 
 source ~/.zshrc
 tmux source-file ~/.tmux.conf
