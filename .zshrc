@@ -74,4 +74,12 @@ fi
 
 # Fix C-s C-q issues
 stty -ixon
-#export PS1="{%M} %5~ $(vcs_status)»%b "
+export PS1='%10~ $(vcs_status)
+»%b '
+if [[ -n $AWS_VAULT ]]; then
+  PROMPT="%F{242}[aws:$AWS_VAULT]%f $PROMPT"
+fi
+
+if [[ -n $TMUX_PANE ]]; then
+  PROMPT="%F{242}[pane: ${TMUX_PANE:1}]%f $PROMPT"
+fi
