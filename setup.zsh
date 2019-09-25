@@ -54,6 +54,8 @@ tmux source-file ~/.tmux.conf
 if [ -x "$(command -v go)" ]; then
     read "reply?Update go support apps? "
     if [[ "$reply" =~ ^[Yy]$ ]]; then
+        go get -insecure -u github.com/99designs/aws-vault
+        echo "Installed aws-vault"
         go get -insecure -u github.com/monochromegane/the_platinum_searcher/...
         echo "Installed pt"
         go get -insecure -u github.com/alecthomas/gometalinter
