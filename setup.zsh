@@ -4,6 +4,7 @@ rm -rf ~/.vim
 rm -rf ~/.nvim
 rm -rf ~/.config/nvim
 rm -rf ~/.config/kak
+rm -rf ~/.config/kak-lsp
 rm -rf ~/.config/i3
 rm -rf ~/.config/pt
 rm -rf ~/.config/ranger
@@ -33,6 +34,7 @@ ln -s ~/.dotfiles/.gitignore_global ~/.gitignore_global
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/vimfiles ~/.vim
 ln -s ~/.dotfiles/kakfiles ~/.config/kak
+ln -s ~/.dotfiles/kak-lsp ~/.config/kak-lsp
 ln -s ~/.dotfiles/vimfiles ~/.config/nvim
 ln -s ~/.dotfiles/i3 ~/.config/i3
 ln -s ~/.dotfiles/pt ~/.config/pt
@@ -105,6 +107,24 @@ if [ -x "$(command -v cargo)" ]; then
     if [[ "$reply" =~ ^[Yy]$ ]]; then
         cargo install ripgrep --force
         echo "Installed ripgrep"
+    fi
+fi
+
+if [ -x "$(command -v npm)" ]; then
+    read "reply?Update npm support apps? "
+    if [[ "$reply" =~ ^[Yy]$ ]]; then
+        sudo npm install -g yarn
+        echo "Installed yarn"
+        sudo npm install -g tslint
+        echo "Installed tslint"
+        sudo npm install -g console-tools
+        echo "Installed console-tools"
+        sudo npm install -g typescript
+        echo "Installed typescript"
+        sudo npm install -g typescript-language-server
+        echo "Installed typescript-language-server"
+        sudo npm install -g prettier
+        echo "Installed prettier"
     fi
 fi
 
