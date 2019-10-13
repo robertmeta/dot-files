@@ -73,7 +73,7 @@ if [ -f $HOME/.zsh.local ]; then
 fi
 
 # Fix C-s C-q issues
-stty -ixon
+# stty -ixon
 export PS1='%10~ $(vcs_status)
 »%b '
 if [[ -n $AWS_VAULT ]]; then
