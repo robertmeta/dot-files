@@ -111,6 +111,8 @@ if [ -x "$(command -v cargo)" ]; then
     if [[ "$reply" =~ ^[Yy]$ ]]; then
         cargo install ripgrep --force
         echo "Installed ripgrep"
+        cargo install skim --force
+        echo "Installed skim"
     fi
 fi
 
