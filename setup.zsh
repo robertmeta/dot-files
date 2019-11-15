@@ -119,6 +119,8 @@ fi
 if [ -x "$(command -v npm)" ]; then
     read "reply?Update npm support apps? "
     if [[ "$reply" =~ ^[Yy]$ ]]; then
+        sudo npm install -g npm
+        echo "Installed npm"
         sudo npm install -g yarn
         echo "Installed yarn"
         sudo npm install -g tslint
