@@ -21,6 +21,7 @@ rm ~/.ssh/config
 mkdir ~/.dotfiles
 mkdir ~/.config
 mkdir ~/.ssh
+mkdir ~/.nvm
 
 git clone git://github.com/robertmeta/vimfiles ~/.dotfiles/vimfiles
 git clone git://github.com/robertmeta/kakfiles ~/.dotfiles/kakfiles
