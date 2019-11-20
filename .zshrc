@@ -19,7 +19,7 @@ ZSH_THEME="minimal"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=()
+plugins=(nvm git)
 
 # Important for mac
 export LC_ALL=en_US.UTF-8
