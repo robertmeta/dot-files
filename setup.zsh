@@ -112,12 +112,16 @@ if [ -x "$(command -v cargo)" ]; then
     if [[ "$reply" =~ ^[Yy]$ ]]; then
         cargo install ripgrep --force
         echo "Installed ripgrep"
+        cargo install skim --force
+        echo "Installed skim"
     fi
 fi
 
 if [ -x "$(command -v npm)" ]; then
     read "reply?Update npm support apps? "
     if [[ "$reply" =~ ^[Yy]$ ]]; then
+        sudo npm install -g npm
+        echo "Installed npm"
         sudo npm install -g yarn
         echo "Installed yarn"
         sudo npm install -g tslint
