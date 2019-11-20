@@ -74,7 +74,6 @@ fi
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # Fix C-s C-q issues
 # stty -ixon
@@ -85,7 +84,7 @@ if [[ -n $AWS_VAULT ]]; then
 fi
 
 if type "nvm" > /dev/null; then
-  PROMPT="%F{242}[nvm:$(nvm -v)]%f $PROMPT"
+  PROMPT="%F{242}[nvm:$(nvm version)]%f $PROMPT"
 fi
 # if [[ -n $TMUX_PANE ]]; then
 #   PROMPT="%F{242}[pane: ${TMUX_PANE:1}]%f $PROMPT"
