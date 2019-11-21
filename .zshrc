@@ -84,7 +84,7 @@ if [[ -n $AWS_VAULT ]]; then
 fi
 
 if type "nvm" > /dev/null; then
-  PROMPT="%F{242}[nvm:$(nvm version)]%f $PROMPT"
+  PROMPT="%F{242}[nvm:\$(nvm version)]%f $PROMPT"
 fi
 # if [[ -n $TMUX_PANE ]]; then
 #   PROMPT="%F{242}[pane: ${TMUX_PANE:1}]%f $PROMPT"
