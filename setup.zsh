@@ -34,6 +34,7 @@ ln -s ~/.dotfiles/.gitignore_global ~/.gitignore_global
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/vimfiles ~/.vim
 ln -s ~/.dotfiles/kakfiles ~/.config/kak
+ln -s ~/.dotfiles/nofrils-kakoune/ ~/.config/kak/colors
 ln -s ~/.dotfiles/kak-lsp ~/.config/kak-lsp
 ln -s ~/.dotfiles/vimfiles ~/.config/nvim
 ln -s ~/.dotfiles/i3 ~/.config/i3
