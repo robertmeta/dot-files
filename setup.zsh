@@ -61,8 +61,8 @@ if [ -x "$(command -v go)" ]; then
         go get -insecure -u github.com/99designs/aws-vault
         echo "Installed aws-vault"
         go get -insecure -u github.com/monochromegane/the_platinum_searcher/...
-        # echo "Installed pt"
-        # go get -insecure -u github.com/alecthomas/gometalinter
+        echo "Installed pt"
+        go get -insecure -u github.com/alecthomas/gometalinter
         echo "Installed gometalinter"
         go get -insecure -u github.com/davidrjenni/reftools/cmd/fillstruct
         echo "Installed fillstruct"
