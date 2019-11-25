@@ -19,7 +19,7 @@ ZSH_THEME="minimal"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=()
+plugins=(nvm git)
 
 # Important for mac
 export LC_ALL=en_US.UTF-8
@@ -72,6 +72,9 @@ if [ -f $HOME/.zsh.local ]; then
     source $HOME/.zsh.local
 fi
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+
 # Fix C-s C-q issues
 # stty -ixon
 export PS1='%10~ $(vcs_status)
@@ -80,6 +83,9 @@ if [[ -n $AWS_VAULT ]]; then
   PROMPT="%F{242}[aws:$AWS_VAULT]%f $PROMPT"
 fi
 
+if type "nvm" > /dev/null; then
+  PROMPT="%F{242}[nvm:\$(nvm version)]%f $PROMPT"
+fi
 # if [[ -n $TMUX_PANE ]]; then
 #   PROMPT="%F{242}[pane: ${TMUX_PANE:1}]%f $PROMPT"
 # fi
