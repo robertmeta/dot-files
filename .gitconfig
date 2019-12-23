@@ -9,12 +9,12 @@
 [help]
 	autocorrect = 1
 [rerere]
-	enabled = true
+	enabled = false
 [user]
 	name = Robert Melton
 	email = robert@robertmelton.com
 [pull]
-	rebase = false
+	rebase = true
 [format]
 	pretty = short
 [push]
