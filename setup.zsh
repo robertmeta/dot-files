@@ -7,7 +7,6 @@ rm -rf ~/.config/kak
 rm -rf ~/.config/kak-lsp
 rm -rf ~/.config/i3
 rm -rf ~/.config/pt
-rm -rf ~/.config/ranger
 rm ~/.tmux.conf
 rm ~/.vimrc
 rm ~/.zshrc
@@ -40,7 +39,6 @@ ln -s ~/.dotfiles/kak-lsp ~/.config/kak-lsp
 ln -s ~/.dotfiles/vimfiles ~/.config/nvim
 ln -s ~/.dotfiles/i3 ~/.config/i3
 ln -s ~/.dotfiles/pt ~/.config/pt
-ln -s ~/.dotfiles/ranger ~/.config/ranger
 ln -s ~/.config/nvim/vimrc ~/.config/nvim/init.vim
 ln -s ~/.dotfiles/.agignore ~/.agignore
 ln -s ~/.dotfiles/sshconfig ~/.ssh/config
