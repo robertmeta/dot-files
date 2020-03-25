@@ -133,6 +133,8 @@ if [ -x "$(command -v npm)" ]; then
         echo "Installed typescript-language-server"
         sudo npm install -g prettier
         echo "Installed prettier"
+        sudo npm install -g emmet-cli
+        echo "Installed emmet-cli"
     fi
 fi
 
