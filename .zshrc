@@ -39,6 +39,9 @@ if type "kak" > /dev/null; then
     export EDITOR=kak
     export VISUAL=kak
 fi
+if type "nvm" > /dev/null; then
+    nvm use 12
+fi
 
 export PATH=$HOME/.local/bin:$HOME/bin:$GOPATH/bin:/usr/local/bin:$GOROOT/bin:/bin:/usr/bin:/sbin:/usr/sbin:$HOME/.cargo/bin:$PATH
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/usr/local/lib"
