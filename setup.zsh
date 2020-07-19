@@ -7,7 +7,6 @@ rm -rf ~/.config/kak
 rm -rf ~/.config/kak-lsp
 rm -rf ~/.config/i3
 rm -rf ~/.config/pt
-rm -rf ~/.config/ranger
 rm ~/.tmux.conf
 rm ~/.vimrc
 rm ~/.zshrc
@@ -21,6 +20,7 @@ rm ~/.ssh/config
 mkdir ~/.dotfiles
 mkdir ~/.config
 mkdir ~/.ssh
+mkdir ~/.nvm
 
 git clone git://github.com/robertmeta/vimfiles ~/.dotfiles/vimfiles
 git clone git://github.com/robertmeta/kakfiles ~/.dotfiles/kakfiles
@@ -34,11 +34,11 @@ ln -s ~/.dotfiles/.gitignore_global ~/.gitignore_global
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/vimfiles ~/.vim
 ln -s ~/.dotfiles/kakfiles ~/.config/kak
+ln -s ~/.dotfiles/nofrils-kakoune/ ~/.config/kak/colors
 ln -s ~/.dotfiles/kak-lsp ~/.config/kak-lsp
 ln -s ~/.dotfiles/vimfiles ~/.config/nvim
 ln -s ~/.dotfiles/i3 ~/.config/i3
 ln -s ~/.dotfiles/pt ~/.config/pt
-ln -s ~/.dotfiles/ranger ~/.config/ranger
 ln -s ~/.config/nvim/vimrc ~/.config/nvim/init.vim
 ln -s ~/.dotfiles/.agignore ~/.agignore
 ln -s ~/.dotfiles/sshconfig ~/.ssh/config
@@ -59,8 +59,8 @@ if [ -x "$(command -v go)" ]; then
         go get -insecure -u github.com/99designs/aws-vault
         echo "Installed aws-vault"
         go get -insecure -u github.com/monochromegane/the_platinum_searcher/...
-        # echo "Installed pt"
-        # go get -insecure -u github.com/alecthomas/gometalinter
+        echo "Installed pt"
+        go get -insecure -u github.com/alecthomas/gometalinter
         echo "Installed gometalinter"
         go get -insecure -u github.com/davidrjenni/reftools/cmd/fillstruct
         echo "Installed fillstruct"
@@ -111,12 +111,16 @@ if [ -x "$(command -v cargo)" ]; then
     if [[ "$reply" =~ ^[Yy]$ ]]; then
         cargo install ripgrep --force
         echo "Installed ripgrep"
+        cargo install broot --force
+        echo "Installed broot"
     fi
 fi
 
 if [ -x "$(command -v npm)" ]; then
     read "reply?Update npm support apps? "
     if [[ "$reply" =~ ^[Yy]$ ]]; then
+        sudo npm install -g npm
+        echo "Installed npm"
         sudo npm install -g yarn
         echo "Installed yarn"
         sudo npm install -g tslint
@@ -129,6 +133,8 @@ if [ -x "$(command -v npm)" ]; then
         echo "Installed typescript-language-server"
         sudo npm install -g prettier
         echo "Installed prettier"
+        sudo npm install -g emmet-cli
+        echo "Installed emmet-cli"
     fi
 fi
 
