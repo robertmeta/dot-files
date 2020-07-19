@@ -6,6 +6,7 @@ rm -rf ~/.config/nvim
 rm -rf ~/.config/kak
 rm -rf ~/.config/kak-lsp
 rm -rf ~/.config/i3
+rm -rf ~/.config/broot
 rm -rf ~/.config/pt
 rm ~/.tmux.conf
 rm ~/.vimrc
@@ -38,6 +39,7 @@ ln -s ~/.dotfiles/nofrils-kakoune/ ~/.config/kak/colors
 ln -s ~/.dotfiles/kak-lsp ~/.config/kak-lsp
 ln -s ~/.dotfiles/vimfiles ~/.config/nvim
 ln -s ~/.dotfiles/i3 ~/.config/i3
+ln -s ~/.dotfiles/broot ~/.config/broot
 ln -s ~/.dotfiles/pt ~/.config/pt
 ln -s ~/.config/nvim/vimrc ~/.config/nvim/init.vim
 ln -s ~/.dotfiles/.agignore ~/.agignore
@@ -123,18 +125,8 @@ if [ -x "$(command -v npm)" ]; then
         echo "Installed npm"
         sudo npm install -g yarn
         echo "Installed yarn"
-        sudo npm install -g tslint
-        echo "Installed tslint"
-        sudo npm install -g console-tools
-        echo "Installed console-tools"
-        sudo npm install -g typescript
-        echo "Installed typescript"
-        sudo npm install -g typescript-language-server
-        echo "Installed typescript-language-server"
-        sudo npm install -g prettier
-        echo "Installed prettier"
-        sudo npm install -g emmet-cli
-        echo "Installed emmet-cli"
+        sudo yarn global add eslint tslint console-tools typescript typescript-language-server prettier emmet-cli
+        echo "Installed eslint tslint console-tools typescript typescript-language-server prettier emmet-cli"
     fi
 fi
 
@@ -142,3 +134,5 @@ chmod 644 ~/.ssh/authorized_keys
 chmod 600 ~/.ssh/config
 chmod 600 ~/.ssh/id_rsa
 chmod 755 ~/.ssh
+
+echo "Remember to go into kak and run :plug-install"
