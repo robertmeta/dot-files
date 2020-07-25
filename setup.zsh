@@ -115,6 +115,18 @@ if [ -x "$(command -v cargo)" ]; then
         echo "Installed ripgrep"
         cargo install broot --force
         echo "Installed broot"
+        cargo install exa --force
+        echo "Installed exa"
+        cargo install gitui --force
+        echo "Installed gitui"
+        cargo install hyperfine --force
+        echo "Installed hyperfine"
+        cargo install pastel --force
+        echo "Installed pastel"
+        cargo install tealdear --force
+        echo "Installed tealdear"
+        cargo install tokei --force
+        echo "Installed tokei"
     fi
 fi
 
