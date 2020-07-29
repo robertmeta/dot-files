@@ -32,6 +32,9 @@ bindsym $mod+Shift+w sticky toggle
 
 bindsym $mod+x [urgent=latest] focus
 
+bindsym $mod+control+l exec --no-startup-id ~/bin/i3lk
+exec --no-startup-id xautolock -time 10 -locker '~/bin/i3lk' &
+
 # start dmenu (a program launcher)
 bindsym $mod+r exec --no-startup-id rofi -show drun
 bindsym $mod+a exec --no-startup-id rofi -show window
