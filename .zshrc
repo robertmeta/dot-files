@@ -88,7 +88,7 @@ if [[ -n $AWS_VAULT ]]; then
 fi
 
 if type "nvm" > /dev/null; then
-  PROMPT="%F{242}[nvm:\$(nvm version)]%f $PROMPT"
+  PROMPT="%F{242}[nvm:\$(nvm version)]%f [$(date +'%Y.%m.%d@%H:%M:%S')] $PROMPT"
 fi
 # if [[ -n $TMUX_PANE ]]; then
 #   PROMPT="%F{242}[pane: ${TMUX_PANE:1}]%f $PROMPT"
@@ -99,3 +99,7 @@ fi
 # else
 #     PROMPT="%F{242}[FAIL]%f $PROMPT"
 # fi
+
+source /home/rmelton/.config/broot/launcher/bash/br
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
