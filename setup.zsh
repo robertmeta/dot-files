@@ -145,7 +145,7 @@ if [ -x "$(command -v npm)" ]; then
         echo "Installed npm"
         sudo npm install -g yarn
         echo "Installed yarn"
-        sudo yarn global add eslint tslint console-tools typescript typescript-language-server prettier emmet-cli
+        sudo yarn global add eslint tslint console-tools typescript typescript-language-server prettier emmet-cli ts-node
         echo "Installed eslint tslint console-tools typescript typescript-language-server prettier emmet-cli"
     fi
 fi
