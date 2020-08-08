@@ -51,7 +51,6 @@ cat ~/.ssh/authorized_keys | uniq > ~/.ssh/authorized_keys.tmp
 mv ~/.ssh/authorized_keys.tmp ~/.ssh/authorized_keys
 mv ~/.zshlocal ~/.zsh.local
 
-
 source ~/.zshrc
 tmux source-file ~/.tmux.conf
 
@@ -155,4 +154,4 @@ chmod 600 ~/.ssh/config
 chmod 600 ~/.ssh/id_rsa
 chmod 755 ~/.ssh
 
-echo "Remember to go into kak and run :plug-install"
+kak -e 'plug-install; q'
