@@ -44,7 +44,8 @@ ln -s ~/.dotfiles/pt ~/.config/pt
 ln -s ~/.config/nvim/vimrc ~/.config/nvim/init.vim
 ln -s ~/.dotfiles/.agignore ~/.agignore
 ln -s ~/.dotfiles/sshconfig ~/.ssh/config
-ln -s ~/.local/share/broot/launcher/bash/1 ~/.config/broot/launcher/bash/br
+ln -s ~/.config/broot/launcher/bash/br ~/.local/share/broot/launcher/bash/1
+
 cat ~/.dotfiles/id_rsa.pub >> ~/.ssh/authorized_keys
 cat ~/.ssh/authorized_keys | uniq > ~/.ssh/authorized_keys.tmp
 mv ~/.ssh/authorized_keys.tmp ~/.ssh/authorized_keys
