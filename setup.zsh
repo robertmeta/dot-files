@@ -131,6 +131,8 @@ if [ -x "$(command -v cargo)" ]; then
         echo "Installed ruplacer"
         cargo install fd-find --force
         echo "Installed fd-find"
+        cargo install teip --force
+        echo "Installed teip"
     fi
 fi
 
