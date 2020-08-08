@@ -127,6 +127,10 @@ if [ -x "$(command -v cargo)" ]; then
         echo "Installed tealdear"
         cargo install tokei --force
         echo "Installed tokei"
+        cargo install ruplacer --force
+        echo "Installed ruplacer"
+        cargo install fd-find --force
+        echo "Installed fd-find"
     fi
 fi
 
