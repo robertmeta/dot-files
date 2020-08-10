@@ -90,15 +90,16 @@ fi
 if type "nvm" > /dev/null; then
   PROMPT="%F{242}[nvm:\$(nvm version)]%f %F{242}[$(date +'%H:%M:%S')]%f $PROMPT"
 fi
-if [[ -n $TMUX_PANE ]]; then
-  PROMPT="%F{242}[pane: ${TMUX_PANE:1}]%f $PROMPT"
-fi
 
-if [ $? -eq 0 ]; then
-     PROMPT="%F{242}[OK]%f $PROMPT"
-else
-     PROMPT="%F{242}[FAIL]%f $PROMPT"
-fi
+# if [[ -n $TMUX_PANE ]]; then
+#   PROMPT="%F{242}[pane: ${TMUX_PANE:1}]%f $PROMPT"
+# fi
+
+# if [ $? -eq 0 ]; then
+#      PROMPT="%F{242}[%F{darkgreen}OK%F{242}]%f $PROMPT"
+# else
+#      PROMPT="%F{242}[%F{darkred}FAIL%F{242}]%f $PROMPT"
+# fi
 
 source /home/rmelton/.config/broot/launcher/bash/br
 
