@@ -88,17 +88,17 @@ if [[ -n $AWS_VAULT ]]; then
 fi
 
 if type "nvm" > /dev/null; then
-  PROMPT="%F{242}[nvm:\$(nvm version)]%f [$(date +'%Y.%m.%d@%H:%M:%S')] $PROMPT"
+  PROMPT="%F{242}[nvm:\$(nvm version)]%f [$(date +'%H:%M:%S')] $PROMPT"
 fi
-# if [[ -n $TMUX_PANE ]]; then
-#   PROMPT="%F{242}[pane: ${TMUX_PANE:1}]%f $PROMPT"
-# fi
+if [[ -n $TMUX_PANE ]]; then
+  PROMPT="%F{242}[pane: ${TMUX_PANE:1}]%f $PROMPT"
+fi
 
-# if [ $? -eq 0 ]; then
-#     PROMPT="%F{242}[OK]%f $PROMPT"
-# else
-#     PROMPT="%F{242}[FAIL]%f $PROMPT"
-# fi
+if [ $? -eq 0 ]; then
+     PROMPT="%F{242}[OK]%f $PROMPT"
+else
+     PROMPT="%F{242}[FAIL]%f $PROMPT"
+fi
 
 source /home/rmelton/.config/broot/launcher/bash/br
 
