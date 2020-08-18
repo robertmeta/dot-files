@@ -53,7 +53,6 @@ alias wip="git add --all . && git wip"
 alias setclip='xclip -selection c'
 alias getclip='xclip -selection clipboard -o'
 alias t="tmux selectp -t +1"
-alias n="echo \"\" >> ~/gdrive/Sync/notes.md && date +'### %Y.%m.%d@%H:%M:%S' >> ~/gdrive/Sync/notes.md && kak ~/gdrive/Sync/notes.md -e 'execute-keys ge2o<esc><space>'"
 
 [ -z "${TMUX}" ] && tmux new -A -s main
 
