@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+NOW=`date +'%Y%0m%0d_%0H%0M%0S'`
+FILE=~/gdrive/Sync/$NOW.md
+cd ~/gdrive/Sync/
+echo "" >> $FILE
+kak $FILE

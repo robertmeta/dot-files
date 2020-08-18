@@ -13,6 +13,7 @@ rm ~/.vimrc
 rm ~/.zshrc
 rm ~/.tigrc
 rm ~/.ctags
+rm ~/bin/n
 rm ~/.gitignore_global
 rm ~/.gitconfig
 rm ~/.agignore
@@ -22,6 +23,7 @@ mkdir ~/.dotfiles
 mkdir ~/.config
 mkdir ~/.ssh
 mkdir ~/.nvm
+mkdir ~/bin
 
 git clone git://github.com/robertmeta/vimfiles ~/.dotfiles/vimfiles
 git clone git://github.com/robertmeta/kakfiles ~/.dotfiles/kakfiles
@@ -34,6 +36,7 @@ ln -s ~/.dotfiles/.ctags ~/.ctags
 ln -s ~/.dotfiles/.gitignore_global ~/.gitignore_global
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/vimfiles ~/.vim
+ln -s ~/.dotfiles/n ~/bin/n
 ln -s ~/.dotfiles/kakfiles ~/.config/kak
 ln -s ~/.dotfiles/nofrils-kakoune/ ~/.config/kak/colors
 ln -s ~/.dotfiles/kak-lsp ~/.config/kak-lsp
