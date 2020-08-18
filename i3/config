@@ -227,7 +227,7 @@ assign [class="Google-chrome" instance="crx_hoekmcfndbjmjaogiaanlnkonlhlmcgn"] 2
 
 assign [class="zoom"] 6 meetings
 
-assign [class="Google-chrome" instance="crx_kcibnhlniegimkbblemhacemgbkifjfn"] 7 music
+assign [class="Google-chrome" instance="crx_mabfdgfnfbgcnhlkmakpenfjcnjmcopi"] 7 music
 assign [class="Google-chrome" instance="crx_aifplmgcfaoelidmnmjblimekecbmndj"] 7 music
 assign [class="Spotify"] 7 music
 
@@ -235,12 +235,13 @@ assign [class="Google-chrome" instance="crx_icjoihabojchnllckhcimhgjplhpdolh"] 8
 assign [class="Google-chrome" instance="crx_pkooggnaalmfkidjmlhoelhdllpphaga"] 8 email
 
 assign [class="TeamViewer" instance="TeamViewer"] 10 dumping
+assign [class="Insync" instance="Insync"] 10 dumping
 
 #exec --no-startup-id dex /usr/share/applications/
 exec --no-startup-id dex ~/.local/share/applications/chrome-oihmkpogbcncclhnjdcnbhpgmidhcoed-Default.desktop
 exec --no-startup-id dex ~/.local/share/applications/chrome-hcfcmgpnmpinpidjdgejehjchlbglpde-Default.desktop
 exec --no-startup-id dex ~/.local/share/applications/chrome-pgjokpbmajkkkpdnbheecpjnccfheibh-Default.desktop
-exec --no-startup-id dex ~/.local/share/applications/chrome-kcibnhlniegimkbblemhacemgbkifjfn-Default.desktop
+exec --no-startup-id dex ~/.local/share/applications/chrome-mabfdgfnfbgcnhlkmakpenfjcnjmcopi-Default.desktop
 exec --no-startup-id dex ~/.local/share/applications/chrome-aifplmgcfaoelidmnmjblimekecbmndj-Default.desktop
 exec --no-startup-id dex ~/.local/share/applications/chrome-icjoihabojchnllckhcimhgjplhpdolh-Default.desktop
 exec --no-startup-id dex ~/.local/share/applications/chrome-pkooggnaalmfkidjmlhoelhdllpphaga-Default.desktop
@@ -249,3 +250,4 @@ exec --no-startup-id dex ~/.local/share/applications/chrome-hnpfjngllnobngcgfape
 exec --no-startup-id dex ~/.local/share/applications/chrome-hoekmcfndbjmjaogiaanlnkonlhlmcgn-Default.desktop
 exec --no-startup-id snap run slack
 exec --no-startup-id snap run spotify
+exec --no-startup-id dex /usr/share/applications/insync.desktop
