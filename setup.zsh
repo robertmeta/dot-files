@@ -14,6 +14,7 @@ rm ~/.zshrc
 rm ~/.tigrc
 rm ~/.ctags
 rm ~/bin/n
+rm ~/bin/n.
 rm ~/.gitignore_global
 rm ~/.gitconfig
 rm ~/.agignore
@@ -37,6 +38,7 @@ ln -s ~/.dotfiles/.gitignore_global ~/.gitignore_global
 ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/.dotfiles/vimfiles ~/.vim
 ln -s ~/.dotfiles/n ~/bin/n
+ln -s ~/.dotfiles/n. ~/bin/n.
 ln -s ~/.dotfiles/kakfiles ~/.config/kak
 ln -s ~/.dotfiles/nofrils-kakoune/ ~/.config/kak/colors
 ln -s ~/.dotfiles/kak-lsp ~/.config/kak-lsp

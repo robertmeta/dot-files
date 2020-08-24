@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+PATHPART=`ls ~/gdrive/Sync/ | grep .md | tail -1`
+FILE=~/gdrive/Sync/$PATHPART
+cd ~/gdrive/Sync/
+echo "" >> $FILE
+kak $FILE
