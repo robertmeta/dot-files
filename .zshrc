@@ -89,7 +89,7 @@ fi
 if type "nvm" > /dev/null; then
   PROMPT="%F{242}[nvm:\$(nvm version)]%f $PROMPT"
 fi
-RPROMPT="%F{242}[%D{%Y-%m-%f}|%T%f]"
+RPROMPT="%F{242}[%D{%Y-%m-%f}|%*%f]"
 
 
 # if [[ -n $TMUX_PANE ]]; then
