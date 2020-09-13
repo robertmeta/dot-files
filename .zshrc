@@ -80,6 +80,9 @@ export NVM_DIR="$HOME/.nvm"
 
 # Fix C-s C-q issues
 # stty -ixon
+# export PS1="╭─%{$terminfo[bold]$fg[green]%}%n@%m %{$reset_color%}%{$terminfo[bold]$fg[blue]%}%~ %{$reset_color%}$(ruby_prompt_info)$(git_prompt_info)$(virtualenv_prompt_info)
+# ╰─%B»%b"
+
 export PS1='%10~ $(vcs_status)
 »%b '
 if [[ -n $AWS_VAULT ]]; then
