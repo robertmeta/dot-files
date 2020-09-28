@@ -30,7 +30,7 @@ bindsym $mod+t exec --no-startup-id gnome-terminal
 bindsym $mod+Shift+q kill 
 bindsym $mod+Shift+w sticky toggle
 
-bindsym $mod+x [urgent=latest] focus
+bindsym $mod+x kill
 
 bindsym $mod+control+l exec --no-startup-id ~/bin/i3lk
 exec --no-startup-id xautolock -time 10 -locker '~/bin/i3lk' &
@@ -178,7 +178,7 @@ bindsym $mod+d mode "resize"
 
 # bindsym XF86AudioRaiseVolume exec --no-startup-id -pactl set-sink-volume alsa_output.usb-AudioQuest_inc._AudioQuest_DragonFly-00.analog-stereo +2.5%
 # bindsym XF86AudioLowerVolume exec --no-startup-id -pactl set-sink-volume alsa_output.usb-AudioQuest_inc._AudioQuest_DragonFly-00.analog-stereo -2.5% 
-exec --no-startup-id setxkbmap -layout us -option caps:escape 
+exec_always --no-startup-id setxkbmap -layout us -option caps:escape 
 exec --no-startup-id xrandr --output LVDS-1 --off
 # exec --no-startup-id -pulseaudio --start
 
@@ -237,10 +237,20 @@ assign [class="Google-chrome" instance="crx_pkooggnaalmfkidjmlhoelhdllpphaga"] 8
 assign [class="TeamViewer" instance="TeamViewer"] 10 dumping
 assign [class="Insync" instance="Insync"] 10 dumping
 
-#exec --no-startup-id dex /usr/share/applications/
-exec --no-startup-id dex ~/.local/share/applications/chrome-oihmkpogbcncclhnjdcnbhpgmidhcoed-Default.desktop
+# exec --no-startup-id dex /usr/share/applications/
+
+# Todoist 
+# exec --no-startup-id dex ~/.local/share/applications/chrome-oihmkpogbcncclhnjdcnbhpgmidhcoed-Default.desktop
+ 
+# TickTick
+exec --no-startup-id dex ~/.local/share/applications/chrome-kkfkcebenemijeefjopanckhhkfkmgdh-Default.desktop
+
+# Keep
 exec --no-startup-id dex ~/.local/share/applications/chrome-hcfcmgpnmpinpidjdgejehjchlbglpde-Default.desktop
+
+# Wolfram Alpha
 exec --no-startup-id dex ~/.local/share/applications/chrome-pgjokpbmajkkkpdnbheecpjnccfheibh-Default.desktop
+
 #exec --no-startup-id dex ~/.local/share/applications/chrome-mabfdgfnfbgcnhlkmakpenfjcnjmcopi-Default.desktop
 exec --no-startup-id dex ~/.local/share/applications/chrome-aifplmgcfaoelidmnmjblimekecbmndj-Default.desktop
 exec --no-startup-id dex ~/.local/share/applications/chrome-icjoihabojchnllckhcimhgjplhpdolh-Default.desktop
