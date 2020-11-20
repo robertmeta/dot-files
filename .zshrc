@@ -46,6 +46,8 @@ fi
 export PATH=$HOME/.local/bin:$HOME/bin:$GOPATH/bin:/usr/local/bin:$GOROOT/bin:/bin:/usr/bin:/sbin:/usr/sbin:$HOME/.cargo/bin:$PATH
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/usr/local/lib"
 
+alias l="ls -gotAshFLc"
+alias d="cd ~/downloads/"
 alias tmux="tmux -2u"
 alias gaa="git add --all"
 alias b="cd ~/go/src/github.com/patdek/patdek/backend"
