@@ -31,6 +31,9 @@ bindsym $mod+Shift+q kill
 bindsym $mod+Shift+w sticky toggle
 
 bindsym $mod+x kill
+#bindsym $mod+x [urgent=latest] focus
+bindsym $mod+u [urgent=latest] focus
+bindsym F12 [urgent=latest] focus
 
 bindsym $mod+control+l exec --no-startup-id ~/bin/i3lk
 exec --no-startup-id xautolock -time 10 -locker '~/bin/i3lk' &
@@ -43,7 +46,8 @@ bindsym $mod+a exec --no-startup-id rofi -show window
 # so you need that installed. 
 # bindsym $mod+d exec --no-startup-id -i3-dmenu-desktop
 # workspace_auto_back_and_forth yes
-focus_on_window_activation focus
+#focus_on_window_activation focus
+focus_on_window_activation urgent
 
 # change focus
 bindsym $mod+h focus left 
@@ -198,7 +202,9 @@ exec --no-startup-id xsetroot -solid "#204987"
 exec --no-startup-id hsetroot -solid "#204987"
 
 #workspace_layout stacking
-workspace_layout tabbed
+#workspace_layout tabbed
+workspace_layout default
+default_orientation horizontal
 bindsym $mod+minus move scratchpad
 bindsym $mod+grave scratchpad show
 bindsym F5 [class="Gnome-terminal"] exec --no-startup-id ~/bin/refresh
@@ -244,7 +250,13 @@ assign [class="Insync" instance="Insync"] 10 dumping
 
 # Todoist 
 # exec --no-startup-id dex ~/.local/share/applications/chrome-oihmkpogbcncclhnjdcnbhpgmidhcoed-Default.desktop
- 
+
+# Roam Research
+exec --no-startup-id dex ~/.local/share/applications/chrome-gmhpgfbjacdocjngbdbmhkgcpochhnge-Default.desktop
+
+# Slack (DT)
+exec --no-startup-id dex ~/.local/share/applications/hrome-baddpocofflaanbggldfkkmdepbmjngd-Profile_1.desktop
+
 # TickTick
 exec --no-startup-id dex ~/.local/share/applications/chrome-kkfkcebenemijeefjopanckhhkfkmgdh-Default.desktop
 
