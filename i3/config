@@ -33,7 +33,6 @@ bindsym $mod+Shift+w sticky toggle
 bindsym $mod+x kill
 #bindsym $mod+x [urgent=latest] focus
 bindsym $mod+u [urgent=latest] focus
-bindsym F12 [urgent=latest] focus
 
 bindsym $mod+control+l exec --no-startup-id ~/bin/i3lk
 exec --no-startup-id xautolock -time 10 -locker '~/bin/i3lk' &
@@ -54,18 +53,14 @@ bindsym $mod+h focus left
 bindsym $mod+j focus down 
 bindsym $mod+k focus up 
 bindsym $mod+l focus right
-bindsym --whole-window --border $mod+button4 focus left
-bindsym --whole-window --border $mod+button5 focus right
+#bindsym --whole-window --border $mod+button4 focus left
+#bindsym --whole-window --border $mod+button5 focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left 
 bindsym $mod+Down focus down 
 bindsym $mod+Up focus up 
 bindsym $mod+Right focus right
-bindsym Mod1+Left focus left 
-bindsym Mod1+Down focus down 
-bindsym Mod1+Up focus up 
-bindsym Mod1+Right focus right
 
 # move focused window
 bindsym $mod+Shift+h move left 
@@ -171,14 +166,14 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 
-bindsym $mod+d mode "resize"
-
 # Start i3bar to display a workspace bar (plus the system information i3status finds out, if available)
-#bar {
+bar {
     #mode hide
-    #status_command i3status
-    #modifier Mod1
-#}
+    position top
+    #height 50
+    status_command i3status
+    modifier Mod1
+}
 
 # bindsym XF86AudioRaiseVolume exec --no-startup-id -pactl set-sink-volume alsa_output.usb-AudioQuest_inc._AudioQuest_DragonFly-00.analog-stereo +2.5%
 # bindsym XF86AudioLowerVolume exec --no-startup-id -pactl set-sink-volume alsa_output.usb-AudioQuest_inc._AudioQuest_DragonFly-00.analog-stereo -2.5% 
@@ -189,7 +184,10 @@ exec --no-startup-id xrandr --output LVDS-1 --off
 for_window [class="^.*"] border normal 4
 
 gaps inner 0
-gaps outer 10
+gaps top 0
+gaps bottom 10
+gaps right 10
+gaps left 10
 
 # class                 border  backgr. text    indicator child_border
 client.focused          #d7afff #d7afff #000000 #d7afff #d7afff
@@ -198,8 +196,8 @@ client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 client.background       #000000
-exec --no-startup-id xsetroot -solid "#204987"
-exec --no-startup-id hsetroot -solid "#204987"
+exec_always --no-startup-id xsetroot -solid "#204987"
+exec_always --no-startup-id hsetroot -solid "#204987"
 
 #workspace_layout stacking
 #workspace_layout tabbed
@@ -213,7 +211,11 @@ bindsym F5 [class="Gnome-terminal"] exec --no-startup-id ~/bin/refresh
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioPause exec  --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id  playerctl next
-bindsym XF86AudioPrev exec --no-startup-id  playerctl previous
+bindsym Mod1+Down exec  --no-startup-id playerctl play-pause
+bindsym Mod1+Right exec --no-startup-id  playerctl next
+bindsym Mod1+Left exec --no-startup-id  playerctl previous
+bindsym Mod1+PageUp exec --no-startup-id "amixer -q sset Master,0 2+ unmute"
+bindsym Mod1+PageDown exec --no-startup-id "amixer -q sset Master,0 2- unmute"
 bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -q sset Master,0 2+ unmute"
 bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -q sset Master,0 2- unmute"
 bindsym XF86AudioMute exec --no-startup-id "amixer -q sset Master,0 toggle"
@@ -221,6 +223,7 @@ bindsym XF86AudioMute exec --no-startup-id "amixer -q sset Master,0 toggle"
 bindsym $mod+shift+t exec --no-startup-id ~/bin/time
 bindsym $mod+shift+a exec --no-startup-id ~/bin/alarm
 bindsym $mod+shift+p exec --no-startup-id ~/bin/pomodoro
+bindsym $mod+shift+d exec --no-startup-id ~/bin/dnd
 
 bindsym --release button2 kill
 bindsym --release Print exec --no-startup-id ~/bin/ss
@@ -276,3 +279,6 @@ exec --no-startup-id dex ~/.local/share/applications/chrome-hoekmcfndbjmjaogiaan
 exec --no-startup-id snap run slack
 exec --no-startup-id snap run spotify
 exec --no-startup-id dex /usr/share/applications/insync.desktop
+
+bindsym --whole-window $mod+button5 exec "xdotool click --clearmodifiers --repeat 10 --delay 0 5 mouseup --clearmodifiers 5"
+bindsym --whole-window $mod+button4 exec "xdotool click --clearmodifiers --repeat 10 --delay 0 4 mouseup --clearmodifiers 4"

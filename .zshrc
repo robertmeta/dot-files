@@ -43,10 +43,10 @@ if type "nvm" > /dev/null; then
     nvm use 12
 fi
 
-export PATH=$HOME/.local/bin:$HOME/bin:$GOPATH/bin:/usr/local/bin:$GOROOT/bin:/bin:/usr/bin:/sbin:/usr/sbin:$HOME/.cargo/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/bin:$GOPATH/bin:/usr/local/bin:$GOROOT/bin:/bin:/usr/bin:/sbin:/usr/sbin:$HOME/.cargo/bin:$PATH:$HOME/.nimble/bin
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/usr/local/lib"
 
-alias l="ls -gotAshFLc"
+alias l="ls -gotAshFLc | less"
 alias d="cd ~/downloads/"
 alias tmux="tmux -2u"
 alias gaa="git add --all"
@@ -110,3 +110,5 @@ RPROMPT="%F{242}[%D{%Y-%m-%f}|%*]%f"
 # source /home/rmelton/.config/broot/launcher/bash/br
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source /home/rmelton/.config/broot/launcher/bash/br
