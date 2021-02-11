@@ -110,5 +110,3 @@ RPROMPT="%F{242}[%D{%Y-%m-%f}|%*]%f"
 # source /home/rmelton/.config/broot/launcher/bash/br
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-source /home/rmelton/.config/broot/launcher/bash/br
