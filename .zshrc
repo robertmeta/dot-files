@@ -56,7 +56,11 @@ alias setclip='xclip -selection c'
 alias getclip='xclip -selection clipboard -o'
 alias t="tmux selectp -t +1"
 
-[ -z "${TMUX}" ] && tmux new -A -s main
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+    [ -z "${TMUX}" ] && tmux new -A -s main
+else
+    [ -z "${TMUX}" ] && tmux new
+fi
 
 export CDPATH=.:$GOPATH/src/github.com:$GOPATH/src/golang.org/x:$GOPATH/src/bitbucket.org:$GOPATH/src/gopkg.in:$GOPATH/src/github.com/247waiter:$GOPATH/src/github.com/patdek:~/projects:~/Projects:~/downloads:~/Downloads
 
@@ -111,4 +115,4 @@ RPROMPT="%F{242}[%D{%Y-%m-%f}|%*]%f"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-source /home/rmelton/.config/broot/launcher/bash/br
+[ -f ~/.config/broot/launcher/bash/br ] && source ~/.config/broot/launcher/bash/br
