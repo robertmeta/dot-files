@@ -48,7 +48,14 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:"/usr/local/lib"
 
 alias l="ls -gotAshFLc | less"
 alias d="cd ~/downloads/"
-alias tmux="tmux -2u"
+if ! command -v tmux-non-dead.tmux &> /dev/null
+then
+    alias tmux="tmux -2u"
+else
+    alias tmux="tmux-non-dead.tmux -2u"
+fi
+
+[ -f /snap/bin/tmux-non-dead.tmux ] && unalias tmux && alias tmux="/snap/bin/tmux-non-dead.tmux -2u"
 alias gaa="git add --all"
 alias b="cd ~/go/src/github.com/patdek/patdek/backend"
 alias wip="git add --all . && git wip"
