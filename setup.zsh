@@ -147,11 +147,11 @@ fi
 if [ -x "$(command -v npm)" ]; then
     read "reply?Update npm support apps? "
     if [[ "$reply" =~ ^[Yy]$ ]]; then
-        sudo npm install -g npm
+        sudo -E npm install -g npm
         echo "Installed npm"
-        sudo npm install -g yarn
+        sudo -E npm install -g yarn
         echo "Installed yarn"
-        sudo yarn global add eslint tslint console-tools typescript typescript-language-server prettier emmet-cli ts-node
+        sudo -E yarn global add eslint tslint console-tools typescript typescript-language-server prettier emmet-cli ts-node
         echo "Installed eslint tslint console-tools typescript typescript-language-server prettier emmet-cli"
     fi
 fi

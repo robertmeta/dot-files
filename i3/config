@@ -28,7 +28,7 @@ bindsym $mod+t exec --no-startup-id gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill 
-bindsym $mod+Shift+w sticky toggle
+bindsym $mod+Shift+` sticky toggle
 
 bindsym $mod+x kill
 #bindsym $mod+x [urgent=latest] focus
@@ -106,9 +106,9 @@ bindsym Mod1+1 workspace number 1 organization
 bindsym Mod1+2 workspace number 2 communication
 bindsym Mod1+3 workspace number 3 browsing
 bindsym Mod1+4 workspace number 4 coding
-bindsym Mod1+5 workspace number 5 more_coding
+bindsym Mod1+5 workspace number 5 ide
 bindsym Mod1+6 workspace number 6 meetings
-bindsym Mod1+7 workspace number 7 music
+bindsym Mod1+7 workspace number 7 audio
 bindsym Mod1+8 workspace number 8 email
 bindsym Mod1+9 workspace number 9 distraction
 bindsym Mod1+0 workspace number 10 dumping
@@ -118,19 +118,20 @@ bindsym Mod1+Shift+1 move container to workspace number 1 organization
 bindsym Mod1+Shift+2 move container to workspace number 2 communication
 bindsym Mod1+Shift+3 move container to workspace number 3 browsing
 bindsym Mod1+Shift+4 move container to workspace number 4 coding
-bindsym Mod1+Shift+5 move container to workspace number 5 more_coding
+bindsym Mod1+Shift+5 move container to workspace number 5 ide
 bindsym Mod1+Shift+6 move container to workspace number 6 meetings
-bindsym Mod1+Shift+7 move container to workspace number 7 music
+bindsym Mod1+Shift+7 move container to workspace number 7 audio
 bindsym Mod1+Shift+8 move container to workspace number 8 email
 bindsym Mod1+Shift+9 move container to workspace number 9 distraction
 bindsym Mod1+Shift+0 move container to workspace number 10 dumping
+
 bindsym Mod4+Shift+1 move container to workspace number 1 organization
 bindsym Mod4+Shift+2 move container to workspace number 2 communication
 bindsym Mod4+Shift+3 move container to workspace number 3 browsing
 bindsym Mod4+Shift+4 move container to workspace number 4 coding
-bindsym Mod4+Shift+5 move container to workspace number 5 more_coding
+bindsym Mod4+Shift+5 move container to workspace number 5 ide
 bindsym Mod4+Shift+6 move container to workspace number 6 meetings
-bindsym Mod4+Shift+7 move container to workspace number 7 music
+bindsym Mod4+Shift+7 move container to workspace number 7 audio
 bindsym Mod4+Shift+8 move container to workspace number 8 email
 bindsym Mod4+Shift+9 move container to workspace number 9 distraction
 bindsym Mod4+Shift+0 move container to workspace number 10 dumping
@@ -224,27 +225,41 @@ bindsym $mod+shift+t exec --no-startup-id ~/bin/time
 bindsym $mod+shift+a exec --no-startup-id ~/bin/alarm
 bindsym $mod+shift+p exec --no-startup-id ~/bin/pomodoro
 bindsym $mod+shift+d exec --no-startup-id ~/bin/dnd
+bindsym $mod+shift+w exec --no-startup-id ~/bin/weather
+bindsym $mod+shift+i exec --no-startup-id i3-save-tree > /tmp/tree
 
 bindsym --release button2 kill
 bindsym --release Print exec --no-startup-id ~/bin/ss
 
+# Keep
+for_window [class="Google-chrome" instance="crx_hcfcmgpnmpinpidjdgejehjchlbglpde"] move scratchpad
+
+# Roam (cancelled)
+for_window [class="Google-chrome" instance="crx_gmhpgfbjacdocjngbdbmhkgcpochhnge"] move scratchpad
+
+# Spotify (assign doesn't work)
+for_window [instance="spotify"] move 7
+for_window [class="Spotify"] move 7
+
 assign [class="Google-chrome" instance="crx_oihmkpogbcncclhnjdcnbhpgmidhcoed"] 1 organization
-assign [class="Google-chrome" instance="crx_hcfcmgpnmpinpidjdgejehjchlbglpde"] 1 organization
 assign [class="Google-chrome" instance="crx_pgjokpbmajkkkpdnbheecpjnccfheibh"] 1 organization
+assign [class="Google-chrome" instance="crx_kkfkcebenemijeefjopanckhhkfkmgdh"] 1 organization
 
 assign [class="Slack"] 2 communication
+assign [class="discord"] 2 communication
 assign [class="Google-chrome" instance="crx_pnpnebpkafjbaejjhkkaiandjbnbbbak"] 2 communication
 assign [class="Google-chrome" instance="crx_hnpfjngllnobngcgfapefoaidbinmjnm"] 2 communication
 assign [class="Google-chrome" instance="crx_hoekmcfndbjmjaogiaanlnkonlhlmcgn"] 2 communication
+assign [class="Google-chrome" instance="crx_enacjmdmbaclgmfocbafdfconjhkjglo"] 2 communication
 
 assign [class="zoom"] 6 meetings
 
 #assign [class="Google-chrome" instance="crx_mabfdgfnfbgcnhlkmakpenfjcnjmcopi"] 7 music
 assign [class="Google-chrome" instance="crx_aifplmgcfaoelidmnmjblimekecbmndj"] 7 music
-assign [class="Spotify"] 7 music
 
 assign [class="Google-chrome" instance="crx_icjoihabojchnllckhcimhgjplhpdolh"] 8 email
 assign [class="Google-chrome" instance="crx_pkooggnaalmfkidjmlhoelhdllpphaga"] 8 email
+assign [class="Google-chrome" instance="crx_faolnafnngnfdaknnbpnkhgohbobgegn"] 8 email
 
 assign [class="TeamViewer" instance="TeamViewer"] 10 dumping
 assign [class="Insync" instance="Insync"] 10 dumping
@@ -255,7 +270,7 @@ assign [class="Insync" instance="Insync"] 10 dumping
 # exec --no-startup-id dex ~/.local/share/applications/chrome-oihmkpogbcncclhnjdcnbhpgmidhcoed-Default.desktop
 
 # Roam Research
-exec --no-startup-id dex ~/.local/share/applications/chrome-gmhpgfbjacdocjngbdbmhkgcpochhnge-Default.desktop
+# exec --no-startup-id dex ~/.local/share/applications/chrome-gmhpgfbjacdocjngbdbmhkgcpochhnge-Default.desktop
 
 # Slack (DT)
 exec --no-startup-id dex ~/.local/share/applications/hrome-baddpocofflaanbggldfkkmdepbmjngd-Profile_1.desktop
@@ -269,16 +284,46 @@ exec --no-startup-id dex ~/.local/share/applications/chrome-hcfcmgpnmpinpidjdgej
 # Wolfram Alpha
 exec --no-startup-id dex ~/.local/share/applications/chrome-pgjokpbmajkkkpdnbheecpjnccfheibh-Default.desktop
 
-#exec --no-startup-id dex ~/.local/share/applications/chrome-mabfdgfnfbgcnhlkmakpenfjcnjmcopi-Default.desktop
-exec --no-startup-id dex ~/.local/share/applications/chrome-aifplmgcfaoelidmnmjblimekecbmndj-Default.desktop
+# DT Email
+exec --no-startup-id dex ~/.local/share/applications/chrome-faolnafnngnfdaknnbpnkhgohbobgegn-Default.desktop
+
+# DT Slack
+exec --no-startup-id dex ~/.local/share/applications/chrome-enacjmdmbaclgmfocbafdfconjhkjglo-Profile_1.desktop
+
+# Fastmail
 exec --no-startup-id dex ~/.local/share/applications/chrome-icjoihabojchnllckhcimhgjplhpdolh-Default.desktop
-exec --no-startup-id dex ~/.local/share/applications/chrome-pkooggnaalmfkidjmlhoelhdllpphaga-Profile_1.desktop
+
+# Noisli
+#exec --no-startup-id dex ~/.local/share/applications/chrome-mabfdgfnfbgcnhlkmakpenfjcnjmcopi-Default.desktop
+
+# Pocketcasts
+exec --no-startup-id dex ~/.local/share/applications/chrome-aifplmgcfaoelidmnmjblimekecbmndj-Default.desktop
+
+# Outlook calendar (wrong one)
+# exec --no-startup-id dex ~/.local/share/applications/chrome-pkooggnaalmfkidjmlhoelhdllpphaga-Profile_1.desktop
+ 
+# IRCCloud
 exec --no-startup-id dex ~/.local/share/applications/chrome-pnpnebpkafjbaejjhkkaiandjbnbbbak-Default.desktop
+
+# WhatsApp
 exec --no-startup-id dex ~/.local/share/applications/chrome-hnpfjngllnobngcgfapefoaidbinmjnm-Default.desktop
+
+# Google Voice
 exec --no-startup-id dex ~/.local/share/applications/chrome-hoekmcfndbjmjaogiaanlnkonlhlmcgn-Default.desktop
+
+# Slack
 exec --no-startup-id snap run slack
+
+# Spotify
 exec --no-startup-id snap run spotify
+
+# Discord
+exec --no-startup-id snap run discord
+
+# Insync
 exec --no-startup-id dex /usr/share/applications/insync.desktop
 
 bindsym --whole-window $mod+button5 exec "xdotool click --clearmodifiers --repeat 10 --delay 0 5 mouseup --clearmodifiers 5"
 bindsym --whole-window $mod+button4 exec "xdotool click --clearmodifiers --repeat 10 --delay 0 4 mouseup --clearmodifiers 4"
+
+# exec --no-startup-id "i3-msg 'workspace 2; append_layout /home/rmelton/.config/i3/workspace2.json'"
