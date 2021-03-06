@@ -101,15 +101,17 @@ if [ -x "$(command -v go)" ]; then
         go get -insecure -u golang.org/x/tools/cmd/guru
         echo "Installed guru"
         go get -insecure -u github.com/carlmjohnson/pomodoro
-	echo "Installed pomodoro"
+        echo "Installed pomodoro"
         go get -insecure -u github.com/sourcegraph/go-langserver
         echo "Installed go-langserver"
         go get -insecure -u github.com/fullstorydev/grpcurl
         echo "Installed grpcurl"
         go get -insecure -u github.com/tomnomnom/gron
         echo "Installed gron"
-	go get -insecure -u github.com/junegunn/fzf/...
-	echo "Installed fzf"
+        go get -insecure -u github.com/jesseduffield/lazygit/
+        echo "Installed lazygit"
+        go get -insecure -u github.com/jesseduffield/lazydocker/
+        echo "Installed lazydocker"
     fi
 fi
 if [ -x "$(command -v cargo)" ]; then
