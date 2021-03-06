@@ -117,6 +117,8 @@ fi
 if [ -x "$(command -v cargo)" ]; then
     read "reply?Update rust support apps? "
     if [[ "$reply" =~ ^[Yy]$ ]]; then
+        rustup update
+        echo "Updated rustc"
         cargo install ripgrep --force
         echo "Installed ripgrep"
         cargo install broot --force
