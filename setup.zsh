@@ -8,6 +8,7 @@ rm -rf ~/.config/kak-lsp
 rm -rf ~/.config/i3
 rm -rf ~/.config/broot
 rm -rf ~/.config/pt
+rm -rf ~/.hammerspoon
 rm ~/.tmux.conf
 rm ~/.vimrc
 rm ~/.zshrc
@@ -20,11 +21,11 @@ rm ~/.gitconfig
 rm ~/.agignore
 rm ~/.ssh/config
 
-mkdir ~/.dotfiles
-mkdir ~/.config
-mkdir ~/.ssh
-mkdir ~/.nvm
-mkdir ~/bin
+mkdir -p ~/.dotfiles
+mkdir -p ~/.config
+mkdir -p ~/.ssh
+mkdir -p ~/.nvm
+mkdir -p ~/bin
 
 git clone git://github.com/robertmeta/vimfiles ~/.dotfiles/vimfiles
 git clone git://github.com/robertmeta/kakfiles ~/.dotfiles/kakfiles
@@ -41,6 +42,7 @@ ln -s ~/.dotfiles/n ~/bin/n
 ln -s ~/.dotfiles/n. ~/bin/n.
 ln -s ~/.dotfiles/kakfiles ~/.config/kak
 ln -s ~/.dotfiles/nofrils-kakoune/ ~/.config/kak/colors
+ln -s ~/.dotfiles/hammerspoon/ ~/.hammerspoon
 ln -s ~/.dotfiles/kak-lsp ~/.config/kak-lsp
 ln -s ~/.dotfiles/vimfiles ~/.config/nvim
 ln -s ~/.dotfiles/i3 ~/.config/i3
