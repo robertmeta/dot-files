@@ -119,8 +119,8 @@ RPROMPT=""
 #      PROMPT="%F{242}[%F{darkred}FAIL%F{242}]%f $PROMPT"
 # fi
 
-# source /home/rmelton/.config/broot/launcher/bash/br
+# source ~/.config/broot/launcher/bash/br
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 [ -f ~/.config/broot/launcher/bash/br ] && source ~/.config/broot/launcher/bash/br
