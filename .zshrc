@@ -40,7 +40,7 @@ if type "kak" > /dev/null; then
     export VISUAL=kak
 fi
 if type "nvm" > /dev/null; then
-    nvm use 12
+    nvm use 14
 fi
 
 export PATH=$HOME/.local/bin:$HOME/bin:/opt/homebrew/bin/:$GOPATH/bin:/usr/local/bin:$GOROOT/bin:/bin:/usr/bin:/sbin:/usr/sbin:$HOME/.cargo/bin:$PATH:$HOME/.nimble/bin
